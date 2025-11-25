@@ -1,3 +1,3 @@
 # AutoRentalSystem
 
-o leandro e burrinho
+o bernardo e burrinho
