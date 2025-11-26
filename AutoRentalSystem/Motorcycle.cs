@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace AutoRentalSystem
 {
-    internal class Mota
+    internal class Mota : Vehicle
     {
+        public int Cc { get; set; }
+        public Mota(string maker, string model, int year, string licensePlate, string isAvailable, string shiftType, string fuelType,int cc) : base(maker, model, year, licensePlate, isAvailable, shiftType, fuelType)
+        {
+            this.Cc= cc;
+        }
+        public override string ToString()
+        {
+            return $"{base.ToString()} - {Cc} cc";
+        }
+
+
+
     }
 }
