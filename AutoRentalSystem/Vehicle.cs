@@ -17,7 +17,8 @@ namespace AutoRentalSystem
         public string IsAvailable { get; set; }
         public string ShiftType { get; set; }
         public string FuelType { get; set; }
-        public Vehicle(string maker, string model, int year, string licensePlate, string isAvailable,string shiftType, string fuelType)
+        public DateTime AvailabilityDate { get; set; }
+        public Vehicle(string maker, string model, int year, string licensePlate, string isAvailable,string shiftType, string fuelType,DateTime availabilityDate)
         {
             this.Maker = maker;
             this.Model = model;
@@ -26,6 +27,7 @@ namespace AutoRentalSystem
             this.IsAvailable = isAvailable;
             this.ShiftType = shiftType;
             this.FuelType = fuelType;
+            this.AvailabilityDate= availabilityDate;
 
         }
     }
