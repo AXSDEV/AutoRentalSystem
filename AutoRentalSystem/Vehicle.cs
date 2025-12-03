@@ -10,6 +10,7 @@ namespace AutoRentalSystem
 {
     abstract class Vehicle
     {
+        public string RentState {get;set;}
         public string Maker { get; set; }
         public string Model { get; set; }
         public int Year { get; set; }
@@ -18,8 +19,9 @@ namespace AutoRentalSystem
         public string ShiftType { get; set; }
         public string FuelType { get; set; }
         public DateTime AvailabilityDate { get; set; }
-        public Vehicle(string maker, string model, int year, string licensePlate, string isAvailable,string shiftType, string fuelType,DateTime availabilityDate)
+        public Vehicle(string rentState,string maker, string model, int year, string licensePlate, string isAvailable,string shiftType, string fuelType,DateTime availabilityDate)
         {
+            this.RentState= rentState;
             this.Maker = maker;
             this.Model = model;
             this.Year = year;
