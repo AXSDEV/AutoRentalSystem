@@ -10,7 +10,7 @@ namespace AutoRentalSystem
     {
         public int AxelNumber { get; set; }
         public int MaxPax { get; set; }
-        public Bus(string maker, string model, int year, string licensePlate, string isAvailable, string shiftType, string fuelType, int axelNumber, int maxPax) : base(maker, model, year, licensePlate, isAvailable, shiftType, fuelType)
+        public Bus(string rentState,string maker, string model, int year, string licensePlate, string isAvailable, string shiftType, string fuelType, int axelNumber, int maxPax) : base(rentState,maker, model, year, licensePlate, isAvailable, shiftType, fuelType)
         {
             this.AxelNumber = axelNumber;
             this.MaxPax = maxPax;
