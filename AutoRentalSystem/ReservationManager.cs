@@ -18,8 +18,8 @@ namespace AutoRentalSystem
 			if (vehicle == null)
 			{
 				throw new ArgumentNullException(nameof(vehicle), "Vehicle cannot be null.");
-            }
-            if (endDate <= startDate)
+			}
+			if (endDate <= startDate)
 			{
 				throw new ArgumentException("End date must be after start date.");
 			}

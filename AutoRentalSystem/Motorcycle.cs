@@ -9,9 +9,9 @@ namespace AutoRentalSystem
     internal class Mota : Vehicle
     {
         public int Cc { get; set; }
-        public Mota(string rentState,string maker, string model, int year, string licensePlate, string isAvailable, string shiftType, string fuelType,int cc) : base(rentState,maker, model, year, licensePlate, isAvailable, shiftType, fuelType)
+        public Mota(string rentState, string maker, string model, int year, string licensePlate, string isAvailable, string shiftType, string fuelType, int cc) : base(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType)
         {
-            this.Cc= cc;
+            this.Cc = cc;
         }
         public override string ToString()
         {
