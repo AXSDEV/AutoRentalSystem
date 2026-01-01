@@ -8,7 +8,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace AutoRentalSystem
 {
-    abstract class Vehicle
+    public abstract class Vehicle
     {
         public string RentState {get;set;}
         public string Maker { get; set; }

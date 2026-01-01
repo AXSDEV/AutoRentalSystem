@@ -1,8 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.2.0
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoRentalSystem", "AutoRentalSystem.csproj", "{2661F8E7-3F3F-BDAC-60D5-5088774823C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoRentalSystem", "AutoRentalSystem.csproj", "{307E5153-53C3-4C5E-A47C-3E1DA8399B8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,10 +10,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2661F8E7-3F3F-BDAC-60D5-5088774823C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2661F8E7-3F3F-BDAC-60D5-5088774823C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2661F8E7-3F3F-BDAC-60D5-5088774823C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2661F8E7-3F3F-BDAC-60D5-5088774823C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{307E5153-53C3-4C5E-A47C-3E1DA8399B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307E5153-53C3-4C5E-A47C-3E1DA8399B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307E5153-53C3-4C5E-A47C-3E1DA8399B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307E5153-53C3-4C5E-A47C-3E1DA8399B8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
