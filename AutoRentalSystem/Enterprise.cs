@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace AutoRentalSystem
 {
     public class Enterprise
@@ -6,14 +9,14 @@ namespace AutoRentalSystem
         private List<Vehicle> vehicles;
         public Enterprise()
         {
-            vehicles = new list<Vehicle>();
+            vehicles = new List<Vehicle>();
         }
         public bool AddVehicle(Vehicle vehicle)
         {
             if (vehicle == null)
                 return false;
 
-            if (vehicles.Any(v => v.licensePlate == vehicle.licensePlate))
+            if (vehicles.Any(v => v.LicensePlate == vehicle.LicensePlate))
                 return false;
 
             vehicles.Add(vehicle);
@@ -23,29 +26,29 @@ namespace AutoRentalSystem
         {
             foreach (Vehicle vehicle in vehicles)
             {
-                if (vehicle.licensePlate == licensePlate)
+                if (vehicle.LicensePlate == licensePlate)
                 {
                     return vehicle;
                 }
-                return null;
             }
+            return null;
         }
         public bool ChangeVehicleState(string licensePlate, string newState, DateTime? availabilityDate = null)
         {
             foreach (Vehicle vehicle in vehicles)
             {
-                if (vehicle.licensePlate == licensePlate)
+                if (vehicle.LicensePlate == licensePlate)
                 {
                     vehicle.RentState = newState;
 
                     if (newState == "Available")
                     {
-                        vehicle.availabilityDate = DateTime.Today;
+                        vehicle.AvailabilityDate = DateTime.Today;
                         return true;
                     }
                     if (availabilityDate.HasValue)
                     {
-                        vehicle.availabilityDate = availabilityDate.Value;
+                        vehicle.AvailabilityDate = availabilityDate.Value;
                     }
                     return true;
                 }
