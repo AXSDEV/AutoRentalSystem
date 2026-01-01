@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace AutoRentalSystem
 {
@@ -48,12 +49,12 @@ namespace AutoRentalSystem
 				r.EndDate > startDate
 				);
 
-			if (vehicle.AvailabilityDate > startDate)
+			if (vehicle.AvailabilityDate.HasValue && vehicle.AvailabilityDate.Value > startDate)
 			{
 				return false;
 			}
 
-			return !conflicts;
+			return !timeConflict;
 		}
 
 		public static decimal CalculateTotalInvoiced(DateTime startDate, DateTime endDate)
