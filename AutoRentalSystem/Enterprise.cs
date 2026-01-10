@@ -22,7 +22,7 @@ namespace AutoRentalSystem
             vehicles.Add(vehicle);
             return true;
         }
-        public Vehicle? GetVehicleByLicensePlate(string licensePlate)
+        public Vehicle GetVehicleByLicensePlate(string licensePlate)
         {
             foreach (Vehicle vehicle in vehicles)
             {
@@ -55,7 +55,7 @@ namespace AutoRentalSystem
             }
             return false;
         }
-        public List<Vehicle> GetAvailableVehicles(string? type = null)
+        public List<Vehicle> GetAvailableVehicles(string type = null)
         {
             List<Vehicle> result = new List<Vehicle>();
 
