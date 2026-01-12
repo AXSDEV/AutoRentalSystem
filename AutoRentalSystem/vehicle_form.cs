@@ -10,42 +10,37 @@ using System.Windows.Forms;
 
 namespace AutoRentalSystem
 {
-    public partial class frm_home : Form
+    public partial class vehicle_form : Form
     {
-        public frm_home()
+        public vehicle_form()
         {
             InitializeComponent();
-            title_label.Text = " ";
+            title_label.Text = "Vehicles";
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_dashboard_Click(object sender, EventArgs e)
+        private void btn_vehicles_Click(object sender, EventArgs e)
         {
             vehicle_form vehicleForm = new vehicle_form();
             vehicleForm.Show();
             this.Hide();
         }
 
-        private void guna2GradientButton2_Click(object sender, EventArgs e)
+        private void btn_reservations_Click(object sender, EventArgs e)
         {
             title_label.Text = btn_reservations.Text;
         }
 
-        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        private void btn_maintenance_Click(object sender, EventArgs e)
         {
             title_label.Text = btn_maintenance.Text;
         }
 
-        private void btn_close_Click(object sender, EventArgs e)
+        private void btn_close_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void btn_maximize_Click(object sender, EventArgs e)
+        private void btn_maximize_Click_1(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Maximized)
             {
@@ -57,9 +52,15 @@ namespace AutoRentalSystem
             }
         }
 
-        private void btn_minimize_Click(object sender, EventArgs e)
+        private void btn_minimize_Click_1(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void btn_add_vehicle_Click(object sender, EventArgs e)
+        {
+            VehicleCards card = new VehicleCards();
+            flow_panel.Controls.Add(card);
         }
 
         private void btn_vehicles_MouseEnter(object sender, EventArgs e)
