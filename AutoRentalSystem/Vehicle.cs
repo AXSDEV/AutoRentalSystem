@@ -31,5 +31,12 @@ namespace AutoRentalSystem
             this.FuelType = fuelType;
             this.AvailabilityDate = availabilityDate;
         }
+        public string VehicleType => GetType().Name;
+
+        public string ShortDescription => $"{Maker} {Model} ({Year})";
+        public override string ToString()
+        {
+            return $"{VehicleType} | {ShortDescription} | Matrícula: {LicensePlate} | Estado: {RentState}";
+        }
     }
 }
