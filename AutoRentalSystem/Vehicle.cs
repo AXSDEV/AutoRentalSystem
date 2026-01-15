@@ -30,7 +30,6 @@ namespace AutoRentalSystem
             this.ShiftType = shiftType;
             this.FuelType = fuelType;
             this.AvailabilityDate = availabilityDate;
-
         }
     }
 }

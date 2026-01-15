@@ -7,6 +7,7 @@ namespace AutoRentalSystem
     public class Enterprise
     {
         private List<Vehicle> vehicles;
+        public IReadOnlyList<Vehicle> Vehicles => vehicles.AsReadOnly();
         public Enterprise()
         {
             vehicles = new List<Vehicle>();
