@@ -14,13 +14,10 @@ namespace AutoRentalSystem
     public partial class form_home : Form
     {
         private readonly Dictionary<Type, UserControl> _pages = new Dictionary<Type, UserControl>();
-
         public form_home()
         {
             InitializeComponent();
-
-            title_label.Text = "";
-            SetActiveButton(btn_vehicles);
+            // Initialize in vehicles page
             ShowPage<VehiclesPage>("Vehicles");
         }
         
@@ -28,50 +25,32 @@ namespace AutoRentalSystem
         {
             title_label.Text = title;
 
-            foreach (Control c in panelContent.Controls)
+            foreach (Control c in panel_content.Controls)
                 c.Visible = false;
 
             if (!_pages.TryGetValue(typeof(T), out var page))
             {
                 page = new T { Dock = DockStyle.Fill };
                 _pages[typeof(T)] = page;
-                panelContent.Controls.Add(page);
+                panel_content.Controls.Add(page);
             }
 
             page.Visible = true;
             page.BringToFront();
         }
 
-        private void SetActiveButton(Guna.UI2.WinForms.Guna2GradientButton active)
-        {
-            foreach (Control c in guna2Panel1.Controls)
-            {
-                if (c is Guna.UI2.WinForms.Guna2GradientButton b)
-                {
-                    b.FillColor = Color.Transparent;
-                    b.FillColor2 = Color.Transparent;
-                }
-            }
-
-            active.FillColor = Color.Orange;
-            active.FillColor2 = Color.Orange;
-        }
-
         private void btn_dashboard_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btn_vehicles);
             ShowPage<VehiclesPage>("Vehicles");
         }
 
-        private void guna2GradientButton2_Click(object sender, EventArgs e)
+        private void btn_reservations_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btn_reservations);
             ShowPage<ReservationsPage>("Reservations");
         }
 
-        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        private void btn_maintenance_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btn_maintenance);
             ShowPage<MaintenancePage>("Maintenance");
         }
         private void btn_vehicles_MouseEnter(object sender, EventArgs e)
@@ -107,7 +86,7 @@ namespace AutoRentalSystem
             btn_maintenance.FillColor2 = Color.Transparent;
         }
 
-        private void label1_Click(object sender, EventArgs e) { }
+        private void label_dashboard_Click(object sender, EventArgs e) { }
 
         private void btn_close_Click(object sender, EventArgs e) => Application.Exit();
 

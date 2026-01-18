@@ -18,8 +18,9 @@ namespace AutoRentalSystem
         public string IsAvailable { get; set; }
         public string ShiftType { get; set; }
         public string FuelType { get; set; }
+        public decimal DailyPrice { get; set; }
         public DateTime? AvailabilityDate { get; set; }
-        public Vehicle(string rentState, string maker, string model, int year, string licensePlate, string isAvailable, string shiftType, string fuelType, DateTime? availabilityDate = null)
+        public Vehicle(string rentState, string maker, string model, int year, string licensePlate, string isAvailable, string shiftType, string fuelType, decimal dailyPrice, DateTime? availabilityDate = null)
         {
             this.RentState = rentState;
             this.Maker = maker;
@@ -29,6 +30,7 @@ namespace AutoRentalSystem
             this.IsAvailable = isAvailable;
             this.ShiftType = shiftType;
             this.FuelType = fuelType;
+            this.DailyPrice = dailyPrice;
             this.AvailabilityDate = availabilityDate;
         }
         public string VehicleType => GetType().Name;
@@ -36,7 +38,7 @@ namespace AutoRentalSystem
         public string ShortDescription => $"{Maker} {Model} ({Year})";
         public override string ToString()
         {
-            return $"{VehicleType} | {ShortDescription} | Matrícula: {LicensePlate} | Estado: {RentState}";
+            return $"{VehicleType} | {ShortDescription} | Matrícula: {LicensePlate} | Estado: {RentState} | Daily Price: {DailyPrice:C}"; return $"{VehicleType} | {ShortDescription} | Matrícula: {LicensePlate} | Estado: {RentState} | Daily Price: {DailyPrice:C}";
         }
     }
 }

@@ -51,7 +51,7 @@ namespace AutoRentalSystem
             this.label_mainbar_vehicle = new Guna.UI2.WinForms.Guna2Panel();
             this.label_status = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label_type = new System.Windows.Forms.Label();
+            this.label_typed = new System.Windows.Forms.Label();
             this.label_description = new System.Windows.Forms.Label();
             this.flow_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_add_vehicle = new Guna.UI2.WinForms.Guna2Button();
@@ -352,7 +352,7 @@ namespace AutoRentalSystem
             this.label_mainbar_vehicle.BorderRadius = 21;
             this.label_mainbar_vehicle.Controls.Add(this.label_status);
             this.label_mainbar_vehicle.Controls.Add(this.label3);
-            this.label_mainbar_vehicle.Controls.Add(this.label_type);
+            this.label_mainbar_vehicle.Controls.Add(this.label_typed);
             this.label_mainbar_vehicle.Controls.Add(this.label_description);
             this.label_mainbar_vehicle.Location = new System.Drawing.Point(317, 135);
             this.label_mainbar_vehicle.Name = "label_mainbar_vehicle";
@@ -381,16 +381,16 @@ namespace AutoRentalSystem
             this.label3.TabIndex = 2;
             this.label3.Text = "Description";
             // 
-            // label_type
+            // label_typed
             // 
-            this.label_type.AutoSize = true;
-            this.label_type.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_type.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(34)))));
-            this.label_type.Location = new System.Drawing.Point(302, 12);
-            this.label_type.Name = "label_type";
-            this.label_type.Size = new System.Drawing.Size(45, 21);
-            this.label_type.TabIndex = 1;
-            this.label_type.Text = "Type";
+            this.label_typed.AutoSize = true;
+            this.label_typed.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_typed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(34)))));
+            this.label_typed.Location = new System.Drawing.Point(302, 12);
+            this.label_typed.Name = "label_typed";
+            this.label_typed.Size = new System.Drawing.Size(45, 21);
+            this.label_typed.TabIndex = 1;
+            this.label_typed.Text = "Type";
             // 
             // label_description
             // 
@@ -512,7 +512,7 @@ namespace AutoRentalSystem
         private System.Windows.Forms.Label label_description;
         private System.Windows.Forms.Label label_status;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label_type;
+        private System.Windows.Forms.Label label_typed;
         private Guna.UI2.WinForms.Guna2Button btn_add_vehicle;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar1;
     }

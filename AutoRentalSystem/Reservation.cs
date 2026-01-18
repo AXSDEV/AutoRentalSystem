@@ -27,8 +27,9 @@ namespace AutoRentalSystem
 
 			if (totalDays < 1) totalDays = 1;
 
-			TotalPrice = totalDays * baseDailyPrice;
-		}
+            var dailyPrice = Vehicle?.DailyPrice > 0 ? Vehicle.DailyPrice : baseDailyPrice;
+            TotalPrice = totalDays * dailyPrice;
+        }
 
 		public override string ToString()
 		{

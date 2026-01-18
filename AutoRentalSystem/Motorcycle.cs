@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace AutoRentalSystem
 {
-    internal class Mota : Vehicle
+    internal class Motorcycle : Vehicle
     {
         public int Cc { get; set; }
-        public Mota(string rentState, string maker, string model, int year, string licensePlate, string isAvailable, string shiftType, string fuelType, int cc) : base(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType)
+        public Motorcycle(string rentState, string maker, string model, int year, string licensePlate, string isAvailable, string shiftType, string fuelType, int cc, decimal dailyPrice) : base(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType, dailyPrice)
         {
             this.Cc = cc;
         }

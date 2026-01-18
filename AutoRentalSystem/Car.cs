@@ -11,7 +11,7 @@ namespace AutoRentalSystem
     {
         public int NumberDoors { get; set; }
 
-        public Car(string rentState, string maker, string model, int year, string licensePlate, string IsAvailable, int numberDoors, string shiftType, string fuelType) : base(rentState, maker, model, year, licensePlate, IsAvailable, shiftType, fuelType)
+        public Car(string rentState, string maker, string model, int year, string licensePlate, string IsAvailable, int numberDoors, string shiftType, string fuelType, decimal dailyPrice) : base(rentState, maker, model, year, licensePlate, IsAvailable, shiftType, fuelType, dailyPrice)
         {
             this.NumberDoors = numberDoors;
 

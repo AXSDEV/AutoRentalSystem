@@ -39,7 +39,7 @@
             this.btn_maintenance = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btn_vehicles = new Guna.UI2.WinForms.Guna2GradientButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_dashboard = new System.Windows.Forms.Label();
             this.btn_close = new Guna.UI2.WinForms.Guna2Button();
             this.title_bar = new Guna.UI2.WinForms.Guna2Panel();
             this.btn_maximize = new Guna.UI2.WinForms.Guna2Button();
@@ -47,7 +47,8 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.title_label = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.panelContent = new Guna.UI2.WinForms.Guna2Panel();
+            this.panel_content = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,12 +61,13 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.BorderRadius = 20;
+            this.guna2Panel1.Controls.Add(this.guna2GradientButton1);
             this.guna2Panel1.Controls.Add(this.guna2Panel2);
             this.guna2Panel1.Controls.Add(this.btn_reservations);
             this.guna2Panel1.Controls.Add(this.btn_maintenance);
             this.guna2Panel1.Controls.Add(this.btn_vehicles);
             this.guna2Panel1.Controls.Add(this.pictureBox1);
-            this.guna2Panel1.Controls.Add(this.label1);
+            this.guna2Panel1.Controls.Add(this.label_dashboard);
             this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
             this.guna2Panel1.Location = new System.Drawing.Point(0, 37);
             this.guna2Panel1.Name = "guna2Panel1";
@@ -164,12 +166,12 @@
             this.btn_reservations.ForeColor = System.Drawing.Color.White;
             this.btn_reservations.Image = ((System.Drawing.Image)(resources.GetObject("btn_reservations.Image")));
             this.btn_reservations.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_reservations.Location = new System.Drawing.Point(26, 161);
+            this.btn_reservations.Location = new System.Drawing.Point(26, 184);
             this.btn_reservations.Name = "btn_reservations";
             this.btn_reservations.Size = new System.Drawing.Size(230, 45);
             this.btn_reservations.TabIndex = 4;
             this.btn_reservations.Text = "Reservations";
-            this.btn_reservations.Click += new System.EventHandler(this.guna2GradientButton2_Click);
+            this.btn_reservations.Click += new System.EventHandler(this.btn_reservations_Click);
             this.btn_reservations.MouseEnter += new System.EventHandler(this.btn_reservations_MouseEnter);
             this.btn_reservations.MouseLeave += new System.EventHandler(this.btn_reservations_MouseLeave);
             // 
@@ -187,12 +189,12 @@
             this.btn_maintenance.ForeColor = System.Drawing.Color.White;
             this.btn_maintenance.Image = ((System.Drawing.Image)(resources.GetObject("btn_maintenance.Image")));
             this.btn_maintenance.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_maintenance.Location = new System.Drawing.Point(26, 223);
+            this.btn_maintenance.Location = new System.Drawing.Point(26, 246);
             this.btn_maintenance.Name = "btn_maintenance";
             this.btn_maintenance.Size = new System.Drawing.Size(230, 45);
             this.btn_maintenance.TabIndex = 3;
             this.btn_maintenance.Text = "Maintenance";
-            this.btn_maintenance.Click += new System.EventHandler(this.guna2GradientButton1_Click);
+            this.btn_maintenance.Click += new System.EventHandler(this.btn_maintenance_Click);
             this.btn_maintenance.MouseEnter += new System.EventHandler(this.btn_maintenance_MouseEnter);
             this.btn_maintenance.MouseLeave += new System.EventHandler(this.btn_maintenance_MouseLeave);
             // 
@@ -210,7 +212,7 @@
             this.btn_vehicles.ForeColor = System.Drawing.Color.White;
             this.btn_vehicles.Image = ((System.Drawing.Image)(resources.GetObject("btn_vehicles.Image")));
             this.btn_vehicles.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_vehicles.Location = new System.Drawing.Point(26, 98);
+            this.btn_vehicles.Location = new System.Drawing.Point(26, 121);
             this.btn_vehicles.Name = "btn_vehicles";
             this.btn_vehicles.Size = new System.Drawing.Size(230, 45);
             this.btn_vehicles.TabIndex = 2;
@@ -227,17 +229,17 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // label_dashboard
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(81, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Auto Rental System";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label_dashboard.AutoSize = true;
+            this.label_dashboard.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_dashboard.ForeColor = System.Drawing.Color.White;
+            this.label_dashboard.Location = new System.Drawing.Point(81, 27);
+            this.label_dashboard.Name = "label_dashboard";
+            this.label_dashboard.Size = new System.Drawing.Size(185, 25);
+            this.label_dashboard.TabIndex = 0;
+            this.label_dashboard.Text = "Auto Rental System";
+            this.label_dashboard.Click += new System.EventHandler(this.label_dashboard_Click);
             // 
             // btn_close
             // 
@@ -324,6 +326,7 @@
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.DragStartTransparencyValue = 1D;
             this.guna2DragControl1.TargetControl = this.title_bar;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
@@ -339,16 +342,34 @@
             this.title_label.TabIndex = 3;
             this.title_label.Text = "label2";
             // 
-            // panelContent
+            // panel_content
             // 
-            this.panelContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panelContent.Location = new System.Drawing.Point(272, 37);
-            this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(962, 570);
-            this.panelContent.TabIndex = 4;
+            this.panel_content.BackColor = System.Drawing.Color.Transparent;
+            this.panel_content.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_content.Location = new System.Drawing.Point(0, 0);
+            this.panel_content.Name = "panel_content";
+            this.panel_content.Size = new System.Drawing.Size(1424, 643);
+            this.panel_content.TabIndex = 4;
+            // 
+            // guna2GradientButton1
+            // 
+            this.guna2GradientButton1.BorderRadius = 10;
+            this.guna2GradientButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2GradientButton1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2GradientButton1.FillColor2 = System.Drawing.Color.Transparent;
+            this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.guna2GradientButton1.ForeColor = System.Drawing.Color.White;
+            this.guna2GradientButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2GradientButton1.Image")));
+            this.guna2GradientButton1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2GradientButton1.Location = new System.Drawing.Point(26, 344);
+            this.guna2GradientButton1.Name = "guna2GradientButton1";
+            this.guna2GradientButton1.Size = new System.Drawing.Size(230, 45);
+            this.guna2GradientButton1.TabIndex = 5;
+            this.guna2GradientButton1.Text = "Maintenance";
             // 
             // form_home
             // 
@@ -359,7 +380,7 @@
             this.Controls.Add(this.title_label);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.title_bar);
-            this.Controls.Add(this.panelContent);
+            this.Controls.Add(this.panel_content);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "form_home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -378,7 +399,7 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_dashboard;
         private Guna.UI2.WinForms.Guna2GradientButton btn_vehicles;
         private Guna.UI2.WinForms.Guna2GradientButton btn_reservations;
         private Guna.UI2.WinForms.Guna2GradientButton btn_maintenance;
@@ -393,7 +414,8 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private Guna.UI2.WinForms.Guna2Panel panelContent;
+        private Guna.UI2.WinForms.Guna2Panel panel_content;
+        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
     }
 }
 

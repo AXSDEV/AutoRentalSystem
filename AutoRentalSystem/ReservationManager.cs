@@ -10,9 +10,9 @@ namespace AutoRentalSystem
 	{
 		private static readonly List<Reservation> _reservations = new List<Reservation>();
 		private static int _nextReservationId = 1;
-		private const decimal BaseDailyPrice = 50.0m;
+        private const decimal BaseDailyPrice = 50.0m;
 
-		public static IReadOnlyList<Reservation> Reservations => _reservations.AsReadOnly();
+        public static IReadOnlyList<Reservation> Reservations => _reservations.AsReadOnly();
 
 		public static Reservation CreateReservation(Vehicle vehicle, DateTime startDate, DateTime endDate)
 		{

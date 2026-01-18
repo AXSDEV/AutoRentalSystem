@@ -34,6 +34,7 @@ namespace AutoRentalSystem
                 AppendAttribute(builder, "IsAvailable", vehicle?.IsAvailable);
                 AppendAttribute(builder, "ShiftType", vehicle?.ShiftType);
                 AppendAttribute(builder, "FuelType", vehicle?.FuelType);
+                AppendAttribute(builder, "DailyPrice", FormatDecimal(vehicle?.DailyPrice));
                 AppendAttribute(builder, "AvailabilityDate", FormatDate(vehicle?.AvailabilityDate));
                 AppendAttribute(builder, "NumberDoors", GetNumberDoors(vehicle));
                 AppendAttribute(builder, "AxelNumber", GetAxelNumber(vehicle));
@@ -229,36 +230,38 @@ namespace AutoRentalSystem
             block.TryGetValue("IsAvailable", out var isAvailable);
             block.TryGetValue("ShiftType", out var shiftType);
             block.TryGetValue("FuelType", out var fuelType);
+            block.TryGetValue("DailyPrice", out var dailyPriceText);
             block.TryGetValue("AvailabilityDate", out var availabilityDateText);
 
             var year = ParseInt(yearText);
+            var dailyPrice = ParseDecimal(dailyPriceText);
             var availabilityDate = ParseDate(availabilityDateText);
 
             switch (type)
             {
                 case nameof(Car):
                     block.TryGetValue("NumberDoors", out var doorsText);
-                    return new Car(rentState, maker, model, year, licensePlate, isAvailable, ParseInt(doorsText), shiftType, fuelType)
+                    return new Car(rentState, maker, model, year, licensePlate, isAvailable, ParseInt(doorsText), shiftType, fuelType, dailyPrice)
                     {
                         AvailabilityDate = availabilityDate
                     };
                 case nameof(Bus):
                     block.TryGetValue("AxelNumber", out var axelText);
                     block.TryGetValue("MaxPax", out var maxPaxText);
-                    return new Bus(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType, ParseInt(axelText), ParseInt(maxPaxText))
+                    return new Bus(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType, ParseInt(axelText), ParseInt(maxPaxText), dailyPrice)
                     {
                         AvailabilityDate = availabilityDate
                     };
                 case nameof(Truck):
                     block.TryGetValue("MaxWeight", out var maxWeightText);
                     block.TryGetValue("Height", out var heightText);
-                    return new Truck(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType, ParseInt(maxWeightText), ParseInt(heightText))
+                    return new Truck(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType, ParseInt(maxWeightText), ParseInt(heightText), dailyPrice)
                     {
                         AvailabilityDate = availabilityDate
                     };
-                case nameof(Mota):
+                case nameof(Motorcycle):
                     block.TryGetValue("Cc", out var ccText);
-                    return new Mota(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType, ParseInt(ccText))
+                    return new Motorcycle(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType, ParseInt(ccText), dailyPrice)
                     {
                         AvailabilityDate = availabilityDate
                     };
@@ -357,7 +360,7 @@ namespace AutoRentalSystem
 
         private static int GetCc(Vehicle vehicle)
         {
-            return vehicle is Mota mota ? mota.Cc : 0;
+            return vehicle is Motorcycle motorcycle ? motorcycle.Cc : 0;
         }
     }
 }
