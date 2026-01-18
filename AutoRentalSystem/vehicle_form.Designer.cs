@@ -402,6 +402,7 @@ namespace AutoRentalSystem
             this.label_description.Size = new System.Drawing.Size(94, 21);
             this.label_description.TabIndex = 0;
             this.label_description.Text = "Description";
+            this.label_description.Click += new System.EventHandler(this.label_description_Click);
             // 
             // flow_panel
             // 

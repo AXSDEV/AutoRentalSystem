@@ -19,12 +19,12 @@ namespace AutoRentalSystem
 
         private void default_card_panel_MouseEnter(object sender, EventArgs e)
         {
-            default_card_panel.FillColor = Color.Orange;
+            default_card_panel.FillColor = Color.FromArgb(45, 45, 60);
         }
 
         private void default_card_panel_MouseLeave(object sender, EventArgs e)
         {
-            default_card_panel.FillColor = Color.FromArgb(34,33,42);
+            default_card_panel.FillColor = Color.FromArgb(34, 33, 42);
         }
 
         private void btn_delete_vehicle_MouseEnter(object sender, EventArgs e)
@@ -36,5 +36,8 @@ namespace AutoRentalSystem
         {
             btn_delete_vehicle.FillColor = Color.Transparent;
         }
+        private void label2_Click(object sender, EventArgs e) { }
+
     }
+
 }

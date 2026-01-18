@@ -98,5 +98,7 @@ namespace AutoRentalSystem
             btn_maintenance.FillColor = Color.Transparent;
             btn_maintenance.FillColor2 = Color.Transparent;
         }
+        private void label_description_Click(object sender, EventArgs e) { }
+
     }
 }
