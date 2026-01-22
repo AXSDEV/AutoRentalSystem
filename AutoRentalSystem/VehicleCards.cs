@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+
 
 namespace AutoRentalSystem
 {
@@ -28,6 +30,7 @@ namespace AutoRentalSystem
             label3.Text = vehicle.Maker;
             label4.Text = vehicle.Model;
             label5.Text = vehicle.Year.ToString();
+            label6.Text = vehicle.DailyPrice.ToString("C", new CultureInfo("pt-PT"));
         }
 
         private void default_card_panel_MouseEnter(object sender, EventArgs e)
@@ -49,8 +52,11 @@ namespace AutoRentalSystem
         {
             btn_delete_vehicle.FillColor = Color.Transparent;
         }
-        private void label2_Click(object sender, EventArgs e) { }
 
+        private void btn_delete_vehicle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
-      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
+      <HintPath>packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,9 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsvService.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Bus.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="Enterprise.cs" />
@@ -86,6 +83,12 @@
     </Compile>
     <Compile Include="Truck.cs" />
     <Compile Include="Vehicle.cs" />
+    <Compile Include="VehicleAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehicleAddForm.Designer.cs">
+      <DependentUpon>VehicleAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VehicleCards.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -97,12 +100,6 @@
     </Compile>
     <Compile Include="VehiclesPage.Designer.cs">
       <DependentUpon>VehiclesPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="vehicle_form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="vehicle_form.Designer.cs">
-      <DependentUpon>vehicle_form.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -122,15 +119,16 @@
     <EmbeddedResource Include="ReservationsPage.resx">
       <DependentUpon>ReservationsPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VehicleAddForm.resx">
+      <DependentUpon>VehicleAddForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VehicleCards.resx">
       <DependentUpon>VehicleCards.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VehiclesPage.resx">
       <DependentUpon>VehiclesPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vehicle_form.resx">
-      <DependentUpon>vehicle_form.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="data\vehicles.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

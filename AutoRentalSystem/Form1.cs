@@ -86,8 +86,6 @@ namespace AutoRentalSystem
             btn_maintenance.FillColor2 = Color.Transparent;
         }
 
-        private void label_dashboard_Click(object sender, EventArgs e) { }
-
         private void btn_close_Click(object sender, EventArgs e) => Application.Exit();
 
         private void btn_maximize_Click(object sender, EventArgs e)
@@ -136,6 +134,15 @@ namespace AutoRentalSystem
         {
             btn_alterstate.FillColor = Color.Transparent;
             btn_alterstate.FillColor2 = Color.Transparent;
+        }
+
+        private void btn_addvehicle_Click(object sender, EventArgs e)
+        {
+            using (var form = new VehicleAddForm())
+            {
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.ShowDialog(this);
+            }
         }
     }
 

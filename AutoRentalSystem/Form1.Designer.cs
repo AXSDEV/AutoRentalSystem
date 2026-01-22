@@ -168,6 +168,7 @@
             this.btn_addvehicle.Size = new System.Drawing.Size(230, 45);
             this.btn_addvehicle.TabIndex = 5;
             this.btn_addvehicle.Text = "Add Vehicle";
+            this.btn_addvehicle.Click += new System.EventHandler(this.btn_addvehicle_Click);
             this.btn_addvehicle.MouseEnter += new System.EventHandler(this.btn_addvehicle_MouseEnter);
             this.btn_addvehicle.MouseLeave += new System.EventHandler(this.btn_addvehicle_MouseLeave);
             // 
@@ -266,7 +267,6 @@
             this.label_dashboard.Size = new System.Drawing.Size(185, 25);
             this.label_dashboard.TabIndex = 0;
             this.label_dashboard.Text = "Auto Rental System";
-            this.label_dashboard.Click += new System.EventHandler(this.label_dashboard_Click);
             // 
             // btn_close
             // 
