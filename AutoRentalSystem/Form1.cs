@@ -17,7 +17,7 @@ namespace AutoRentalSystem
         public form_home()
         {
             InitializeComponent();
-            // Initialize in vehicles page
+
             ShowPage<VehiclesPage>("Vehicles");
         }
         
@@ -100,6 +100,42 @@ namespace AutoRentalSystem
         private void btn_minimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void btn_addvehicle_MouseEnter(object sender, EventArgs e)
+        {
+            btn_addvehicle.FillColor = Color.Orange;
+            btn_addvehicle.FillColor2 = Color.Orange;
+        }
+
+        private void btn_addvehicle_MouseLeave(object sender, EventArgs e)
+        {
+            btn_addvehicle.FillColor = Color.Transparent;
+            btn_addvehicle.FillColor2 = Color.Transparent;
+        }
+
+        private void btn_reservevehicle_MouseEnter(object sender, EventArgs e)
+        {
+            btn_reservevehicle.FillColor = Color.Orange;
+            btn_reservevehicle.FillColor2 = Color.Orange;
+        }
+
+        private void btn_reservevehicle_MouseLeave(object sender, EventArgs e)
+        {
+            btn_reservevehicle.FillColor = Color.Transparent;
+            btn_reservevehicle.FillColor2 = Color.Transparent;
+        }
+
+        private void btn_alterstate_MouseEnter(object sender, EventArgs e)
+        {
+            btn_alterstate.FillColor = Color.Orange;
+            btn_alterstate.FillColor2 = Color.Orange;
+        }
+
+        private void btn_alterstate_MouseLeave(object sender, EventArgs e)
+        {
+            btn_alterstate.FillColor = Color.Transparent;
+            btn_alterstate.FillColor2 = Color.Transparent;
         }
     }
 

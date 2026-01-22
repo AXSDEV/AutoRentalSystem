@@ -40,8 +40,9 @@ namespace AutoRentalSystem
             this.label_vtype = new System.Windows.Forms.Label();
             this.label_maker = new System.Windows.Forms.Label();
             this.label_licenseplate = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowpanel_list = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2VScrollBar2 = new Guna.UI2.WinForms.Guna2VScrollBar();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.panel_titlebar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +82,7 @@ namespace AutoRentalSystem
             this.panel_titlebar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.panel_titlebar.Location = new System.Drawing.Point(313, 107);
             this.panel_titlebar.Name = "panel_titlebar";
-            this.panel_titlebar.Size = new System.Drawing.Size(1095, 45);
+            this.panel_titlebar.Size = new System.Drawing.Size(1591, 45);
             this.panel_titlebar.TabIndex = 5;
             // 
             // label_actions
@@ -90,7 +91,7 @@ namespace AutoRentalSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_actions.AutoSize = true;
             this.label_actions.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_actions.Location = new System.Drawing.Point(947, 11);
+            this.label_actions.Location = new System.Drawing.Point(1379, 11);
             this.label_actions.Name = "label_actions";
             this.label_actions.Size = new System.Drawing.Size(65, 21);
             this.label_actions.TabIndex = 0;
@@ -102,7 +103,7 @@ namespace AutoRentalSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_dailyprice.AutoSize = true;
             this.label_dailyprice.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_dailyprice.Location = new System.Drawing.Point(760, 11);
+            this.label_dailyprice.Location = new System.Drawing.Point(1119, 11);
             this.label_dailyprice.Name = "label_dailyprice";
             this.label_dailyprice.Size = new System.Drawing.Size(85, 21);
             this.label_dailyprice.TabIndex = 0;
@@ -114,7 +115,7 @@ namespace AutoRentalSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_year.AutoSize = true;
             this.label_year.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_year.Location = new System.Drawing.Point(656, 11);
+            this.label_year.Location = new System.Drawing.Point(957, 11);
             this.label_year.Name = "label_year";
             this.label_year.Size = new System.Drawing.Size(41, 21);
             this.label_year.TabIndex = 0;
@@ -126,7 +127,7 @@ namespace AutoRentalSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_model.AutoSize = true;
             this.label_model.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_model.Location = new System.Drawing.Point(516, 11);
+            this.label_model.Location = new System.Drawing.Point(742, 11);
             this.label_model.Name = "label_model";
             this.label_model.Size = new System.Drawing.Size(58, 21);
             this.label_model.TabIndex = 0;
@@ -138,7 +139,7 @@ namespace AutoRentalSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_vtype.AutoSize = true;
             this.label_vtype.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_vtype.Location = new System.Drawing.Point(249, 11);
+            this.label_vtype.Location = new System.Drawing.Point(329, 11);
             this.label_vtype.Name = "label_vtype";
             this.label_vtype.Size = new System.Drawing.Size(45, 21);
             this.label_vtype.TabIndex = 0;
@@ -150,7 +151,7 @@ namespace AutoRentalSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_maker.AutoSize = true;
             this.label_maker.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_maker.Location = new System.Drawing.Point(377, 11);
+            this.label_maker.Location = new System.Drawing.Point(509, 11);
             this.label_maker.Name = "label_maker";
             this.label_maker.Size = new System.Drawing.Size(56, 21);
             this.label_maker.TabIndex = 0;
@@ -162,37 +163,50 @@ namespace AutoRentalSystem
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_licenseplate.AutoSize = true;
             this.label_licenseplate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_licenseplate.Location = new System.Drawing.Point(67, 11);
+            this.label_licenseplate.Location = new System.Drawing.Point(98, 11);
             this.label_licenseplate.Name = "label_licenseplate";
             this.label_licenseplate.Size = new System.Drawing.Size(104, 21);
             this.label_licenseplate.TabIndex = 0;
             this.label_licenseplate.Text = "License Plate";
             // 
-            // flowLayoutPanel1
+            // flowpanel_list
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(313, 171);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1100, 469);
-            this.flowLayoutPanel1.TabIndex = 7;
-            this.flowLayoutPanel1.WrapContents = false;
+            this.flowpanel_list.AutoScroll = true;
+            this.flowpanel_list.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowpanel_list.Location = new System.Drawing.Point(313, 171);
+            this.flowpanel_list.Name = "flowpanel_list";
+            this.flowpanel_list.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.flowpanel_list.Size = new System.Drawing.Size(1596, 838);
+            this.flowpanel_list.TabIndex = 7;
+            this.flowpanel_list.WrapContents = false;
             // 
             // guna2VScrollBar2
             // 
-            this.guna2VScrollBar2.BindingContainer = this.flowLayoutPanel1;
+            this.guna2VScrollBar2.BindingContainer = this.flowpanel_list;
             this.guna2VScrollBar2.BorderRadius = 7;
             this.guna2VScrollBar2.InUpdate = false;
             this.guna2VScrollBar2.LargeChange = 10;
-            this.guna2VScrollBar2.Location = new System.Drawing.Point(1399, 171);
+            this.guna2VScrollBar2.Location = new System.Drawing.Point(1891, 171);
             this.guna2VScrollBar2.Name = "guna2VScrollBar2";
-            this.guna2VScrollBar2.ScrollbarSize = 14;
-            this.guna2VScrollBar2.Size = new System.Drawing.Size(14, 469);
+            this.guna2VScrollBar2.ScrollbarSize = 18;
+            this.guna2VScrollBar2.Size = new System.Drawing.Size(18, 838);
             this.guna2VScrollBar2.TabIndex = 0;
             this.guna2VScrollBar2.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Location = new System.Drawing.Point(763, 37);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(180, 45);
+            this.guna2Button1.TabIndex = 8;
+            this.guna2Button1.Text = "guna2Button1";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // VehiclesPage
             // 
@@ -200,13 +214,14 @@ namespace AutoRentalSystem
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.guna2VScrollBar2);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.flowpanel_list);
             this.Controls.Add(this.panel_titlebar);
             this.Controls.Add(this.title_label);
             this.Controls.Add(this.guna2Panel1);
             this.Name = "VehiclesPage";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Size = new System.Drawing.Size(1424, 643);
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Size = new System.Drawing.Size(1920, 1080);
             this.Load += new System.EventHandler(this.VehiclesPage_Load);
             this.panel_titlebar.ResumeLayout(false);
             this.panel_titlebar.PerformLayout();
@@ -233,8 +248,9 @@ namespace AutoRentalSystem
         private System.Windows.Forms.Label label_maker;
         private System.Windows.Forms.Label label_licenseplate;
         private System.Windows.Forms.Label label_actions;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowpanel_list;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar2;
         private System.Windows.Forms.Label label_vtype;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

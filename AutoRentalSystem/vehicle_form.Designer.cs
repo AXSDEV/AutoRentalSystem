@@ -408,7 +408,6 @@ namespace AutoRentalSystem
             // 
             this.flow_panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.flow_panel.AutoScroll = true;
             this.flow_panel.BackColor = System.Drawing.Color.Transparent;
             this.flow_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flow_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;

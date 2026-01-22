@@ -30,12 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleCards));
             this.default_card_panel = new Guna.UI2.WinForms.Guna2Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.btn_delete_vehicle = new Guna.UI2.WinForms.Guna2Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.default_card_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,6 +44,7 @@
             // 
             this.default_card_panel.BackColor = System.Drawing.Color.Transparent;
             this.default_card_panel.BorderRadius = 10;
+            this.default_card_panel.Controls.Add(this.label6);
             this.default_card_panel.Controls.Add(this.label5);
             this.default_card_panel.Controls.Add(this.btn_delete_vehicle);
             this.default_card_panel.Controls.Add(this.label4);
@@ -52,10 +54,21 @@
             this.default_card_panel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
             this.default_card_panel.Location = new System.Drawing.Point(0, 0);
             this.default_card_panel.Name = "default_card_panel";
-            this.default_card_panel.Size = new System.Drawing.Size(1070, 50);
+            this.default_card_panel.Size = new System.Drawing.Size(1570, 50);
             this.default_card_panel.TabIndex = 0;
             this.default_card_panel.MouseEnter += new System.EventHandler(this.default_card_panel_MouseEnter);
             this.default_card_panel.MouseLeave += new System.EventHandler(this.default_card_panel_MouseLeave);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(955, 14);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 20);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "label5";
             // 
             // btn_delete_vehicle
             // 
@@ -68,7 +81,7 @@
             this.btn_delete_vehicle.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_delete_vehicle.ForeColor = System.Drawing.Color.White;
             this.btn_delete_vehicle.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete_vehicle.Image")));
-            this.btn_delete_vehicle.Location = new System.Drawing.Point(1022, 14);
+            this.btn_delete_vehicle.Location = new System.Drawing.Point(1399, 10);
             this.btn_delete_vehicle.Name = "btn_delete_vehicle";
             this.btn_delete_vehicle.Size = new System.Drawing.Size(24, 24);
             this.btn_delete_vehicle.TabIndex = 1;
@@ -80,7 +93,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(496, 14);
+            this.label4.Location = new System.Drawing.Point(744, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 20);
             this.label4.TabIndex = 3;
@@ -91,7 +104,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(367, 14);
+            this.label3.Location = new System.Drawing.Point(506, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 20);
             this.label3.TabIndex = 2;
@@ -102,7 +115,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(225, 14);
+            this.label2.Location = new System.Drawing.Point(333, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 20);
             this.label2.TabIndex = 1;
@@ -114,22 +127,22 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(79, 14);
+            this.label1.Location = new System.Drawing.Point(106, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
-            // label5
+            // label6
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(611, 14);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 20);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "label5";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(1133, 14);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 20);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "label6";
             // 
             // VehicleCards
             // 
@@ -137,7 +150,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.default_card_panel);
             this.Name = "VehicleCards";
-            this.Size = new System.Drawing.Size(1070, 50);
+            this.Size = new System.Drawing.Size(1570, 50);
             this.default_card_panel.ResumeLayout(false);
             this.default_card_panel.PerformLayout();
             this.ResumeLayout(false);
@@ -153,5 +166,6 @@
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Button btn_delete_vehicle;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

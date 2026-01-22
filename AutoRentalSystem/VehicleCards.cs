@@ -16,6 +16,19 @@ namespace AutoRentalSystem
         {
             InitializeComponent();
         }
+        public VehicleCards(Vehicle vehicle) : this()
+        {
+            if (vehicle == null)
+            {
+                return;
+            }
+
+            label1.Text = vehicle.LicensePlate;
+            label2.Text = vehicle.VehicleType;
+            label3.Text = vehicle.Maker;
+            label4.Text = vehicle.Model;
+            label5.Text = vehicle.Year.ToString();
+        }
 
         private void default_card_panel_MouseEnter(object sender, EventArgs e)
         {
