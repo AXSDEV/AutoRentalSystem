@@ -27,7 +27,7 @@ namespace AutoRentalSystem
 			if (!CheckAvailability(vehicle, startDate, endDate))
 			{
 				throw new InvalidOperationException(
-					$"The vehicle whit license plate {vehicle.LicensePlate} is not available in the selected period.");
+					$"The vehicle with license plate {vehicle.LicensePlate} is not available in the selected period.");
 			}
 			Reservation newReservation = new Reservation(_nextReservationId++, vehicle, startDate, endDate);
 
