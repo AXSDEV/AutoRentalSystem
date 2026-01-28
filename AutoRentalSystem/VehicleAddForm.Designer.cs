@@ -39,14 +39,12 @@
             this.btn_AddVehicleForm_Bus = new Guna.UI2.WinForms.Guna2Button();
             this.btn_AddVehicleForm_Bike = new Guna.UI2.WinForms.Guna2Button();
             this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox8 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox6 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox7 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label_AddVehicleForm_RentState = new System.Windows.Forms.Label();
             this.btn_AddVehicleForm_Close = new Guna.UI2.WinForms.Guna2Button();
             this.label_AddVehicleForm_DailyPrice = new System.Windows.Forms.Label();
             this.btn_AddVehicleForm_Car = new Guna.UI2.WinForms.Guna2Button();
@@ -73,14 +71,12 @@
             this.panel_AddVehicle_Background.Controls.Add(this.btn_AddVehicleForm_Bus);
             this.panel_AddVehicle_Background.Controls.Add(this.btn_AddVehicleForm_Bike);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox2);
-            this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox8);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox6);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox7);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox4);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox5);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox3);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox1);
-            this.panel_AddVehicle_Background.Controls.Add(this.label_AddVehicleForm_RentState);
             this.panel_AddVehicle_Background.Controls.Add(this.btn_AddVehicleForm_Close);
             this.panel_AddVehicle_Background.Controls.Add(this.label_AddVehicleForm_DailyPrice);
             this.panel_AddVehicle_Background.Controls.Add(this.btn_AddVehicleForm_Car);
@@ -212,26 +208,6 @@
             this.guna2TextBox2.Size = new System.Drawing.Size(273, 45);
             this.guna2TextBox2.TabIndex = 3;
             // 
-            // guna2TextBox8
-            // 
-            this.guna2TextBox8.BorderRadius = 10;
-            this.guna2TextBox8.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox8.DefaultText = "";
-            this.guna2TextBox8.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox8.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox8.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox8.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox8.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TextBox8.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox8.Location = new System.Drawing.Point(440, 584);
-            this.guna2TextBox8.Margin = new System.Windows.Forms.Padding(5);
-            this.guna2TextBox8.Name = "guna2TextBox8";
-            this.guna2TextBox8.PlaceholderText = "";
-            this.guna2TextBox8.SelectedText = "";
-            this.guna2TextBox8.Size = new System.Drawing.Size(273, 45);
-            this.guna2TextBox8.TabIndex = 3;
-            // 
             // guna2TextBox6
             // 
             this.guna2TextBox6.BorderRadius = 10;
@@ -269,7 +245,7 @@
             this.guna2TextBox7.Name = "guna2TextBox7";
             this.guna2TextBox7.PlaceholderText = "";
             this.guna2TextBox7.SelectedText = "";
-            this.guna2TextBox7.Size = new System.Drawing.Size(273, 45);
+            this.guna2TextBox7.Size = new System.Drawing.Size(631, 45);
             this.guna2TextBox7.TabIndex = 3;
             // 
             // guna2TextBox4
@@ -351,18 +327,6 @@
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.Size = new System.Drawing.Size(273, 45);
             this.guna2TextBox1.TabIndex = 3;
-            // 
-            // label_AddVehicleForm_RentState
-            // 
-            this.label_AddVehicleForm_RentState.AutoSize = true;
-            this.label_AddVehicleForm_RentState.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.label_AddVehicleForm_RentState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(34)))));
-            this.label_AddVehicleForm_RentState.Location = new System.Drawing.Point(435, 545);
-            this.label_AddVehicleForm_RentState.Name = "label_AddVehicleForm_RentState";
-            this.label_AddVehicleForm_RentState.Size = new System.Drawing.Size(99, 25);
-            this.label_AddVehicleForm_RentState.TabIndex = 1;
-            this.label_AddVehicleForm_RentState.Text = "Rent State";
-            this.label_AddVehicleForm_RentState.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btn_AddVehicleForm_Close
             // 
@@ -544,11 +508,9 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
         private System.Windows.Forms.Label label_AddVehicleForm_Model;
         private System.Windows.Forms.Label label_AddVehicleForm_Maker;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox8;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox6;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox7;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox5;
-        private System.Windows.Forms.Label label_AddVehicleForm_RentState;
         private System.Windows.Forms.Label label_AddVehicleForm_DailyPrice;
         private System.Windows.Forms.Label label_AddVehicleForm_ShiftType;
         private System.Windows.Forms.Label label_AddVehicleForm_Year;

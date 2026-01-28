@@ -10,7 +10,7 @@ namespace AutoRentalSystem
 {
     public abstract class Vehicle
     {
-        public string RentState { get; set; }
+        public string RentState { get; set; } = "Available";
         public string Maker { get; set; }
         public string Model { get; set; }
         public int Year { get; set; }

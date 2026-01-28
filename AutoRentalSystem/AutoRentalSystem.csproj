@@ -34,6 +34,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
@@ -119,6 +123,12 @@
     <Compile Include="VehicleCards.Designer.cs">
       <DependentUpon>VehicleCards.cs</DependentUpon>
     </Compile>
+    <Compile Include="VehicleDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VehicleDetailsForm.Designer.cs">
+      <DependentUpon>VehicleDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VehiclesPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +149,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReservationsPage.resx">
       <DependentUpon>ReservationsPage.cs</DependentUpon>
@@ -161,6 +172,9 @@
     <EmbeddedResource Include="VehicleCards.resx">
       <DependentUpon>VehicleCards.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VehicleDetailsForm.resx">
+      <DependentUpon>VehicleDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VehiclesPage.resx">
       <DependentUpon>VehiclesPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +191,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\state_available.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\images\Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\images\Orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\images\Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\images\Yellow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

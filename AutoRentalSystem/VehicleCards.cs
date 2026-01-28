@@ -24,7 +24,7 @@ namespace AutoRentalSystem
             {
                 return;
             }
-
+            pictureBox_RentState.Image = GetRentStateIcon(vehicle.RentState);
             label1.Text = vehicle.LicensePlate;
             label2.Text = vehicle.VehicleType;
             label3.Text = vehicle.Maker;
@@ -33,6 +33,27 @@ namespace AutoRentalSystem
             label6.Text = vehicle.DailyPrice.ToString("C", new CultureInfo("pt-PT"));
         }
 
+        private Image GetRentStateIcon(string rentState)
+        {
+            string state = rentState.Trim().ToLowerInvariant();
+
+            switch (state)
+            {
+                case "available":
+                    return Properties.Resources.state_available;
+
+                case "reserved":
+                    return Properties.Resources.state_reserved;
+
+                case "rented":
+                    return Properties.Resources.state_rented;
+
+                case "maintenance":
+                    return Properties.Resources.state_maintenance;
+                default:
+                    return null;
+            }
+        }
         private void default_card_panel_MouseEnter(object sender, EventArgs e)
         {
             default_card_panel.FillColor = Color.FromArgb(45, 45, 60);
@@ -56,6 +77,11 @@ namespace AutoRentalSystem
         private void btn_delete_vehicle_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void default_card_panel_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 
