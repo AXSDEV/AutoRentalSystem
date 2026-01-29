@@ -192,10 +192,10 @@ namespace AutoRentalSystem
             this.guna2VScrollBar2.BorderRadius = 7;
             this.guna2VScrollBar2.InUpdate = false;
             this.guna2VScrollBar2.LargeChange = 10;
-            this.guna2VScrollBar2.Location = new System.Drawing.Point(1891, 171);
+            this.guna2VScrollBar2.Location = new System.Drawing.Point(1896, 171);
             this.guna2VScrollBar2.Name = "guna2VScrollBar2";
-            this.guna2VScrollBar2.ScrollbarSize = 18;
-            this.guna2VScrollBar2.Size = new System.Drawing.Size(18, 838);
+            this.guna2VScrollBar2.ScrollbarSize = 13;
+            this.guna2VScrollBar2.Size = new System.Drawing.Size(13, 838);
             this.guna2VScrollBar2.TabIndex = 0;
             this.guna2VScrollBar2.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             // 
@@ -205,7 +205,7 @@ namespace AutoRentalSystem
             this.panel_VehiclesPage_Description.Controls.Add(this.label4);
             this.panel_VehiclesPage_Description.Controls.Add(this.label2);
             this.panel_VehiclesPage_Description.Controls.Add(this.label1);
-            this.panel_VehiclesPage_Description.Location = new System.Drawing.Point(313, 1024);
+            this.panel_VehiclesPage_Description.Location = new System.Drawing.Point(324, 1020);
             this.panel_VehiclesPage_Description.Name = "panel_VehiclesPage_Description";
             this.panel_VehiclesPage_Description.Size = new System.Drawing.Size(633, 42);
             this.panel_VehiclesPage_Description.TabIndex = 8;

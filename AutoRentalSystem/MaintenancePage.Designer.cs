@@ -31,6 +31,8 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.panel_titleBar = new Guna.UI2.WinForms.Guna2Panel();
             this.label_licensePlate = new System.Windows.Forms.Label();
+            this.flowLayoutPanel_maintenance = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2VScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.panel_titleBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,11 +65,35 @@
             this.label_licensePlate.TabIndex = 0;
             this.label_licensePlate.Text = "License Plate";
             // 
+            // flowLayoutPanel_maintenance
+            // 
+            this.flowLayoutPanel_maintenance.AutoScroll = true;
+            this.flowLayoutPanel_maintenance.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel_maintenance.Location = new System.Drawing.Point(313, 171);
+            this.flowLayoutPanel_maintenance.Name = "flowLayoutPanel_maintenance";
+            this.flowLayoutPanel_maintenance.Size = new System.Drawing.Size(1596, 838);
+            this.flowLayoutPanel_maintenance.TabIndex = 2;
+            // 
+            // guna2VScrollBar1
+            // 
+            this.guna2VScrollBar1.BindingContainer = this.flowLayoutPanel_maintenance;
+            this.guna2VScrollBar1.BorderRadius = 10;
+            this.guna2VScrollBar1.InUpdate = false;
+            this.guna2VScrollBar1.LargeChange = 10;
+            this.guna2VScrollBar1.Location = new System.Drawing.Point(1895, 171);
+            this.guna2VScrollBar1.Name = "guna2VScrollBar1";
+            this.guna2VScrollBar1.ScrollbarSize = 13;
+            this.guna2VScrollBar1.Size = new System.Drawing.Size(13, 838);
+            this.guna2VScrollBar1.TabIndex = 0;
+            this.guna2VScrollBar1.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            // 
             // MaintenancePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.guna2VScrollBar1);
+            this.Controls.Add(this.flowLayoutPanel_maintenance);
             this.Controls.Add(this.panel_titleBar);
             this.Controls.Add(this.guna2Panel1);
             this.Name = "MaintenancePage";
@@ -84,5 +110,7 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel panel_titleBar;
         private System.Windows.Forms.Label label_licensePlate;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_maintenance;
+        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar1;
     }
 }

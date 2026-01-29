@@ -16,6 +16,7 @@ namespace AutoRentalSystem
     {
         private Vehicle _vehicle;
         private Reservation _reservation;
+        private bool _isReservationCard;
 
         // Events for vehicles
         public event EventHandler<VehicleEventArgs> DeleteRequested;
@@ -63,44 +64,36 @@ namespace AutoRentalSystem
         {
             if (vehicle == null) return;
 
-            _vehicle = vehicle;
+            _isReservationCard = false;
             _reservation = null;
+            _vehicle = vehicle;
 
-            btn_delete_vehicle.Visible = true;
-            btn_editVehicle.Visible = true;
-
-            Bind(
-                GetRentStateIcon(vehicle.RentState),
-                vehicle.LicensePlate,
-                vehicle.VehicleType,
-                vehicle.Maker,
-                vehicle.Model,
-                vehicle.Year.ToString(),
-                vehicle.DailyPrice.ToString("C", new CultureInfo("pt-PT"))
-            );
+            pictureBox_RentState.Image = GetRentStateIcon(vehicle.RentState);
+            label1.Text = vehicle.LicensePlate;
+            label2.Text = vehicle.VehicleType;
+            label3.Text = vehicle.Maker;
+            label4.Text = vehicle.Model;
+            label5.Text = vehicle.Year.ToString();
+            label6.Text = vehicle.DailyPrice.ToString("C", new CultureInfo("pt-PT"));
         }
 
         public void BindReservation(Reservation reservation)
         {
             if (reservation == null) return;
 
+            _isReservationCard = true;
             _reservation = reservation;
-            _vehicle = reservation.Vehicle; 
+            _vehicle = reservation.Vehicle;
 
-            btn_delete_vehicle.Visible = false;
-            btn_editVehicle.Visible = false;
+            // Ícone: podes manter o estado do veículo, se existir
+            pictureBox_RentState.Image = _vehicle != null ? GetRentStateIcon(_vehicle.RentState) : null;
 
-            var icon = _vehicle != null ? GetRentStateIcon(_vehicle.RentState) : null;
-
-            Bind(
-                icon,
-                reservation.Id.ToString(),
-                reservation.Vehicle?.GetType().Name ?? "",
-                reservation.Vehicle?.LicensePlate ?? "",
-                reservation.StartDate.ToString("yyyy-MM-dd"),
-                reservation.EndDate.ToString("yyyy-MM-dd"),
-                reservation.TotalPrice.ToString("C", new CultureInfo("pt-PT"))
-            );
+            label1.Text = _vehicle?.LicensePlate ?? "—";
+            label2.Text = _vehicle?.GetType().Name ?? "—";
+            label3.Text = reservation.StartDate.ToString("yyyy-MM-dd");
+            label4.Text = reservation.EndDate.ToString("yyyy-MM-dd");
+            label5.Text = reservation.TotalPrice.ToString("C", new CultureInfo("pt-PT"));
+            label6.Text = reservation.IsCompleted ? "Concluída" : "Ativa";
         }
 
         private void Bind(Image icon, string c1, string c2, string c3, string c4, string c5, string c6)
@@ -189,6 +182,19 @@ namespace AutoRentalSystem
 
         private void default_card_panel_Click(object sender, EventArgs e)
         {
+            if (_isReservationCard)
+            {
+                // Se ainda não tens ReservationDetailsForm, pelo menos confirma que funciona:
+                MessageBox.Show(
+                    $"Reserva #{_reservation?.Id}\nMatrícula: {_vehicle?.LicensePlate}",
+                    "Detalhes da Reserva",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+
+            if (_vehicle == null) return;
+
             using (var details = new VehicleDetailsForm(_vehicle))
             {
                 details.StartPosition = FormStartPosition.CenterParent;

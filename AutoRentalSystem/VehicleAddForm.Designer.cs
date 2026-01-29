@@ -123,7 +123,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.White;
-            this.guna2Panel1.Location = new System.Drawing.Point(100, 665);
+            this.guna2Panel1.Location = new System.Drawing.Point(98, 665);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(600, 2);
             this.guna2Panel1.TabIndex = 7;

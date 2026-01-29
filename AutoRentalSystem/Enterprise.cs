@@ -25,6 +25,7 @@ namespace AutoRentalSystem
             vehicles.Add(vehicle);
             return true;
         }
+
         public bool UpdateVehicle(string originalLicensePlate, Vehicle updatedVehicle)
         {
             if (updatedVehicle == null)

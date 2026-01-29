@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_titleBar = new Guna.UI2.WinForms.Guna2Panel();
+            this.label_actions = new System.Windows.Forms.Label();
             this.label_endDate = new System.Windows.Forms.Label();
             this.label_startDate = new System.Windows.Forms.Label();
             this.label1_model = new System.Windows.Forms.Label();
@@ -38,9 +39,9 @@
             this.label_licensePlate = new System.Windows.Forms.Label();
             this.flowLayoutPanel_reservations = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2VScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
-            this.label_actions = new System.Windows.Forms.Label();
+            this.guna2VScrollBar2 = new Guna.UI2.WinForms.Guna2VScrollBar();
+            this.guna2VScrollBar3 = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.panel_titleBar.SuspendLayout();
-            this.flowLayoutPanel_reservations.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -67,6 +68,16 @@
             this.panel_titleBar.Name = "panel_titleBar";
             this.panel_titleBar.Size = new System.Drawing.Size(1591, 45);
             this.panel_titleBar.TabIndex = 1;
+            // 
+            // label_actions
+            // 
+            this.label_actions.AutoSize = true;
+            this.label_actions.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label_actions.Location = new System.Drawing.Point(1379, 11);
+            this.label_actions.Name = "label_actions";
+            this.label_actions.Size = new System.Drawing.Size(65, 21);
+            this.label_actions.TabIndex = 0;
+            this.label_actions.Text = "Actions";
             // 
             // label_endDate
             // 
@@ -130,7 +141,7 @@
             // 
             // flowLayoutPanel_reservations
             // 
-            this.flowLayoutPanel_reservations.Controls.Add(this.guna2VScrollBar1);
+            this.flowLayoutPanel_reservations.AutoScroll = true;
             this.flowLayoutPanel_reservations.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel_reservations.Location = new System.Drawing.Point(313, 171);
             this.flowLayoutPanel_reservations.Name = "flowLayoutPanel_reservations";
@@ -143,29 +154,49 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2VScrollBar1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2VScrollBar1.BindingContainer = this.flowLayoutPanel_reservations;
             this.guna2VScrollBar1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.guna2VScrollBar1.InUpdate = false;
-            this.guna2VScrollBar1.LargeChange = 10;
-            this.guna2VScrollBar1.Location = new System.Drawing.Point(3, 3);
+            this.guna2VScrollBar1.LargeChange = 838;
+            this.guna2VScrollBar1.Location = new System.Drawing.Point(1891, 171);
+            this.guna2VScrollBar1.Maximum = 843;
             this.guna2VScrollBar1.Name = "guna2VScrollBar1";
-            this.guna2VScrollBar1.ScrollbarSize = 0;
-            this.guna2VScrollBar1.Size = new System.Drawing.Size(0, 300);
+            this.guna2VScrollBar1.ScrollbarSize = 18;
+            this.guna2VScrollBar1.Size = new System.Drawing.Size(18, 838);
+            this.guna2VScrollBar1.SmallChange = 5;
             this.guna2VScrollBar1.TabIndex = 0;
             // 
-            // label_actions
+            // guna2VScrollBar2
             // 
-            this.label_actions.AutoSize = true;
-            this.label_actions.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label_actions.Location = new System.Drawing.Point(1379, 11);
-            this.label_actions.Name = "label_actions";
-            this.label_actions.Size = new System.Drawing.Size(65, 21);
-            this.label_actions.TabIndex = 0;
-            this.label_actions.Text = "Actions";
+            this.guna2VScrollBar2.InUpdate = false;
+            this.guna2VScrollBar2.LargeChange = 10;
+            this.guna2VScrollBar2.Location = new System.Drawing.Point(1891, 171);
+            this.guna2VScrollBar2.Name = "guna2VScrollBar2";
+            this.guna2VScrollBar2.ScrollbarSize = 18;
+            this.guna2VScrollBar2.Size = new System.Drawing.Size(18, 838);
+            this.guna2VScrollBar2.TabIndex = 0;
+            // 
+            // guna2VScrollBar3
+            // 
+            this.guna2VScrollBar3.BindingContainer = this.flowLayoutPanel_reservations;
+            this.guna2VScrollBar3.BorderRadius = 10;
+            this.guna2VScrollBar3.InUpdate = false;
+            this.guna2VScrollBar3.LargeChange = 838;
+            this.guna2VScrollBar3.Location = new System.Drawing.Point(1895, 171);
+            this.guna2VScrollBar3.Maximum = 843;
+            this.guna2VScrollBar3.Name = "guna2VScrollBar3";
+            this.guna2VScrollBar3.ScrollbarSize = 18;
+            this.guna2VScrollBar3.Size = new System.Drawing.Size(18, 838);
+            this.guna2VScrollBar3.SmallChange = 5;
+            this.guna2VScrollBar3.TabIndex = 0;
+            this.guna2VScrollBar3.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             // 
             // ReservationsPage_Background
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.guna2VScrollBar3);
             this.Controls.Add(this.flowLayoutPanel_reservations);
             this.Controls.Add(this.panel_titleBar);
             this.Controls.Add(this.panel1);
@@ -174,7 +205,6 @@
             this.Load += new System.EventHandler(this.ReservationsPage_Load);
             this.panel_titleBar.ResumeLayout(false);
             this.panel_titleBar.PerformLayout();
-            this.flowLayoutPanel_reservations.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -192,5 +222,7 @@
         private System.Windows.Forms.Label label1_model;
         private System.Windows.Forms.Label label_endDate;
         private System.Windows.Forms.Label label_actions;
+        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar2;
+        private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar3;
     }
 }

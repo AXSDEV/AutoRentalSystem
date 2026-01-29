@@ -30,7 +30,6 @@ namespace AutoRentalSystem
             InitializeComponent();
             ComboBox_year.Items.Clear();
             int currentYear = DateTime.Now.Year;
-
             for (int year = currentYear; year >= 1950; year--)
             {
                 ComboBox_year.Items.Add(year);
@@ -54,18 +53,36 @@ namespace AutoRentalSystem
             ucBike.AddVehicleRequested += HandleAddBike;
             ucBus.AddVehicleRequested += HandleAddBus;
             ucTruck.AddVehicleRequested += HandleAddTruck;
+
+            ApplyModeUI();
         }
         public VehicleAddForm(Vehicle vehicleToEdit) : this()
         {
-            if (vehicleToEdit == null)
-            {
-                return;
-            }
+            if (vehicleToEdit == null) return;
 
             _isEditing = true;
             _originalLicensePlate = vehicleToEdit.LicensePlate;
+
             PopulateFields(vehicleToEdit);
+
+            ApplyModeUI(); 
         }
+
+        private void ApplyModeUI()
+        {
+            // título do form
+            label_AddVehicleForm_Title.Text = _isEditing ? "Edit Vehicle" : "Add Vehicle";
+
+            string btnText = _isEditing ? "Save Changes" : "Add Vehicle";
+
+            ucCar?.SetActionText(btnText);
+            ucBike?.SetActionText(btnText);
+            ucBus?.SetActionText(btnText);
+            ucTruck?.SetActionText(btnText);
+
+            guna2TextBox1.Enabled = !_isEditing;
+        }
+
 
         private void btn_AddVehicleForm_Close_Click(object sender, EventArgs e) => Close();
 

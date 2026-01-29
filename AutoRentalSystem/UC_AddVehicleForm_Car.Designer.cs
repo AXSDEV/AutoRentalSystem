@@ -77,8 +77,6 @@
             this.btn_UC_AddVehicleForm_Car_AddVehicle.Size = new System.Drawing.Size(600, 45);
             this.btn_UC_AddVehicleForm_Car_AddVehicle.TabIndex = 2;
             this.btn_UC_AddVehicleForm_Car_AddVehicle.Text = "Add Vehicle";
-            this.btn_UC_AddVehicleForm_Car_AddVehicle.MouseEnter += new System.EventHandler(this.btn_UC_AddVehicleForm_Car_AddVehicle_MouseEnter);
-            this.btn_UC_AddVehicleForm_Car_AddVehicle.MouseLeave += new System.EventHandler(this.btn_UC_AddVehicleForm_Car_AddVehicle_MouseLeave);
             // 
             // UC_AddVehicleForm_Car_Background
             // 

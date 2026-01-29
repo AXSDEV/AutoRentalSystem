@@ -36,5 +36,10 @@ namespace AutoRentalSystem
         {
             AddVehicleRequested?.Invoke(this, EventArgs.Empty);
         }
+
+        public void SetActionText(string text)
+        {
+            btn_UC_AddVehicleForm_Truck_AddVehicle.Text = text;
+        }
     }
 }

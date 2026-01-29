@@ -23,18 +23,14 @@ namespace AutoRentalSystem
             get => textbox_UC_Car_NumberOfDoors.Text;
             set => textbox_UC_Car_NumberOfDoors.Text = value ?? string.Empty;
         }
-        private void btn_UC_AddVehicleForm_Car_AddVehicle_MouseEnter(object sender, EventArgs e)
-        {
-            btn_UC_AddVehicleForm_Car_AddVehicle.FillColor = Color.Orange;
-        }
-
-        private void btn_UC_AddVehicleForm_Car_AddVehicle_MouseLeave(object sender, EventArgs e)
-        {
-            btn_UC_AddVehicleForm_Car_AddVehicle.FillColor = Color.Transparent;
-        }
         private void HandleAddVehicleClick(object sender, EventArgs e)
         {
             AddVehicleRequested?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void SetActionText(string text)
+        {
+            btn_UC_AddVehicleForm_Car_AddVehicle.Text = text;
         }
     }
 }
