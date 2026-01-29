@@ -110,9 +110,9 @@
             this.btn_editVehicle.Name = "btn_editVehicle";
             this.btn_editVehicle.Size = new System.Drawing.Size(24, 24);
             this.btn_editVehicle.TabIndex = 1;
-            this.btn_editVehicle.Click += new System.EventHandler(this.btn_delete_vehicle_Click);
-            this.btn_editVehicle.MouseEnter += new System.EventHandler(this.btn_delete_vehicle_MouseEnter);
-            this.btn_editVehicle.MouseLeave += new System.EventHandler(this.btn_delete_vehicle_MouseLeave);
+            this.btn_editVehicle.Click += new System.EventHandler(this.btn_editVehicle_Click);
+            this.btn_editVehicle.MouseEnter += new System.EventHandler(this.btn_editVehicle_MouseEnter);
+            this.btn_editVehicle.MouseLeave += new System.EventHandler(this.btn_editVehicle_MouseLeave);
             // 
             // btn_delete_vehicle
             // 

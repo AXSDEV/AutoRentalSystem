@@ -59,7 +59,7 @@
             this.textbox_UC_Car_NumberOfDoors.Name = "textbox_UC_Car_NumberOfDoors";
             this.textbox_UC_Car_NumberOfDoors.PlaceholderText = "";
             this.textbox_UC_Car_NumberOfDoors.SelectedText = "";
-            this.textbox_UC_Car_NumberOfDoors.Size = new System.Drawing.Size(273, 45);
+            this.textbox_UC_Car_NumberOfDoors.Size = new System.Drawing.Size(273, 36);
             this.textbox_UC_Car_NumberOfDoors.TabIndex = 1;
             // 
             // btn_UC_AddVehicleForm_Car_AddVehicle

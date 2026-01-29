@@ -30,7 +30,7 @@ namespace AutoRentalSystem
 
                 if (result == DialogResult.OK)
                 {
-                    BeginInvoke(new Action(LoadVehiclesFromFile));
+                    BeginInvoke(new Action(LoadVehiclesFromEnterprise));
                 }
             }
         }
@@ -39,11 +39,14 @@ namespace AutoRentalSystem
         {
             if (_samplesLoaded) return;
 
-            LoadVehiclesFromFile();
+            LoadVehiclesFromEnterprise();
             _samplesLoaded = true;
         }
-
-        private void LoadVehiclesFromFile()
+        public void RefreshVehicles()
+        {
+            LoadVehiclesFromEnterprise();
+        }
+        private void LoadVehiclesFromEnterprise()
         {
             if (flowpanel_list == null)
             {
@@ -65,13 +68,17 @@ namespace AutoRentalSystem
                 return;
             }
 
-            var vehicles = CsvExportService.ImportVehicles(_vehiclesFilePath);
+            Enterprise.Instance.LoadVehiclesFromCsv(_vehiclesFilePath);
+            var vehicles = Enterprise.Instance.Vehicles;
 
             int added = 0;
-            foreach (var vehicle in vehicles)
+            foreach (var vehicle in vehicles)  
             {
                 if (vehicle == null) continue;
-                flowpanel_list.Controls.Add(new VehicleCards(vehicle));
+                var card = new VehicleCards(vehicle);
+                card.DeleteRequested += HandleDeleteVehicle;
+                card.EditRequested += HandleEditVehicle;
+                flowpanel_list.Controls.Add(card);
                 added++;
             }
 
@@ -85,6 +92,70 @@ namespace AutoRentalSystem
             this.Update();
 
             //MessageBox.Show($"Recarregado em runtime: {added} veículos.", "DEBUG");
+        }
+        private void HandleDeleteVehicle(object sender, VehicleCards.VehicleEventArgs e)
+        {
+            if (e?.Vehicle == null)
+            {
+                return;
+            }
+
+            var confirm = MessageBox.Show(
+                $"Delete vehicle {e.Vehicle.LicensePlate}?",
+                "Delete vehicle",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes)
+            {
+                return;
+            }
+
+            if (File.Exists(_vehiclesFilePath))
+            {
+                Enterprise.Instance.LoadVehiclesFromCsv(_vehiclesFilePath);
+            }
+
+            if (!Enterprise.Instance.RemoveVehicle(e.Vehicle.LicensePlate))
+            {
+                MessageBox.Show(
+                    "Vehicle not found.",
+                    "Delete vehicle",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            EnsureVehiclesDirectory();
+            Enterprise.Instance.SaveVehiclesToCsv(_vehiclesFilePath);
+            LoadVehiclesFromEnterprise();
+        }
+
+        private void HandleEditVehicle(object sender, VehicleCards.VehicleEventArgs e)
+        {
+            if (e?.Vehicle == null)
+            {
+                return;
+            }
+
+            using (var form = new VehicleAddForm(e.Vehicle))
+            {
+                form.StartPosition = FormStartPosition.CenterParent;
+                var result = form.ShowDialog(FindForm());
+                if (result == DialogResult.OK)
+                {
+                    LoadVehiclesFromEnterprise();
+                }
+            }
+        }
+
+        private void EnsureVehiclesDirectory()
+        {
+            var directory = Path.GetDirectoryName(_vehiclesFilePath);
+            if (!string.IsNullOrWhiteSpace(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
         }
     }
 }

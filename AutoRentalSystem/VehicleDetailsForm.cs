@@ -12,9 +12,32 @@ namespace AutoRentalSystem
 {
     public partial class VehicleDetailsForm : Form
     {
-        public VehicleDetailsForm()
+        private Vehicle _vehicle;
+
+        public VehicleDetailsForm(Vehicle vehicle)
         {
             InitializeComponent();
+            this.BackColor = Color.Black;
+            this.TransparencyKey = Color.Black;
+            _vehicle = vehicle;
+            LoadData();
         }
+
+        private void LoadData()
+        {
+            if (_vehicle == null) return;
+        }
+
+        private void btn_close_MouseEnter(object sender, EventArgs e)
+        {
+            btn_close.FillColor = Color.Red;
+        }
+
+        private void btn_close_MouseLeave(object sender, EventArgs e)
+        {
+            btn_close.FillColor = Color.Transparent;
+        }
+
+        private void btn_close_Click(object sender, EventArgs e) => Close();
     }
 }

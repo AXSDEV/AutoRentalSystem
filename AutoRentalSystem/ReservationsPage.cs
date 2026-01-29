@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AutoRentalSystem
 {
-    public partial class ReservationsPage : UserControl
+    public partial class ReservationsPage_Background : UserControl
     {
-        public ReservationsPage()
+        public ReservationsPage_Background()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;

@@ -61,7 +61,7 @@
             this.textbox_UC_TruckMaxWeight.Name = "textbox_UC_TruckMaxWeight";
             this.textbox_UC_TruckMaxWeight.PlaceholderText = "";
             this.textbox_UC_TruckMaxWeight.SelectedText = "";
-            this.textbox_UC_TruckMaxWeight.Size = new System.Drawing.Size(273, 45);
+            this.textbox_UC_TruckMaxWeight.Size = new System.Drawing.Size(273, 36);
             this.textbox_UC_TruckMaxWeight.TabIndex = 1;
             // 
             // textbox_UC_Truck_Height
@@ -80,7 +80,7 @@
             this.textbox_UC_Truck_Height.Name = "textbox_UC_Truck_Height";
             this.textbox_UC_Truck_Height.PlaceholderText = "";
             this.textbox_UC_Truck_Height.SelectedText = "";
-            this.textbox_UC_Truck_Height.Size = new System.Drawing.Size(273, 45);
+            this.textbox_UC_Truck_Height.Size = new System.Drawing.Size(273, 36);
             this.textbox_UC_Truck_Height.TabIndex = 1;
             // 
             // label_UC_AddVehicleForm_Truck_Height

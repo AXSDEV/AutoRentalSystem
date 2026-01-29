@@ -61,7 +61,7 @@
             this.textbox_UC_Bus_MaxPassenger.Name = "textbox_UC_Bus_MaxPassenger";
             this.textbox_UC_Bus_MaxPassenger.PlaceholderText = "";
             this.textbox_UC_Bus_MaxPassenger.SelectedText = "";
-            this.textbox_UC_Bus_MaxPassenger.Size = new System.Drawing.Size(273, 45);
+            this.textbox_UC_Bus_MaxPassenger.Size = new System.Drawing.Size(273, 36);
             this.textbox_UC_Bus_MaxPassenger.TabIndex = 1;
             // 
             // label_UC_AddVehicleForm_Bus_AxelNumber
@@ -90,7 +90,7 @@
             this.textbox_UC_Bus_AxelNumber.Name = "textbox_UC_Bus_AxelNumber";
             this.textbox_UC_Bus_AxelNumber.PlaceholderText = "";
             this.textbox_UC_Bus_AxelNumber.SelectedText = "";
-            this.textbox_UC_Bus_AxelNumber.Size = new System.Drawing.Size(273, 45);
+            this.textbox_UC_Bus_AxelNumber.Size = new System.Drawing.Size(273, 36);
             this.textbox_UC_Bus_AxelNumber.TabIndex = 1;
             // 
             // btn_UC_AddVehicleForm_Bus_AddVehicle

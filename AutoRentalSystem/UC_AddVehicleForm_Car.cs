@@ -18,7 +18,11 @@ namespace AutoRentalSystem
             InitializeComponent();
             btn_UC_AddVehicleForm_Car_AddVehicle.Click += HandleAddVehicleClick;
         }
-        public string NumberOfDoorsText => textbox_UC_Car_NumberOfDoors.Text;
+        public string NumberOfDoorsText
+        {
+            get => textbox_UC_Car_NumberOfDoors.Text;
+            set => textbox_UC_Car_NumberOfDoors.Text = value ?? string.Empty;
+        }
         private void btn_UC_AddVehicleForm_Car_AddVehicle_MouseEnter(object sender, EventArgs e)
         {
             btn_UC_AddVehicleForm_Car_AddVehicle.FillColor = Color.Orange;

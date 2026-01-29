@@ -38,11 +38,8 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btn_AddVehicleForm_Bus = new Guna.UI2.WinForms.Guna2Button();
             this.btn_AddVehicleForm_Bike = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox6 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox7 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.btn_AddVehicleForm_Close = new Guna.UI2.WinForms.Guna2Button();
@@ -56,6 +53,9 @@
             this.label_AddVehicleForm_Type = new System.Windows.Forms.Label();
             this.label_AddVehicleForm_LicencePlate = new System.Windows.Forms.Label();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
+            this.ComboBox_fuel = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.ComboBox_shiftType = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.ComboBox_year = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel_AddVehicle_Background.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,9 @@
             // 
             this.panel_AddVehicle_Background.BackColor = System.Drawing.Color.Transparent;
             this.panel_AddVehicle_Background.BorderRadius = 40;
+            this.panel_AddVehicle_Background.Controls.Add(this.ComboBox_year);
+            this.panel_AddVehicle_Background.Controls.Add(this.ComboBox_shiftType);
+            this.panel_AddVehicle_Background.Controls.Add(this.ComboBox_fuel);
             this.panel_AddVehicle_Background.Controls.Add(this.panel_AddVehicleForm_Content);
             this.panel_AddVehicle_Background.Controls.Add(this.btn_AddVehicleForm_Truck);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2Panel1);
@@ -70,11 +73,8 @@
             this.panel_AddVehicle_Background.Controls.Add(this.guna2Panel2);
             this.panel_AddVehicle_Background.Controls.Add(this.btn_AddVehicleForm_Bus);
             this.panel_AddVehicle_Background.Controls.Add(this.btn_AddVehicleForm_Bike);
-            this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox2);
-            this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox6);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox7);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox4);
-            this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox5);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox3);
             this.panel_AddVehicle_Background.Controls.Add(this.guna2TextBox1);
             this.panel_AddVehicle_Background.Controls.Add(this.btn_AddVehicleForm_Close);
@@ -188,46 +188,6 @@
             this.btn_AddVehicleForm_Bike.Text = "Bike";
             this.btn_AddVehicleForm_Bike.Click += new System.EventHandler(this.btn_AddVehicleForm_Bike_Click);
             // 
-            // guna2TextBox2
-            // 
-            this.guna2TextBox2.BorderRadius = 10;
-            this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox2.DefaultText = "";
-            this.guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Location = new System.Drawing.Point(440, 260);
-            this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(5);
-            this.guna2TextBox2.Name = "guna2TextBox2";
-            this.guna2TextBox2.PlaceholderText = "";
-            this.guna2TextBox2.SelectedText = "";
-            this.guna2TextBox2.Size = new System.Drawing.Size(273, 45);
-            this.guna2TextBox2.TabIndex = 3;
-            // 
-            // guna2TextBox6
-            // 
-            this.guna2TextBox6.BorderRadius = 10;
-            this.guna2TextBox6.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox6.DefaultText = "";
-            this.guna2TextBox6.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox6.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox6.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TextBox6.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox6.Location = new System.Drawing.Point(440, 475);
-            this.guna2TextBox6.Margin = new System.Windows.Forms.Padding(5);
-            this.guna2TextBox6.Name = "guna2TextBox6";
-            this.guna2TextBox6.PlaceholderText = "";
-            this.guna2TextBox6.SelectedText = "";
-            this.guna2TextBox6.Size = new System.Drawing.Size(273, 45);
-            this.guna2TextBox6.TabIndex = 3;
-            // 
             // guna2TextBox7
             // 
             this.guna2TextBox7.BorderRadius = 10;
@@ -245,7 +205,7 @@
             this.guna2TextBox7.Name = "guna2TextBox7";
             this.guna2TextBox7.PlaceholderText = "";
             this.guna2TextBox7.SelectedText = "";
-            this.guna2TextBox7.Size = new System.Drawing.Size(631, 45);
+            this.guna2TextBox7.Size = new System.Drawing.Size(631, 36);
             this.guna2TextBox7.TabIndex = 3;
             // 
             // guna2TextBox4
@@ -265,28 +225,8 @@
             this.guna2TextBox4.Name = "guna2TextBox4";
             this.guna2TextBox4.PlaceholderText = "";
             this.guna2TextBox4.SelectedText = "";
-            this.guna2TextBox4.Size = new System.Drawing.Size(273, 45);
+            this.guna2TextBox4.Size = new System.Drawing.Size(273, 36);
             this.guna2TextBox4.TabIndex = 3;
-            // 
-            // guna2TextBox5
-            // 
-            this.guna2TextBox5.BorderRadius = 10;
-            this.guna2TextBox5.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox5.DefaultText = "";
-            this.guna2TextBox5.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox5.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox5.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TextBox5.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox5.Location = new System.Drawing.Point(82, 475);
-            this.guna2TextBox5.Margin = new System.Windows.Forms.Padding(5);
-            this.guna2TextBox5.Name = "guna2TextBox5";
-            this.guna2TextBox5.PlaceholderText = "";
-            this.guna2TextBox5.SelectedText = "";
-            this.guna2TextBox5.Size = new System.Drawing.Size(273, 45);
-            this.guna2TextBox5.TabIndex = 3;
             // 
             // guna2TextBox3
             // 
@@ -305,7 +245,7 @@
             this.guna2TextBox3.Name = "guna2TextBox3";
             this.guna2TextBox3.PlaceholderText = "";
             this.guna2TextBox3.SelectedText = "";
-            this.guna2TextBox3.Size = new System.Drawing.Size(273, 45);
+            this.guna2TextBox3.Size = new System.Drawing.Size(273, 36);
             this.guna2TextBox3.TabIndex = 3;
             // 
             // guna2TextBox1
@@ -325,7 +265,7 @@
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderText = "";
             this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(273, 45);
+            this.guna2TextBox1.Size = new System.Drawing.Size(273, 36);
             this.guna2TextBox1.TabIndex = 3;
             // 
             // btn_AddVehicleForm_Close
@@ -473,10 +413,71 @@
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
+            // ComboBox_fuel
+            // 
+            this.ComboBox_fuel.BackColor = System.Drawing.Color.Transparent;
+            this.ComboBox_fuel.BorderRadius = 10;
+            this.ComboBox_fuel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ComboBox_fuel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_fuel.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_fuel.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_fuel.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ComboBox_fuel.ForeColor = System.Drawing.Color.Black;
+            this.ComboBox_fuel.ItemHeight = 30;
+            this.ComboBox_fuel.Items.AddRange(new object[] {
+            "Gasoline",
+            "Diesel",
+            "Eletric",
+            "Hybrid",
+            "Gas"});
+            this.ComboBox_fuel.Location = new System.Drawing.Point(440, 260);
+            this.ComboBox_fuel.Name = "ComboBox_fuel";
+            this.ComboBox_fuel.Size = new System.Drawing.Size(273, 36);
+            this.ComboBox_fuel.TabIndex = 10;
+            // 
+            // ComboBox_shiftType
+            // 
+            this.ComboBox_shiftType.BackColor = System.Drawing.Color.Transparent;
+            this.ComboBox_shiftType.BorderRadius = 10;
+            this.ComboBox_shiftType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ComboBox_shiftType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_shiftType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_shiftType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_shiftType.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ComboBox_shiftType.ForeColor = System.Drawing.Color.Black;
+            this.ComboBox_shiftType.ItemHeight = 30;
+            this.ComboBox_shiftType.Items.AddRange(new object[] {
+            "Manual",
+            "Automatic"});
+            this.ComboBox_shiftType.Location = new System.Drawing.Point(440, 475);
+            this.ComboBox_shiftType.Name = "ComboBox_shiftType";
+            this.ComboBox_shiftType.Size = new System.Drawing.Size(273, 36);
+            this.ComboBox_shiftType.TabIndex = 10;
+            // 
+            // ComboBox_year
+            // 
+            this.ComboBox_year.BackColor = System.Drawing.Color.Transparent;
+            this.ComboBox_year.BorderRadius = 10;
+            this.ComboBox_year.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ComboBox_year.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_year.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_year.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_year.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ComboBox_year.ForeColor = System.Drawing.Color.Black;
+            this.ComboBox_year.ItemHeight = 30;
+            this.ComboBox_year.Items.AddRange(new object[] {
+            "Manual",
+            "Automatic"});
+            this.ComboBox_year.Location = new System.Drawing.Point(79, 475);
+            this.ComboBox_year.Name = "ComboBox_year";
+            this.ComboBox_year.Size = new System.Drawing.Size(273, 36);
+            this.ComboBox_year.TabIndex = 10;
+            // 
             // VehicleAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(800, 900);
             this.ControlBox = false;
             this.Controls.Add(this.panel_AddVehicle_Background);
@@ -484,6 +485,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "VehicleAddForm";
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "VehicleAddForm";
@@ -503,14 +505,11 @@
         private Guna.UI2.WinForms.Guna2Button btn_AddVehicleForm_Bus;
         private Guna.UI2.WinForms.Guna2Button btn_AddVehicleForm_Bike;
         private System.Windows.Forms.Label label_AddVehicleForm_Fuel;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
         private System.Windows.Forms.Label label_AddVehicleForm_Model;
         private System.Windows.Forms.Label label_AddVehicleForm_Maker;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox6;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox7;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox5;
         private System.Windows.Forms.Label label_AddVehicleForm_DailyPrice;
         private System.Windows.Forms.Label label_AddVehicleForm_ShiftType;
         private System.Windows.Forms.Label label_AddVehicleForm_Year;
@@ -520,5 +519,9 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Button btn_AddVehicleForm_Truck;
         private Guna.UI2.WinForms.Guna2Panel panel_AddVehicleForm_Content;
+        private Guna.UI2.WinForms.Guna2ComboBox ComboBox_fuel;
+        private Guna.UI2.WinForms.Guna2DateTimePicker DateTimePicker_year;
+        private Guna.UI2.WinForms.Guna2ComboBox ComboBox_shiftType;
+        private Guna.UI2.WinForms.Guna2ComboBox ComboBox_year;
     }
 }

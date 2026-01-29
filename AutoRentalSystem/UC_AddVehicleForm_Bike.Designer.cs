@@ -59,7 +59,7 @@
             this.textbox_UC_Bike_CC.Name = "textbox_UC_Bike_CC";
             this.textbox_UC_Bike_CC.PlaceholderText = "";
             this.textbox_UC_Bike_CC.SelectedText = "";
-            this.textbox_UC_Bike_CC.Size = new System.Drawing.Size(273, 45);
+            this.textbox_UC_Bike_CC.Size = new System.Drawing.Size(273, 36);
             this.textbox_UC_Bike_CC.TabIndex = 1;
             // 
             // btn_UC_AddVehicleForm_Bike_AddVehicle

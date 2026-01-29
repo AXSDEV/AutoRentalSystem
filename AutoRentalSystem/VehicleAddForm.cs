@@ -1,10 +1,8 @@
 ﻿using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace AutoRentalSystem
@@ -14,6 +12,8 @@ namespace AutoRentalSystem
         
         public event EventHandler<VehicleSavedEventArgs> VehicleSaved;
         public Vehicle SavedVehicle { get; private set; }
+        private readonly bool _isEditing;
+        private readonly string _originalLicensePlate;
 
         private readonly string _vehiclesFilePath = Path.Combine(
             AppDomain.CurrentDomain.BaseDirectory,
@@ -28,7 +28,17 @@ namespace AutoRentalSystem
         public VehicleAddForm()
         {
             InitializeComponent();
+            ComboBox_year.Items.Clear();
+            int currentYear = DateTime.Now.Year;
+
+            for (int year = currentYear; year >= 1950; year--)
+            {
+                ComboBox_year.Items.Add(year);
+            }
+            ComboBox_year.SelectedItem = currentYear;
+
             this.BackColor = Color.Black;
+            this.TransparencyKey = Color.Black;
 
             ucCar = new UC_AddVehicleForm_Car_Background { Dock = DockStyle.Fill, Visible = false };
             ucBike = new UC_AddVehicleForm_Bike { Dock = DockStyle.Fill, Visible = false };
@@ -44,6 +54,17 @@ namespace AutoRentalSystem
             ucBike.AddVehicleRequested += HandleAddBike;
             ucBus.AddVehicleRequested += HandleAddBus;
             ucTruck.AddVehicleRequested += HandleAddTruck;
+        }
+        public VehicleAddForm(Vehicle vehicleToEdit) : this()
+        {
+            if (vehicleToEdit == null)
+            {
+                return;
+            }
+
+            _isEditing = true;
+            _originalLicensePlate = vehicleToEdit.LicensePlate;
+            PopulateFields(vehicleToEdit);
         }
 
         private void btn_AddVehicleForm_Close_Click(object sender, EventArgs e) => Close();
@@ -72,6 +93,38 @@ namespace AutoRentalSystem
         private void btn_AddVehicleForm_Bus_Click(object sender, EventArgs e) => ShowVehiclePanel(ucBus);
         private void btn_AddVehicleForm_Truck_Click(object sender, EventArgs e) => ShowVehiclePanel(ucTruck);
 
+        private void PopulateFields(Vehicle vehicle)
+        {
+            guna2TextBox1.Text = vehicle.LicensePlate;
+            ComboBox_fuel.SelectedItem = vehicle.FuelType;
+            guna2TextBox3.Text = vehicle.Maker;
+            guna2TextBox4.Text = vehicle.Model;
+            ComboBox_year.SelectedItem = vehicle.Year;
+            ComboBox_shiftType.SelectedItem = vehicle.ShiftType;
+            guna2TextBox7.Text = vehicle.DailyPrice.ToString(CultureInfo.CurrentCulture);
+
+            switch (vehicle)
+            {
+                case Car car:
+                    ucCar.NumberOfDoorsText = car.NumberDoors.ToString(CultureInfo.CurrentCulture);
+                    ShowVehiclePanel(ucCar);
+                    break;
+                case Motorcycle motorcycle:
+                    ucBike.CcText = motorcycle.Cc.ToString(CultureInfo.CurrentCulture);
+                    ShowVehiclePanel(ucBike);
+                    break;
+                case Bus bus:
+                    ucBus.MaxPassengerText = bus.MaxPax.ToString(CultureInfo.CurrentCulture);
+                    ucBus.AxelNumberText = bus.AxelNumber.ToString(CultureInfo.CurrentCulture);
+                    ShowVehiclePanel(ucBus);
+                    break;
+                case Truck truck:
+                    ucTruck.MaxWeightText = truck.MaxWeight.ToString(CultureInfo.CurrentCulture);
+                    ucTruck.HeightText = truck.Height.ToString(CultureInfo.CurrentCulture);
+                    ShowVehiclePanel(ucTruck);
+                    break;
+            }
+        }
         private void HandleAddCar(object sender, EventArgs e)
         {
             if (!TryGetBaseVehicleData(out var baseData)) return;
@@ -173,29 +226,33 @@ namespace AutoRentalSystem
             baseData = default;
 
             var licensePlate = GetRequiredText(guna2TextBox1, "License plate");
-            var fuelType = GetRequiredText(guna2TextBox2, "Fuel type");
+            var fuelType = GetRequiredText(ComboBox_fuel, "Fuel type");
             var maker = GetRequiredText(guna2TextBox3, "Maker");
             var model = GetRequiredText(guna2TextBox4, "Model");
-            var yearText = GetRequiredText(guna2TextBox5, "Year");
-            var shiftType = GetRequiredText(guna2TextBox6, "Shift type");
+            var yearText = GetRequiredText(ComboBox_year, "Year");
+            var shiftType = GetRequiredText(ComboBox_shiftType, "Shift type");
             var dailyPriceText = GetRequiredText(guna2TextBox7, "Daily price");
+
             var rentState = "Available";
             var isAvailable = "True";
             DateTime? availabilityDate = DateTime.Today;
+
             if (string.IsNullOrWhiteSpace(licensePlate)
                 || string.IsNullOrWhiteSpace(fuelType)
                 || string.IsNullOrWhiteSpace(maker)
                 || string.IsNullOrWhiteSpace(model)
-                || string.IsNullOrWhiteSpace(yearText)
                 || string.IsNullOrWhiteSpace(shiftType)
                 || string.IsNullOrWhiteSpace(dailyPriceText))
-                
             {
                 return false;
             }
 
-            if (!TryParseInt(yearText, "Year", out var year))
+            if(!int.TryParse(yearText, out int year))
+            {
+                MessageBox.Show("Year must be a valid number.", "Invalid data",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
+            }
 
             if (!TryParseDecimal(dailyPriceText, "Daily price", out var dailyPrice))
                 return false;
@@ -217,7 +274,7 @@ namespace AutoRentalSystem
 
         private string GetRequiredText(Guna2TextBox textBox, string fieldName)
         {
-            var value = textBox.Text?.Trim();
+            var value = textBox?.Text?.Trim();
             if (string.IsNullOrWhiteSpace(value))
             {
                 MessageBox.Show(
@@ -227,9 +284,26 @@ namespace AutoRentalSystem
                     MessageBoxIcon.Warning);
                 return null;
             }
+            return value;
+        }
+
+        private string GetRequiredText(Guna2ComboBox comboBox, string fieldName)
+        {
+            var value = comboBox?.SelectedItem?.ToString()?.Trim();
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                MessageBox.Show(
+                    $"Please select a value for {fieldName}.",
+                    "Missing data",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return null;
+            }
 
             return value;
         }
+
 
         private bool TryParseInt(string value, string fieldName, out int parsed)
         {
@@ -265,17 +339,23 @@ namespace AutoRentalSystem
         {
             if (vehicle == null) return;
 
-            var vehicles = new List<Vehicle>();
             if (File.Exists(_vehiclesFilePath))
             {
-                vehicles = CsvExportService.ImportVehicles(_vehiclesFilePath);
+                Enterprise.Instance.LoadVehiclesFromCsv(_vehiclesFilePath);
             }
-
-          
-            if (vehicles.Any(existing =>
-                string.Equals(existing?.LicensePlate?.Trim(),
-                              vehicle.LicensePlate?.Trim(),
-                              StringComparison.OrdinalIgnoreCase)))
+            if (_isEditing)
+            {
+                if (!Enterprise.Instance.UpdateVehicle(_originalLicensePlate, vehicle))
+                {
+                    MessageBox.Show(
+                        "A vehicle with the same license plate already exists.",
+                        "Duplicate vehicle",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            else if (!Enterprise.Instance.AddVehicle(vehicle))
             {
                 MessageBox.Show(
                     "A vehicle with the same license plate already exists.",
@@ -285,17 +365,14 @@ namespace AutoRentalSystem
                 return;
             }
 
-            vehicles.Add(vehicle);
-
             var directory = Path.GetDirectoryName(_vehiclesFilePath);
             if (!string.IsNullOrWhiteSpace(directory))
             {
                 Directory.CreateDirectory(directory);
             }
 
-            CsvExportService.ExportVehicles(vehicles, _vehiclesFilePath);
+            Enterprise.Instance.SaveVehiclesToCsv(_vehiclesFilePath);
 
-            
             SavedVehicle = vehicle;
             VehicleSaved?.Invoke(this, new VehicleSavedEventArgs(vehicle));
 

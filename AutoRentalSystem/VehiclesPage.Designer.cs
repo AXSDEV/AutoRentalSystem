@@ -44,10 +44,10 @@ namespace AutoRentalSystem
             this.flowpanel_list = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2VScrollBar2 = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.panel_VehiclesPage_Description = new Guna.UI2.WinForms.Guna2Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel_titlebar.SuspendLayout();
             this.panel_VehiclesPage_Description.SuspendLayout();
             this.SuspendLayout();
@@ -210,31 +210,18 @@ namespace AutoRentalSystem
             this.panel_VehiclesPage_Description.Size = new System.Drawing.Size(633, 42);
             this.panel_VehiclesPage_Description.TabIndex = 8;
             // 
-            // label1
+            // label5
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(4, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Available";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Image = ((System.Drawing.Image)(resources.GetObject("label2.Image")));
-            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(164, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 25);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Reserved";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
+            this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.Location = new System.Drawing.Point(479, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(167, 25);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Unavailable";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
             // 
@@ -249,26 +236,39 @@ namespace AutoRentalSystem
             this.label4.Text = "Rented";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label5
+            // label2
             // 
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
-            this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label5.Location = new System.Drawing.Point(479, 8);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(167, 25);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Unavailable";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Image = ((System.Drawing.Image)(resources.GetObject("label2.Image")));
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Location = new System.Drawing.Point(164, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(146, 25);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Reserved";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(4, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Available";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // VehiclesPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.panel_VehiclesPage_Description);
             this.Controls.Add(this.guna2VScrollBar2);
+            this.Controls.Add(this.panel_VehiclesPage_Description);
             this.Controls.Add(this.flowpanel_list);
             this.Controls.Add(this.panel_titlebar);
             this.Controls.Add(this.title_label);

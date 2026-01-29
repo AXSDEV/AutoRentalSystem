@@ -20,9 +20,17 @@ namespace AutoRentalSystem
             btn_UC_AddVehicleForm_Truck_AddVehicle.Click += HandleAddVehicleClick;
         }
 
-        public string MaxWeightText => textbox_UC_TruckMaxWeight.Text;
+        public string MaxWeightText
+        {
+            get => textbox_UC_TruckMaxWeight.Text;
+            set => textbox_UC_TruckMaxWeight.Text = value ?? string.Empty;
+        }
 
-        public string HeightText => textbox_UC_Truck_Height.Text;
+        public string HeightText
+        {
+            get => textbox_UC_Truck_Height.Text;
+            set => textbox_UC_Truck_Height.Text = value ?? string.Empty;
+        }
 
         private void HandleAddVehicleClick(object sender, EventArgs e)
         {

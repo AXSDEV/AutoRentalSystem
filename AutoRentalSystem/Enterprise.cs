@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace AutoRentalSystem
@@ -7,6 +8,7 @@ namespace AutoRentalSystem
     public class Enterprise
     {
         private List<Vehicle> vehicles;
+        public static Enterprise Instance { get; } = new Enterprise();
         public IReadOnlyList<Vehicle> Vehicles => vehicles.AsReadOnly();
         public Enterprise()
         {
@@ -17,11 +19,70 @@ namespace AutoRentalSystem
             if (vehicle == null)
                 return false;
 
-            if (vehicles.Any(v => v.LicensePlate == vehicle.LicensePlate))
+            if (vehicles.Any(v => string.Equals(v?.LicensePlate?.Trim(),vehicle.LicensePlate?.Trim(),StringComparison.OrdinalIgnoreCase)))
                 return false;
 
             vehicles.Add(vehicle);
             return true;
+        }
+        public bool UpdateVehicle(string originalLicensePlate, Vehicle updatedVehicle)
+        {
+            if (updatedVehicle == null)
+            {
+                return false;
+            }
+
+            var existing = vehicles.FirstOrDefault(vehicle =>
+                string.Equals(vehicle?.LicensePlate?.Trim(),
+                    originalLicensePlate?.Trim(),
+                    StringComparison.OrdinalIgnoreCase));
+
+            if (existing == null)
+            {
+                return false;
+            }
+
+            var updatedPlate = updatedVehicle.LicensePlate?.Trim();
+            if (!string.Equals(existing.LicensePlate?.Trim(), updatedPlate, StringComparison.OrdinalIgnoreCase)
+                && vehicles.Any(vehicle =>
+                    string.Equals(vehicle?.LicensePlate?.Trim(),
+                        updatedPlate,
+                        StringComparison.OrdinalIgnoreCase)))
+            {
+                return false;
+            }
+
+            var index = vehicles.IndexOf(existing);
+            vehicles[index] = updatedVehicle;
+            return true;
+        }
+
+        public bool RemoveVehicle(string licensePlate)
+        {
+            var existing = vehicles.FirstOrDefault(vehicle =>
+                string.Equals(vehicle?.LicensePlate?.Trim(),
+                    licensePlate?.Trim(),
+                    StringComparison.OrdinalIgnoreCase));
+
+            if (existing == null)
+            {
+                return false;
+            }
+
+            vehicles.Remove(existing);
+            return true;
+        }
+
+        public void LoadVehiclesFromCsv(string filePath)
+        {
+            vehicles = File.Exists(filePath)
+                ? CsvExportService.ImportVehicles(filePath)
+                : new List<Vehicle>();
+        }
+
+        public void SaveVehiclesToCsv(string filePath)
+        {
+            CsvExportService.ExportVehicles(vehicles, filePath);
         }
         public Vehicle GetVehicleByLicensePlate(string licensePlate)
         {

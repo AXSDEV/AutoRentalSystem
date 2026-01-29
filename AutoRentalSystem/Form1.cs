@@ -46,7 +46,7 @@ namespace AutoRentalSystem
 
         private void btn_reservations_Click(object sender, EventArgs e)
         {
-            ShowPage<ReservationsPage>("Reservations");
+            ShowPage<ReservationsPage_Background>("Reservations");
         }
 
         private void btn_maintenance_Click(object sender, EventArgs e)
@@ -141,7 +141,13 @@ namespace AutoRentalSystem
             using (var form = new VehicleAddForm())
             {
                 form.StartPosition = FormStartPosition.CenterParent;
-                form.ShowDialog(this);
+                var result = form.ShowDialog(this);
+                if (result == DialogResult.OK
+                    && _pages.TryGetValue(typeof(VehiclesPage), out var page)
+                    && page is VehiclesPage vehiclesPage)
+                {
+                    vehiclesPage.RefreshVehicles();
+                }
             }
         }
     }

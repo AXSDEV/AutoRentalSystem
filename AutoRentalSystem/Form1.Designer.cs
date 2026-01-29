@@ -40,7 +40,6 @@
             this.btn_reservations = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btn_maintenance = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btn_vehicles = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label_dashboard = new System.Windows.Forms.Label();
             this.btn_close = new Guna.UI2.WinForms.Guna2Button();
             this.title_bar = new Guna.UI2.WinForms.Guna2Panel();
@@ -50,9 +49,10 @@
             this.title_label = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel_content = new System.Windows.Forms.Panel();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.title_bar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -61,6 +61,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.BorderRadius = 20;
+            this.guna2Panel1.Controls.Add(this.guna2PictureBox1);
             this.guna2Panel1.Controls.Add(this.btn_alterstate);
             this.guna2Panel1.Controls.Add(this.btn_reservevehicle);
             this.guna2Panel1.Controls.Add(this.label_actions);
@@ -70,7 +71,6 @@
             this.guna2Panel1.Controls.Add(this.btn_reservations);
             this.guna2Panel1.Controls.Add(this.btn_maintenance);
             this.guna2Panel1.Controls.Add(this.btn_vehicles);
-            this.guna2Panel1.Controls.Add(this.pictureBox1);
             this.guna2Panel1.Controls.Add(this.label_dashboard);
             this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
             this.guna2Panel1.Location = new System.Drawing.Point(0, 37);
@@ -249,14 +249,6 @@
             this.btn_vehicles.MouseEnter += new System.EventHandler(this.btn_vehicles_MouseEnter);
             this.btn_vehicles.MouseLeave += new System.EventHandler(this.btn_vehicles_MouseLeave);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(17, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // label_dashboard
             // 
             this.label_dashboard.AutoSize = true;
@@ -377,6 +369,17 @@
             this.panel_content.Size = new System.Drawing.Size(1920, 1080);
             this.panel_content.TabIndex = 4;
             // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BorderRadius = 10;
+            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(25, 16);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(49, 49);
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
+            // 
             // form_home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,8 +397,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.title_bar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,7 +407,6 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label_dashboard;
         private Guna.UI2.WinForms.Guna2GradientButton btn_vehicles;
         private Guna.UI2.WinForms.Guna2GradientButton btn_maintenance;
@@ -423,6 +425,7 @@
         private Guna.UI2.WinForms.Guna2GradientButton btn_reservations;
         private Guna.UI2.WinForms.Guna2GradientButton btn_alterstate;
         private System.Windows.Forms.Panel panel_content;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }
 

@@ -19,9 +19,17 @@ namespace AutoRentalSystem
             btn_UC_AddVehicleForm_Bus_AddVehicle.Click += HandleAddVehicleClick;
         }
 
-        public string MaxPassengerText => textbox_UC_Bus_MaxPassenger.Text;
+        public string MaxPassengerText
+        {
+            get => textbox_UC_Bus_MaxPassenger.Text;
+            set => textbox_UC_Bus_MaxPassenger.Text = value ?? string.Empty;
+        }
 
-        public string AxelNumberText => textbox_UC_Bus_AxelNumber.Text;
+        public string AxelNumberText
+        {
+            get => textbox_UC_Bus_AxelNumber.Text;
+            set => textbox_UC_Bus_AxelNumber.Text = value ?? string.Empty;
+        }
 
         private void HandleAddVehicleClick(object sender, EventArgs e)
         {
