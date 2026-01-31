@@ -40,7 +40,7 @@
             this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.Controls.Add(this.btn_edit_reservation);
             this.guna2Panel1.Controls.Add(this.btn_delete_reservation);
-            this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(34)))));
+            this.guna2Panel1.FillColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(200, 45);
@@ -60,7 +60,7 @@
             this.btn_edit_reservation.ForeColor = System.Drawing.Color.White;
             this.btn_edit_reservation.Image = ((System.Drawing.Image)(resources.GetObject("btn_edit_reservation.Image")));
             this.btn_edit_reservation.ImageOffset = new System.Drawing.Point(0, 12);
-            this.btn_edit_reservation.Location = new System.Drawing.Point(63, 10);
+            this.btn_edit_reservation.Location = new System.Drawing.Point(76, 10);
             this.btn_edit_reservation.Name = "btn_edit_reservation";
             this.btn_edit_reservation.PressedColor = System.Drawing.Color.Yellow;
             this.btn_edit_reservation.Size = new System.Drawing.Size(24, 24);
@@ -81,7 +81,7 @@
             this.btn_delete_reservation.ForeColor = System.Drawing.Color.White;
             this.btn_delete_reservation.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete_reservation.Image")));
             this.btn_delete_reservation.ImageOffset = new System.Drawing.Point(0, 12);
-            this.btn_delete_reservation.Location = new System.Drawing.Point(102, 10);
+            this.btn_delete_reservation.Location = new System.Drawing.Point(115, 10);
             this.btn_delete_reservation.Name = "btn_delete_reservation";
             this.btn_delete_reservation.PressedColor = System.Drawing.Color.Red;
             this.btn_delete_reservation.Size = new System.Drawing.Size(24, 24);

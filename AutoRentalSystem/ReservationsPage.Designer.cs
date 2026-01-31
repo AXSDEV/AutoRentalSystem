@@ -103,7 +103,7 @@
             // 
             this.label1_endDate.AutoSize = true;
             this.label1_endDate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label1_endDate.Location = new System.Drawing.Point(742, 11);
+            this.label1_endDate.Location = new System.Drawing.Point(745, 11);
             this.label1_endDate.Name = "label1_endDate";
             this.label1_endDate.Size = new System.Drawing.Size(75, 21);
             this.label1_endDate.TabIndex = 0;

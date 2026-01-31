@@ -17,6 +17,7 @@ namespace AutoRentalSystem
 		public DateTime EndDate { get; set; }
 		public decimal TotalPrice { get; set; }
         public ReservationStatus Status { get; set; }
+        public bool IsCompleted => Status == ReservationStatus.Completed;
 
         public Reservation(int Id, Vehicle vehicle, DateTime startDate, DateTime endDate)
 		{

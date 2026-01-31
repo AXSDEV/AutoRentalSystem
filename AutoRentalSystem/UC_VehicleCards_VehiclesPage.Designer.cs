@@ -38,10 +38,11 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.Controls.Add(this.btn_reserve_vehicle);
             this.guna2Panel1.Controls.Add(this.btn_edit_vehicle);
             this.guna2Panel1.Controls.Add(this.btn_delete_vehicle);
-            this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(34)))));
+            this.guna2Panel1.FillColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(200, 45);
@@ -62,8 +63,9 @@
             this.btn_reserve_vehicle.ForeColor = System.Drawing.Color.White;
             this.btn_reserve_vehicle.Image = ((System.Drawing.Image)(resources.GetObject("btn_reserve_vehicle.Image")));
             this.btn_reserve_vehicle.ImageOffset = new System.Drawing.Point(0, 12);
-            this.btn_reserve_vehicle.Location = new System.Drawing.Point(39, 9);
+            this.btn_reserve_vehicle.Location = new System.Drawing.Point(55, 9);
             this.btn_reserve_vehicle.Name = "btn_reserve_vehicle";
+            this.btn_reserve_vehicle.PressedColor = System.Drawing.Color.Green;
             this.btn_reserve_vehicle.Size = new System.Drawing.Size(24, 24);
             this.btn_reserve_vehicle.TabIndex = 0;
             this.btn_reserve_vehicle.Text = "guna2Button1";
@@ -83,8 +85,9 @@
             this.btn_edit_vehicle.ForeColor = System.Drawing.Color.White;
             this.btn_edit_vehicle.Image = ((System.Drawing.Image)(resources.GetObject("btn_edit_vehicle.Image")));
             this.btn_edit_vehicle.ImageOffset = new System.Drawing.Point(0, 12);
-            this.btn_edit_vehicle.Location = new System.Drawing.Point(78, 9);
+            this.btn_edit_vehicle.Location = new System.Drawing.Point(94, 9);
             this.btn_edit_vehicle.Name = "btn_edit_vehicle";
+            this.btn_edit_vehicle.PressedColor = System.Drawing.Color.Yellow;
             this.btn_edit_vehicle.Size = new System.Drawing.Size(24, 24);
             this.btn_edit_vehicle.TabIndex = 0;
             this.btn_edit_vehicle.Text = "guna2Button1";
@@ -104,7 +107,7 @@
             this.btn_delete_vehicle.ForeColor = System.Drawing.Color.White;
             this.btn_delete_vehicle.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete_vehicle.Image")));
             this.btn_delete_vehicle.ImageOffset = new System.Drawing.Point(0, 12);
-            this.btn_delete_vehicle.Location = new System.Drawing.Point(117, 9);
+            this.btn_delete_vehicle.Location = new System.Drawing.Point(133, 9);
             this.btn_delete_vehicle.Name = "btn_delete_vehicle";
             this.btn_delete_vehicle.PressedColor = System.Drawing.Color.Red;
             this.btn_delete_vehicle.Size = new System.Drawing.Size(24, 24);

@@ -120,10 +120,10 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btn_edit_reservation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAABtSURBVEhL7c27DcAgDEVRts9IGYERGCNlyoecgGSe8gHFFJF8OsBch+BmA7DitPPbZwBSiVd2
-        Sy7i1cazwx7iB54f8hYHEPlPNx0v56VtI/GfbhxX9x73OPlvXEyNC15gGhcqqNnEBZdN4+5OBkNPrTSD
-        YqB0AAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAG1JREFUSEvt
+        zbsNwCAMRVG2z0gZgREYI2XKh5yAZJ7yAcUUkXw6wFyH4GYDsOK089tnAFKJV3ZLLuLVxrPDHuIHnh/y
+        FgcQ+U83HS/npW0j8Z9uHFf3Hvc4+W9cTI0LXmAaFyqo2cQFl03j7k4GQ0+tNINioHQAAAAASUVORK5C
+        YII=
 </value>
   </data>
   <data name="btn_delete_reservation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

@@ -38,7 +38,7 @@ namespace AutoRentalSystem
         public string ShortDescription => $"{Maker} {Model} ({Year})";
         public override string ToString()
         {
-            return $"{VehicleType} | {ShortDescription} | Matrícula: {LicensePlate} | Estado: {RentState} | Daily Price: {DailyPrice:C}"; return $"{VehicleType} | {ShortDescription} | Matrícula: {LicensePlate} | Estado: {RentState} | Daily Price: {DailyPrice:C}";
+            return $"{VehicleType} | {ShortDescription} | Matrícula: {LicensePlate} | Estado: {RentState} | Daily Price: {DailyPrice:C}";
         }
     }
 }

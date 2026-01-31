@@ -1,23 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Globalization;
-
+using System.Linq;
+using System.Windows.Forms;
 
 namespace AutoRentalSystem
 {
     public partial class VehicleCards : UserControl
     {
+        private static readonly string[] VehicleActionButtons =
+        {
+            "btn_reserve_vehicle",
+            "btn_edit_vehicle",
+            "btn_delete_vehicle"
+        };
+
+        private static readonly string[] ReservationActionButtons =
+        {
+            "btn_edit_reservation",
+            "btn_delete_reservation"
+        };
+
         private Vehicle _vehicle;
         private Reservation _reservation;
         private bool _isReservationCard;
         private CardMode _mode = CardMode.VehiclesPage;
+        private Control _actionsControl;
 
         // Events for vehicles
         public event EventHandler<VehicleEventArgs> DeleteRequested;
@@ -25,7 +33,6 @@ namespace AutoRentalSystem
 
         // Extra actions (VehiclesPage)
         public event EventHandler<VehicleEventArgs> ReserveRequested;
-        public event EventHandler<VehicleEventArgs> AlterStateRequested;
 
         // Events for reservations
         public event EventHandler<ReservationEventArgs> ReservationDeleteRequested;
@@ -43,12 +50,10 @@ namespace AutoRentalSystem
         {
             InitializeComponent();
 
-            // Make the card clickable
-            this.Cursor = Cursors.Hand;
+            Cursor = Cursors.Hand;
             default_card_panel.Cursor = Cursors.Hand;
 
             WireCardClick(default_card_panel);
-            WireExtraButtons();
         }
 
         public VehicleCards(Vehicle vehicle) : this()
@@ -64,8 +69,7 @@ namespace AutoRentalSystem
             foreach (Control c in parent.Controls)
             {
                 // não queremos que o clique em botões abra detalhes
-                if (c == btn_delete_vehicle || c == btn_editVehicle ||
-                    c.Name == "btn_reserveVehicle" || c.Name == "btn_alterState")
+                if (IsActionButton(c))
                     continue;
 
                 WireCardClick(c);
@@ -76,19 +80,26 @@ namespace AutoRentalSystem
         {
             _mode = mode;
 
-            // Botões "base" existem sempre no Designer
-            // (em reservas, normalmente queres esconder "editar").
-            btn_editVehicle.Visible = (mode == CardMode.VehiclesPage);
-
-            // Botões extra podem não existir neste card (dependendo do UC/Designer).
-            SetVisibleIfExists("btn_reserveVehicle", mode == CardMode.VehiclesPage);
-            SetVisibleIfExists("btn_alterState", mode == CardMode.VehiclesPage);
+            var showVehicleButtons = mode == CardMode.VehiclesPage;
+            SetVisibleIfExists("btn_reserve_vehicle", showVehicleButtons);
+            SetVisibleIfExists("btn_edit_vehicle", showVehicleButtons);
+            SetVisibleIfExists("btn_delete_vehicle", showVehicleButtons);
+            SetVisibleIfExists("btn_edit_reservation", !showVehicleButtons);
+            SetVisibleIfExists("btn_delete_reservation", !showVehicleButtons);
         }
 
         private void SetVisibleIfExists(string controlName, bool visible)
         {
             var c = FindControlDeep(this, controlName);
             if (c != null) c.Visible = visible;
+        }
+
+        private static bool IsActionButton(Control control)
+        {
+            if (control == null) return false;
+
+            return VehicleActionButtons.Contains(control.Name)
+                || ReservationActionButtons.Contains(control.Name);
         }
 
         private Control FindControlDeep(Control root, string name)
@@ -105,20 +116,71 @@ namespace AutoRentalSystem
             return null;
         }
 
-        private void WireExtraButtons()
+        private void EnsureActionsControl(CardMode mode)
         {
-            var btnReserve = FindControlDeep(this, "btn_reserveVehicle");
-            if (btnReserve != null)
+            if (panel_actions == null)
+                return;
+
+            var requiresVehicleActions = mode == CardMode.VehiclesPage;
+            var currentVehicleActions = _actionsControl is UC_VehicleCards_VehiclesPage;
+            var currentReservationActions = _actionsControl is UC_VehicleCards_ReservationPage;
+
+            if ((requiresVehicleActions && currentVehicleActions)
+                || (!requiresVehicleActions && currentReservationActions))
             {
-                btnReserve.Click -= BtnReserve_Click;
-                btnReserve.Click += BtnReserve_Click;
+                SetMode(mode);
+                return;
             }
 
-            var btnAlterState = FindControlDeep(this, "btn_alterState");
-            if (btnAlterState != null)
+            panel_actions.Controls.Clear();
+            _actionsControl?.Dispose();
+
+            _actionsControl = requiresVehicleActions
+                ? (Control)new UC_VehicleCards_VehiclesPage()
+                : new UC_VehicleCards_ReservationPage();
+
+            _actionsControl.Dock = DockStyle.Fill;
+            panel_actions.Controls.Add(_actionsControl);
+
+            WireActionButtons(_actionsControl);
+            SetMode(mode);
+        }
+
+        private void WireActionButtons(Control root)
+        {
+            if (root == null) return;
+
+            WireButton(root, "btn_reserve_vehicle", BtnReserve_Click, HandleReserveMouseEnter, HandleReserveMouseLeave);
+            WireButton(root, "btn_delete_vehicle", btn_delete_vehicle_Click, HandleDeleteMouseEnter, HandleDeleteMouseLeave);
+            WireButton(root, "btn_edit_vehicle", btn_editVehicle_Click, HandleEditMouseEnter, HandleEditMouseLeave);
+
+            WireButton(root, "btn_delete_reservation", btn_delete_vehicle_Click, HandleDeleteMouseEnter, HandleDeleteMouseLeave);
+            WireButton(root, "btn_edit_reservation", btn_editVehicle_Click, HandleEditMouseEnter, HandleEditMouseLeave);
+        }
+
+        private void WireButton(
+            Control root,
+            string name,
+            EventHandler clickHandler,
+            EventHandler mouseEnterHandler,
+            EventHandler mouseLeaveHandler)
+        {
+            var button = FindControlDeep(root, name);
+            if (button == null) return;
+
+            button.Click -= clickHandler;
+            button.Click += clickHandler;
+
+            if (mouseEnterHandler != null)
             {
-                btnAlterState.Click -= BtnAlterState_Click;
-                btnAlterState.Click += BtnAlterState_Click;
+                button.MouseEnter -= mouseEnterHandler;
+                button.MouseEnter += mouseEnterHandler;
+            }
+
+            if (mouseLeaveHandler != null)
+            {
+                button.MouseLeave -= mouseLeaveHandler;
+                button.MouseLeave += mouseLeaveHandler;
             }
         }
 
@@ -128,12 +190,6 @@ namespace AutoRentalSystem
             ReserveRequested?.Invoke(this, new VehicleEventArgs(_vehicle));
         }
 
-        private void BtnAlterState_Click(object sender, EventArgs e)
-        {
-            if (_vehicle == null) return;
-            AlterStateRequested?.Invoke(this, new VehicleEventArgs(_vehicle));
-        }
-
         public void BindVehicle(Vehicle vehicle)
         {
             if (vehicle == null) return;
@@ -141,6 +197,8 @@ namespace AutoRentalSystem
             _isReservationCard = false;
             _reservation = null;
             _vehicle = vehicle;
+
+            EnsureActionsControl(CardMode.VehiclesPage);
 
             pictureBox_RentState.Image = GetRentStateIcon(vehicle.RentState);
             label1.Text = vehicle.LicensePlate;
@@ -159,36 +217,46 @@ namespace AutoRentalSystem
             _reservation = reservation;
             _vehicle = reservation.Vehicle;
 
-            // Ícone: podes manter o estado do veículo, se existir
-            pictureBox_RentState.Image = _vehicle != null ? GetRentStateIcon(_vehicle.RentState) : null;
+            EnsureActionsControl(CardMode.ReservationsPage);
 
             label1.Text = _vehicle?.LicensePlate ?? "—";
             label2.Text = _vehicle?.GetType().Name ?? "—";
             label3.Text = reservation.StartDate.ToString("yyyy-MM-dd");
             label4.Text = reservation.EndDate.ToString("yyyy-MM-dd");
             label5.Text = reservation.TotalPrice.ToString("C", new CultureInfo("pt-PT"));
-            label6.Text = reservation.IsCompleted ? "Concluída" : "Ativa";
-
-            pictureBox_RentState.Image = reservation.IsCompleted
-                ? Properties.Resources.state_available
-                : Properties.Resources.state_maintenance;
+            label6.Text = GetReservationStatusLabel(reservation.Status);
+            pictureBox_RentState.Image = GetReservationStatusIcon(reservation.Status);
         }
 
-        private void Bind(Image icon, string c1, string c2, string c3, string c4, string c5, string c6)
+        private static string GetReservationStatusLabel(ReservationStatus status)
         {
-            pictureBox_RentState.Image = icon;
+            switch (status)
+            {
+                case ReservationStatus.Active:
+                    return "Rented";
+                case ReservationStatus.Completed:
+                    return "Completed";
+                default:
+                    return "Reserved";
+            }
+        }
 
-            label1.Text = c1;
-            label2.Text = c2;
-            label3.Text = c3;
-            label4.Text = c4;
-            label5.Text = c5;
-            label6.Text = c6;
+        private static Image GetReservationStatusIcon(ReservationStatus status)
+        {
+            switch (status)
+            {
+                case ReservationStatus.Active:
+                    return Properties.Resources.state_rented;
+                case ReservationStatus.Completed:
+                    return Properties.Resources.state_available;
+                default:
+                    return Properties.Resources.state_reserved;
+            }
         }
 
         private Image GetRentStateIcon(string rentState)
         {
-            var state = (rentState ?? "").Trim().ToLowerInvariant();
+            var state = (rentState ?? string.Empty).Trim().ToLowerInvariant();
 
             switch (state)
             {
@@ -210,24 +278,40 @@ namespace AutoRentalSystem
             default_card_panel.FillColor = Color.FromArgb(34, 33, 42);
         }
 
-        private void btn_delete_vehicle_MouseEnter(object sender, EventArgs e)
+        private void HandleDeleteMouseEnter(object sender, EventArgs e)
         {
-            btn_delete_vehicle.FillColor = Color.Red;
+            if (sender is Guna.UI2.WinForms.Guna2Button button)
+                button.FillColor = Color.Red;
         }
 
-        private void btn_delete_vehicle_MouseLeave(object sender, EventArgs e)
+        private void HandleDeleteMouseLeave(object sender, EventArgs e)
         {
-            btn_delete_vehicle.FillColor = Color.Transparent;
+            if (sender is Guna.UI2.WinForms.Guna2Button button)
+                button.FillColor = Color.Transparent;
         }
 
-        private void btn_editVehicle_MouseEnter(object sender, EventArgs e)
+        private void HandleEditMouseEnter(object sender, EventArgs e)
         {
-            btn_editVehicle.FillColor = Color.Orange;
+            if (sender is Guna.UI2.WinForms.Guna2Button button)
+                button.FillColor = Color.Orange;
         }
 
-        private void btn_editVehicle_MouseLeave(object sender, EventArgs e)
+        private void HandleEditMouseLeave(object sender, EventArgs e)
         {
-            btn_editVehicle.FillColor = Color.Transparent;
+            if (sender is Guna.UI2.WinForms.Guna2Button button)
+                button.FillColor = Color.Transparent;
+        }
+
+        private void HandleReserveMouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Guna.UI2.WinForms.Guna2Button button)
+                button.FillColor = Color.Orange;
+        }
+
+        private void HandleReserveMouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Guna.UI2.WinForms.Guna2Button button)
+                button.FillColor = Color.Transparent;
         }
 
         private void btn_delete_vehicle_Click(object sender, EventArgs e)
@@ -239,9 +323,7 @@ namespace AutoRentalSystem
             }
 
             if (_vehicle != null)
-            {
                 DeleteRequested?.Invoke(this, new VehicleEventArgs(_vehicle));
-            }
         }
 
         private void btn_editVehicle_Click(object sender, EventArgs e)
@@ -253,17 +335,14 @@ namespace AutoRentalSystem
             }
 
             if (_vehicle != null)
-            {
                 EditRequested?.Invoke(this, new VehicleEventArgs(_vehicle));
-            }
         }
 
         private void default_card_panel_Click(object sender, EventArgs e)
         {
-            // Em cards de reservas, não queremos abrir detalhes do veículo por engano.
-            if (_isReservationCard) return;
-
-            if (_vehicle == null) return;
+            // Se não houver veículo associado, não faz nada
+            if (_vehicle == null)
+                return;
 
             CardClicked?.Invoke(this, EventArgs.Empty);
 
