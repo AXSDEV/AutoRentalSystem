@@ -42,8 +42,8 @@ namespace AutoRentalSystem
             if (!File.Exists(_vehiclesFilePath))
             {
                 MessageBox.Show(
-                    $"CSV não encontrado:\n{_vehiclesFilePath}",
-                    "Dados de veículos",
+                    $"CSV not found:\n{_vehiclesFilePath}",
+                    "Vehicle Data",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 return;
@@ -52,8 +52,8 @@ namespace AutoRentalSystem
             if (!File.Exists(_reservationsFilePath))
             {
                 MessageBox.Show(
-                    $"CSV não encontrado:\n{_reservationsFilePath}",
-                    "Dados de reservas",
+                    $"CSV not found:\n{_reservationsFilePath}",
+                    "Reservations Data",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 return;

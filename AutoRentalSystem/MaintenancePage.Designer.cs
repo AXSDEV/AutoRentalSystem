@@ -67,7 +67,6 @@
             // 
             // flowLayoutPanel_maintenance
             // 
-            this.flowLayoutPanel_maintenance.AutoScroll = true;
             this.flowLayoutPanel_maintenance.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel_maintenance.Location = new System.Drawing.Point(313, 171);
             this.flowLayoutPanel_maintenance.Name = "flowLayoutPanel_maintenance";
@@ -76,14 +75,17 @@
             // 
             // guna2VScrollBar1
             // 
+            this.guna2VScrollBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2VScrollBar1.BindingContainer = this.flowLayoutPanel_maintenance;
             this.guna2VScrollBar1.BorderRadius = 10;
             this.guna2VScrollBar1.InUpdate = false;
             this.guna2VScrollBar1.LargeChange = 10;
-            this.guna2VScrollBar1.Location = new System.Drawing.Point(1895, 171);
+            this.guna2VScrollBar1.Location = new System.Drawing.Point(1891, 171);
             this.guna2VScrollBar1.Name = "guna2VScrollBar1";
-            this.guna2VScrollBar1.ScrollbarSize = 13;
-            this.guna2VScrollBar1.Size = new System.Drawing.Size(13, 838);
+            this.guna2VScrollBar1.ScrollbarSize = 18;
+            this.guna2VScrollBar1.Size = new System.Drawing.Size(18, 838);
             this.guna2VScrollBar1.TabIndex = 0;
             this.guna2VScrollBar1.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             // 

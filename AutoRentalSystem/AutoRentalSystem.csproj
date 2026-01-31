@@ -110,6 +110,30 @@
     <Compile Include="UC_AddVehicleForm_Truck.Designer.cs">
       <DependentUpon>UC_AddVehicleForm_Truck.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_VehicleDetails_Bike.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_VehicleDetails_Bike.Designer.cs">
+      <DependentUpon>UC_VehicleDetails_Bike.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_VehicleDetails_Bus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_VehicleDetails_Bus.Designer.cs">
+      <DependentUpon>UC_VehicleDetails_Bus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_VehicleDetails_Car.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_VehicleDetails_Car.Designer.cs">
+      <DependentUpon>UC_VehicleDetails_Car.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_VehicleDetails_Truck.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_VehicleDetails_Truck.Designer.cs">
+      <DependentUpon>UC_VehicleDetails_Truck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleAddForm.cs">
       <SubType>Form</SubType>
@@ -165,6 +189,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AddVehicleForm_Truck.resx">
       <DependentUpon>UC_AddVehicleForm_Truck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_VehicleDetails_Bike.resx">
+      <DependentUpon>UC_VehicleDetails_Bike.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_VehicleDetails_Bus.resx">
+      <DependentUpon>UC_VehicleDetails_Bus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_VehicleDetails_Car.resx">
+      <DependentUpon>UC_VehicleDetails_Car.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_VehicleDetails_Truck.resx">
+      <DependentUpon>UC_VehicleDetails_Truck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VehicleAddForm.resx">
       <DependentUpon>VehicleAddForm.cs</DependentUpon>

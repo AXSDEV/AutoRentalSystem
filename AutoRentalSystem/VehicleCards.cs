@@ -94,6 +94,10 @@ namespace AutoRentalSystem
             label4.Text = reservation.EndDate.ToString("yyyy-MM-dd");
             label5.Text = reservation.TotalPrice.ToString("C", new CultureInfo("pt-PT"));
             label6.Text = reservation.IsCompleted ? "Concluída" : "Ativa";
+
+            pictureBox_RentState.Image = reservation.IsCompleted
+        ? Properties.Resources.state_available
+        : Properties.Resources.state_maintenance;
         }
 
         private void Bind(Image icon, string c1, string c2, string c3, string c4, string c5, string c6)
@@ -182,17 +186,6 @@ namespace AutoRentalSystem
 
         private void default_card_panel_Click(object sender, EventArgs e)
         {
-            if (_isReservationCard)
-            {
-                // Se ainda não tens ReservationDetailsForm, pelo menos confirma que funciona:
-                MessageBox.Show(
-                    $"Reserva #{_reservation?.Id}\nMatrícula: {_vehicle?.LicensePlate}",
-                    "Detalhes da Reserva",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                return;
-            }
-
             if (_vehicle == null) return;
 
             using (var details = new VehicleDetailsForm(_vehicle))

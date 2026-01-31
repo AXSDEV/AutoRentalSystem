@@ -31,10 +31,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel_titleBar = new Guna.UI2.WinForms.Guna2Panel();
             this.label_actions = new System.Windows.Forms.Label();
-            this.label_endDate = new System.Windows.Forms.Label();
+            this.label_isCompleted = new System.Windows.Forms.Label();
+            this.label_totalPrice = new System.Windows.Forms.Label();
+            this.label1_endDate = new System.Windows.Forms.Label();
             this.label_startDate = new System.Windows.Forms.Label();
-            this.label1_model = new System.Windows.Forms.Label();
-            this.label_maker = new System.Windows.Forms.Label();
             this.label_type = new System.Windows.Forms.Label();
             this.label_licensePlate = new System.Windows.Forms.Label();
             this.flowLayoutPanel_reservations = new System.Windows.Forms.FlowLayoutPanel();
@@ -57,10 +57,10 @@
             this.panel_titleBar.BackColor = System.Drawing.Color.Transparent;
             this.panel_titleBar.BorderRadius = 10;
             this.panel_titleBar.Controls.Add(this.label_actions);
-            this.panel_titleBar.Controls.Add(this.label_endDate);
+            this.panel_titleBar.Controls.Add(this.label_isCompleted);
+            this.panel_titleBar.Controls.Add(this.label_totalPrice);
+            this.panel_titleBar.Controls.Add(this.label1_endDate);
             this.panel_titleBar.Controls.Add(this.label_startDate);
-            this.panel_titleBar.Controls.Add(this.label1_model);
-            this.panel_titleBar.Controls.Add(this.label_maker);
             this.panel_titleBar.Controls.Add(this.label_type);
             this.panel_titleBar.Controls.Add(this.label_licensePlate);
             this.panel_titleBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -79,45 +79,45 @@
             this.label_actions.TabIndex = 0;
             this.label_actions.Text = "Actions";
             // 
-            // label_endDate
+            // label_isCompleted
             // 
-            this.label_endDate.AutoSize = true;
-            this.label_endDate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label_endDate.Location = new System.Drawing.Point(1127, 11);
-            this.label_endDate.Name = "label_endDate";
-            this.label_endDate.Size = new System.Drawing.Size(75, 21);
-            this.label_endDate.TabIndex = 0;
-            this.label_endDate.Text = "End Date";
+            this.label_isCompleted.AutoSize = true;
+            this.label_isCompleted.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label_isCompleted.Location = new System.Drawing.Point(1127, 11);
+            this.label_isCompleted.Name = "label_isCompleted";
+            this.label_isCompleted.Size = new System.Drawing.Size(92, 21);
+            this.label_isCompleted.TabIndex = 0;
+            this.label_isCompleted.Text = "Completed";
+            // 
+            // label_totalPrice
+            // 
+            this.label_totalPrice.AutoSize = true;
+            this.label_totalPrice.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label_totalPrice.Location = new System.Drawing.Point(947, 11);
+            this.label_totalPrice.Name = "label_totalPrice";
+            this.label_totalPrice.Size = new System.Drawing.Size(85, 21);
+            this.label_totalPrice.TabIndex = 0;
+            this.label_totalPrice.Text = "Total Price";
+            // 
+            // label1_endDate
+            // 
+            this.label1_endDate.AutoSize = true;
+            this.label1_endDate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label1_endDate.Location = new System.Drawing.Point(742, 11);
+            this.label1_endDate.Name = "label1_endDate";
+            this.label1_endDate.Size = new System.Drawing.Size(75, 21);
+            this.label1_endDate.TabIndex = 0;
+            this.label1_endDate.Text = "End Date";
             // 
             // label_startDate
             // 
             this.label_startDate.AutoSize = true;
             this.label_startDate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label_startDate.Location = new System.Drawing.Point(947, 11);
+            this.label_startDate.Location = new System.Drawing.Point(509, 11);
             this.label_startDate.Name = "label_startDate";
             this.label_startDate.Size = new System.Drawing.Size(83, 21);
             this.label_startDate.TabIndex = 0;
             this.label_startDate.Text = "Start Date";
-            // 
-            // label1_model
-            // 
-            this.label1_model.AutoSize = true;
-            this.label1_model.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label1_model.Location = new System.Drawing.Point(742, 11);
-            this.label1_model.Name = "label1_model";
-            this.label1_model.Size = new System.Drawing.Size(58, 21);
-            this.label1_model.TabIndex = 0;
-            this.label1_model.Text = "Model";
-            // 
-            // label_maker
-            // 
-            this.label_maker.AutoSize = true;
-            this.label_maker.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label_maker.Location = new System.Drawing.Point(509, 11);
-            this.label_maker.Name = "label_maker";
-            this.label_maker.Size = new System.Drawing.Size(56, 21);
-            this.label_maker.TabIndex = 0;
-            this.label_maker.Text = "Maker";
             // 
             // label_type
             // 
@@ -141,12 +141,12 @@
             // 
             // flowLayoutPanel_reservations
             // 
-            this.flowLayoutPanel_reservations.AutoScroll = true;
             this.flowLayoutPanel_reservations.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel_reservations.Location = new System.Drawing.Point(313, 171);
             this.flowLayoutPanel_reservations.Name = "flowLayoutPanel_reservations";
             this.flowLayoutPanel_reservations.Size = new System.Drawing.Size(1596, 838);
             this.flowLayoutPanel_reservations.TabIndex = 2;
+            this.flowLayoutPanel_reservations.WrapContents = false;
             // 
             // guna2VScrollBar1
             // 
@@ -217,10 +217,10 @@
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar1;
         private System.Windows.Forms.Label label_licensePlate;
         private System.Windows.Forms.Label label_type;
-        private System.Windows.Forms.Label label_maker;
         private System.Windows.Forms.Label label_startDate;
-        private System.Windows.Forms.Label label1_model;
-        private System.Windows.Forms.Label label_endDate;
+        private System.Windows.Forms.Label label_totalPrice;
+        private System.Windows.Forms.Label label1_endDate;
+        private System.Windows.Forms.Label label_isCompleted;
         private System.Windows.Forms.Label label_actions;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar2;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar3;
