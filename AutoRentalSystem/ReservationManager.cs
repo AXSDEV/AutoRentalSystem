@@ -62,7 +62,7 @@ namespace AutoRentalSystem
             int reservationId,
             DateTime startDate,
             DateTime endDate,
-            bool isCompleted)
+            ReservationStatus status)
         {
             var reservation = _reservations.FirstOrDefault(r => r.Id == reservationId);
             if (reservation == null)
@@ -83,7 +83,7 @@ namespace AutoRentalSystem
 
             reservation.StartDate = startDate;
             reservation.EndDate = endDate;
-            reservation.IsCompleted = isCompleted;
+            reservation.Status = status;
             reservation.CalculatePrice(BaseDailyPrice);
 
             return reservation;
@@ -130,8 +130,8 @@ namespace AutoRentalSystem
         public static decimal CalculateTotalInvoiced(DateTime startDate, DateTime endDate)
 		{
 			return _reservations
-				.Where(r => r.IsCompleted && r.StartDate >= startDate && r.EndDate <= endDate)
-				.Sum(r => r.TotalPrice);
+                .Where(r => r.Status == ReservationStatus.Completed && r.StartDate >= startDate && r.EndDate <= endDate)
+                .Sum(r => r.TotalPrice);
 		}
 	}
 }

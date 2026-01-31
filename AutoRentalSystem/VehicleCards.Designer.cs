@@ -28,17 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleCards));
             this.default_card_panel = new Guna.UI2.WinForms.Guna2Panel();
             this.pictureBox_RentState = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btn_editVehicle = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_delete_vehicle = new Guna.UI2.WinForms.Guna2Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel_actions = new Guna.UI2.WinForms.Guna2Panel();
             this.default_card_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_RentState)).BeginInit();
             this.SuspendLayout();
@@ -47,11 +45,10 @@
             // 
             this.default_card_panel.BackColor = System.Drawing.Color.Transparent;
             this.default_card_panel.BorderRadius = 10;
+            this.default_card_panel.Controls.Add(this.panel_actions);
             this.default_card_panel.Controls.Add(this.pictureBox_RentState);
             this.default_card_panel.Controls.Add(this.label6);
             this.default_card_panel.Controls.Add(this.label5);
-            this.default_card_panel.Controls.Add(this.btn_editVehicle);
-            this.default_card_panel.Controls.Add(this.btn_delete_vehicle);
             this.default_card_panel.Controls.Add(this.label4);
             this.default_card_panel.Controls.Add(this.label3);
             this.default_card_panel.Controls.Add(this.label2);
@@ -94,44 +91,6 @@
             this.label5.Size = new System.Drawing.Size(50, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "label5";
-            // 
-            // btn_editVehicle
-            // 
-            this.btn_editVehicle.BorderRadius = 5;
-            this.btn_editVehicle.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_editVehicle.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_editVehicle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_editVehicle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_editVehicle.FillColor = System.Drawing.Color.Transparent;
-            this.btn_editVehicle.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_editVehicle.ForeColor = System.Drawing.Color.White;
-            this.btn_editVehicle.Image = ((System.Drawing.Image)(resources.GetObject("btn_editVehicle.Image")));
-            this.btn_editVehicle.Location = new System.Drawing.Point(1380, 12);
-            this.btn_editVehicle.Name = "btn_editVehicle";
-            this.btn_editVehicle.Size = new System.Drawing.Size(24, 24);
-            this.btn_editVehicle.TabIndex = 1;
-            this.btn_editVehicle.Click += new System.EventHandler(this.btn_editVehicle_Click);
-            this.btn_editVehicle.MouseEnter += new System.EventHandler(this.btn_editVehicle_MouseEnter);
-            this.btn_editVehicle.MouseLeave += new System.EventHandler(this.btn_editVehicle_MouseLeave);
-            // 
-            // btn_delete_vehicle
-            // 
-            this.btn_delete_vehicle.BorderRadius = 5;
-            this.btn_delete_vehicle.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_delete_vehicle.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_delete_vehicle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_delete_vehicle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_delete_vehicle.FillColor = System.Drawing.Color.Transparent;
-            this.btn_delete_vehicle.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_delete_vehicle.ForeColor = System.Drawing.Color.White;
-            this.btn_delete_vehicle.Image = ((System.Drawing.Image)(resources.GetObject("btn_delete_vehicle.Image")));
-            this.btn_delete_vehicle.Location = new System.Drawing.Point(1415, 12);
-            this.btn_delete_vehicle.Name = "btn_delete_vehicle";
-            this.btn_delete_vehicle.Size = new System.Drawing.Size(24, 24);
-            this.btn_delete_vehicle.TabIndex = 1;
-            this.btn_delete_vehicle.Click += new System.EventHandler(this.btn_delete_vehicle_Click);
-            this.btn_delete_vehicle.MouseEnter += new System.EventHandler(this.btn_delete_vehicle_MouseEnter);
-            this.btn_delete_vehicle.MouseLeave += new System.EventHandler(this.btn_delete_vehicle_MouseLeave);
             // 
             // label4
             // 
@@ -177,6 +136,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
+            // panel_actions
+            // 
+            this.panel_actions.Location = new System.Drawing.Point(1302, 2);
+            this.panel_actions.Name = "panel_actions";
+            this.panel_actions.Size = new System.Drawing.Size(200, 45);
+            this.panel_actions.TabIndex = 7;
+            // 
             // VehicleCards
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,10 +164,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Button btn_delete_vehicle;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox_RentState;
-        private Guna.UI2.WinForms.Guna2Button btn_editVehicle;
+        private Guna.UI2.WinForms.Guna2Panel panel_actions;
     }
 }

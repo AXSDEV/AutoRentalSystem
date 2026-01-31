@@ -85,6 +85,12 @@
     <Compile Include="ReservationsPage.Designer.cs">
       <DependentUpon>ReservationsPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReserveVehicleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReserveVehicleForm.Designer.cs">
+      <DependentUpon>ReserveVehicleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Truck.cs" />
     <Compile Include="UC_AddVehicleForm_Bike.cs">
       <SubType>UserControl</SubType>
@@ -109,6 +115,18 @@
     </Compile>
     <Compile Include="UC_AddVehicleForm_Truck.Designer.cs">
       <DependentUpon>UC_AddVehicleForm_Truck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_VehicleCards_ReservationPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_VehicleCards_ReservationPage.Designer.cs">
+      <DependentUpon>UC_VehicleCards_ReservationPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_VehicleCards_VehiclesPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_VehicleCards_VehiclesPage.Designer.cs">
+      <DependentUpon>UC_VehicleCards_VehiclesPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_VehicleDetails_Bike.cs">
       <SubType>UserControl</SubType>
@@ -178,6 +196,9 @@
     <EmbeddedResource Include="ReservationsPage.resx">
       <DependentUpon>ReservationsPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReserveVehicleForm.resx">
+      <DependentUpon>ReserveVehicleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_AddVehicleForm_Bike.resx">
       <DependentUpon>UC_AddVehicleForm_Bike.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +210,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AddVehicleForm_Truck.resx">
       <DependentUpon>UC_AddVehicleForm_Truck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_VehicleCards_ReservationPage.resx">
+      <DependentUpon>UC_VehicleCards_ReservationPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_VehicleCards_VehiclesPage.resx">
+      <DependentUpon>UC_VehicleCards_VehiclesPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_VehicleDetails_Bike.resx">
       <DependentUpon>UC_VehicleDetails_Bike.cs</DependentUpon>

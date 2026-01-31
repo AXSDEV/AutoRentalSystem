@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleDetailsForm));
             this.panel_VehicleDetailsForm_Background = new Guna.UI2.WinForms.Guna2Panel();
             this.panel_details = new Guna.UI2.WinForms.Guna2Panel();
-            this.btn_close = new Guna.UI2.WinForms.Guna2Button();
             this.panel_baseDetails = new Guna.UI2.WinForms.Guna2Panel();
             this.label_dailyPrice_info = new System.Windows.Forms.Label();
             this.label_fuel_info = new System.Windows.Forms.Label();
@@ -50,6 +49,7 @@
             this.label_maker = new System.Windows.Forms.Label();
             this.label_LicensePlate = new System.Windows.Forms.Label();
             this.label_VehicleDetailsForm_Title = new System.Windows.Forms.Label();
+            this.btn_close = new Guna.UI2.WinForms.Guna2Button();
             this.panel_VehicleDetailsForm_Background.SuspendLayout();
             this.panel_baseDetails.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,7 @@
             this.panel_VehicleDetailsForm_Background.Controls.Add(this.panel_baseDetails);
             this.panel_VehicleDetailsForm_Background.Controls.Add(this.label_VehicleDetailsForm_Title);
             this.panel_VehicleDetailsForm_Background.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panel_VehicleDetailsForm_Background.ForeColor = System.Drawing.SystemColors.Control;
             this.panel_VehicleDetailsForm_Background.Location = new System.Drawing.Point(0, 0);
             this.panel_VehicleDetailsForm_Background.Name = "panel_VehicleDetailsForm_Background";
             this.panel_VehicleDetailsForm_Background.Size = new System.Drawing.Size(800, 500);
@@ -74,31 +75,6 @@
             this.panel_details.Name = "panel_details";
             this.panel_details.Size = new System.Drawing.Size(700, 77);
             this.panel_details.TabIndex = 2;
-            // 
-            // btn_close
-            // 
-            this.btn_close.BackColor = System.Drawing.Color.Transparent;
-            this.btn_close.BorderColor = System.Drawing.Color.White;
-            this.btn_close.BorderRadius = 10;
-            this.btn_close.BorderThickness = 1;
-            this.btn_close.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_close.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_close.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_close.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_close.FillColor = System.Drawing.Color.Transparent;
-            this.btn_close.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Image = ((System.Drawing.Image)(resources.GetObject("btn_close.Image")));
-            this.btn_close.ImageOffset = new System.Drawing.Point(1, 0);
-            this.btn_close.ImageSize = new System.Drawing.Size(40, 40);
-            this.btn_close.Location = new System.Drawing.Point(739, 18);
-            this.btn_close.Name = "btn_close";
-            this.btn_close.PressedColor = System.Drawing.Color.Transparent;
-            this.btn_close.Size = new System.Drawing.Size(40, 40);
-            this.btn_close.TabIndex = 2;
-            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
-            this.btn_close.MouseEnter += new System.EventHandler(this.btn_close_MouseEnter);
-            this.btn_close.MouseLeave += new System.EventHandler(this.btn_close_MouseLeave);
             // 
             // panel_baseDetails
             // 
@@ -300,6 +276,31 @@
             this.label_VehicleDetailsForm_Title.TabIndex = 0;
             this.label_VehicleDetailsForm_Title.Text = "Vehicle Details";
             this.label_VehicleDetailsForm_Title.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btn_close
+            // 
+            this.btn_close.BackColor = System.Drawing.Color.Transparent;
+            this.btn_close.BorderColor = System.Drawing.Color.White;
+            this.btn_close.BorderRadius = 10;
+            this.btn_close.BorderThickness = 1;
+            this.btn_close.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_close.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_close.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_close.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_close.FillColor = System.Drawing.Color.Transparent;
+            this.btn_close.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btn_close.ForeColor = System.Drawing.Color.White;
+            this.btn_close.Image = ((System.Drawing.Image)(resources.GetObject("btn_close.Image")));
+            this.btn_close.ImageOffset = new System.Drawing.Point(1, 0);
+            this.btn_close.ImageSize = new System.Drawing.Size(40, 40);
+            this.btn_close.Location = new System.Drawing.Point(739, 18);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.PressedColor = System.Drawing.Color.Transparent;
+            this.btn_close.Size = new System.Drawing.Size(40, 40);
+            this.btn_close.TabIndex = 2;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+            this.btn_close.MouseEnter += new System.EventHandler(this.btn_close_MouseEnter);
+            this.btn_close.MouseLeave += new System.EventHandler(this.btn_close_MouseLeave);
             // 
             // VehicleDetailsForm
             // 

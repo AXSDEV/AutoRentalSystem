@@ -17,10 +17,15 @@ namespace AutoRentalSystem
         private Vehicle _vehicle;
         private Reservation _reservation;
         private bool _isReservationCard;
+        private CardMode _mode = CardMode.VehiclesPage;
 
         // Events for vehicles
         public event EventHandler<VehicleEventArgs> DeleteRequested;
         public event EventHandler<VehicleEventArgs> EditRequested;
+
+        // Extra actions (VehiclesPage)
+        public event EventHandler<VehicleEventArgs> ReserveRequested;
+        public event EventHandler<VehicleEventArgs> AlterStateRequested;
 
         // Events for reservations
         public event EventHandler<ReservationEventArgs> ReservationDeleteRequested;
@@ -28,6 +33,11 @@ namespace AutoRentalSystem
 
         public event EventHandler CardClicked;
 
+        public enum CardMode
+        {
+            VehiclesPage,
+            ReservationsPage
+        }
 
         public VehicleCards()
         {
@@ -38,6 +48,7 @@ namespace AutoRentalSystem
             default_card_panel.Cursor = Cursors.Hand;
 
             WireCardClick(default_card_panel);
+            WireExtraButtons();
         }
 
         public VehicleCards(Vehicle vehicle) : this()
@@ -52,12 +63,75 @@ namespace AutoRentalSystem
 
             foreach (Control c in parent.Controls)
             {
-                // não queremos que o botão delete/edit abra detalhes
-                if (c == btn_delete_vehicle || c == btn_editVehicle)
+                // não queremos que o clique em botões abra detalhes
+                if (c == btn_delete_vehicle || c == btn_editVehicle ||
+                    c.Name == "btn_reserveVehicle" || c.Name == "btn_alterState")
                     continue;
 
                 WireCardClick(c);
             }
+        }
+
+        public void SetMode(CardMode mode)
+        {
+            _mode = mode;
+
+            // Botões "base" existem sempre no Designer
+            // (em reservas, normalmente queres esconder "editar").
+            btn_editVehicle.Visible = (mode == CardMode.VehiclesPage);
+
+            // Botões extra podem não existir neste card (dependendo do UC/Designer).
+            SetVisibleIfExists("btn_reserveVehicle", mode == CardMode.VehiclesPage);
+            SetVisibleIfExists("btn_alterState", mode == CardMode.VehiclesPage);
+        }
+
+        private void SetVisibleIfExists(string controlName, bool visible)
+        {
+            var c = FindControlDeep(this, controlName);
+            if (c != null) c.Visible = visible;
+        }
+
+        private Control FindControlDeep(Control root, string name)
+        {
+            if (root == null) return null;
+            if (root.Name == name) return root;
+
+            foreach (Control child in root.Controls)
+            {
+                var found = FindControlDeep(child, name);
+                if (found != null) return found;
+            }
+
+            return null;
+        }
+
+        private void WireExtraButtons()
+        {
+            var btnReserve = FindControlDeep(this, "btn_reserveVehicle");
+            if (btnReserve != null)
+            {
+                btnReserve.Click -= BtnReserve_Click;
+                btnReserve.Click += BtnReserve_Click;
+            }
+
+            var btnAlterState = FindControlDeep(this, "btn_alterState");
+            if (btnAlterState != null)
+            {
+                btnAlterState.Click -= BtnAlterState_Click;
+                btnAlterState.Click += BtnAlterState_Click;
+            }
+        }
+
+        private void BtnReserve_Click(object sender, EventArgs e)
+        {
+            if (_vehicle == null) return;
+            ReserveRequested?.Invoke(this, new VehicleEventArgs(_vehicle));
+        }
+
+        private void BtnAlterState_Click(object sender, EventArgs e)
+        {
+            if (_vehicle == null) return;
+            AlterStateRequested?.Invoke(this, new VehicleEventArgs(_vehicle));
         }
 
         public void BindVehicle(Vehicle vehicle)
@@ -96,8 +170,8 @@ namespace AutoRentalSystem
             label6.Text = reservation.IsCompleted ? "Concluída" : "Ativa";
 
             pictureBox_RentState.Image = reservation.IsCompleted
-        ? Properties.Resources.state_available
-        : Properties.Resources.state_maintenance;
+                ? Properties.Resources.state_available
+                : Properties.Resources.state_maintenance;
         }
 
         private void Bind(Image icon, string c1, string c2, string c3, string c4, string c5, string c6)
@@ -186,7 +260,12 @@ namespace AutoRentalSystem
 
         private void default_card_panel_Click(object sender, EventArgs e)
         {
+            // Em cards de reservas, não queremos abrir detalhes do veículo por engano.
+            if (_isReservationCard) return;
+
             if (_vehicle == null) return;
+
+            CardClicked?.Invoke(this, EventArgs.Empty);
 
             using (var details = new VehicleDetailsForm(_vehicle))
             {

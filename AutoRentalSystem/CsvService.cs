@@ -93,7 +93,7 @@ namespace AutoRentalSystem
                 AppendAttribute(builder, "StartDate", FormatDate(reservation?.StartDate));
                 AppendAttribute(builder, "EndDate", FormatDate(reservation?.EndDate));
                 AppendAttribute(builder, "TotalPrice", FormatDecimal(reservation?.TotalPrice));
-                AppendAttribute(builder, "IsCompleted", FormatBool(reservation?.IsCompleted));
+                AppendAttribute(builder, "Status", FormatStatus(reservation?.Status));
                 builder.AppendLine();
             }
 
@@ -146,9 +146,9 @@ namespace AutoRentalSystem
             return value?.ToString(CultureInfo.InvariantCulture) ?? string.Empty;
         }
 
-        private static string FormatBool(bool? value)
+        private static string FormatStatus(ReservationStatus? status)
         {
-            return value?.ToString() ?? string.Empty;
+            return status?.ToString() ?? string.Empty;
         }
 
         private static void AppendAttribute(StringBuilder builder, string attribute, string value)
@@ -279,6 +279,7 @@ namespace AutoRentalSystem
             block.TryGetValue("StartDate", out var startDateText);
             block.TryGetValue("EndDate", out var endDateText);
             block.TryGetValue("TotalPrice", out var totalPriceText);
+            block.TryGetValue("Status", out var statusText);
             block.TryGetValue("IsCompleted", out var isCompletedText);
 
             if (string.IsNullOrWhiteSpace(licensePlate))
@@ -300,9 +301,9 @@ namespace AutoRentalSystem
 
             var reservation = new Reservation(ParseInt(idText), vehicle, startDate.Value, endDate.Value)
             {
-                TotalPrice = ParseDecimal(totalPriceText),
-                IsCompleted = ParseBool(isCompletedText)
+                TotalPrice = ParseDecimal(totalPriceText)
             };
+            reservation.Status = ParseStatus(statusText, isCompletedText, reservation.StartDate, reservation.EndDate);
 
             return reservation;
         }
@@ -321,9 +322,34 @@ namespace AutoRentalSystem
                 : 0m;
         }
 
-        private static bool ParseBool(string value)
+        private static ReservationStatus ParseStatus(
+            string statusText,
+            string isCompletedText,
+            DateTime startDate,
+            DateTime endDate)
         {
-            return bool.TryParse(value, out var parsed) && parsed;
+            if (Enum.TryParse(statusText, true, out ReservationStatus parsedStatus))
+            {
+                return parsedStatus;
+            }
+
+            if (bool.TryParse(isCompletedText, out var isCompleted) && isCompleted)
+            {
+                return ReservationStatus.Completed;
+            }
+
+            var today = DateTime.Today;
+            if (today >= endDate.Date)
+            {
+                return ReservationStatus.Completed;
+            }
+
+            if (today >= startDate.Date)
+            {
+                return ReservationStatus.Active;
+            }
+
+            return ReservationStatus.Reserved;
         }
 
         private static DateTime? ParseDate(string value)

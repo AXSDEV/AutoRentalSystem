@@ -83,11 +83,11 @@
             // 
             this.label_isCompleted.AutoSize = true;
             this.label_isCompleted.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label_isCompleted.Location = new System.Drawing.Point(1127, 11);
+            this.label_isCompleted.Location = new System.Drawing.Point(1140, 11);
             this.label_isCompleted.Name = "label_isCompleted";
-            this.label_isCompleted.Size = new System.Drawing.Size(92, 21);
+            this.label_isCompleted.Size = new System.Drawing.Size(59, 21);
             this.label_isCompleted.TabIndex = 0;
-            this.label_isCompleted.Text = "Completed";
+            this.label_isCompleted.Text = "Estado";
             // 
             // label_totalPrice
             // 
@@ -123,7 +123,7 @@
             // 
             this.label_type.AutoSize = true;
             this.label_type.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label_type.Location = new System.Drawing.Point(329, 11);
+            this.label_type.Location = new System.Drawing.Point(331, 11);
             this.label_type.Name = "label_type";
             this.label_type.Size = new System.Drawing.Size(45, 21);
             this.label_type.TabIndex = 0;
@@ -141,6 +141,7 @@
             // 
             // flowLayoutPanel_reservations
             // 
+            this.flowLayoutPanel_reservations.AutoScroll = true;
             this.flowLayoutPanel_reservations.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel_reservations.Location = new System.Drawing.Point(313, 171);
             this.flowLayoutPanel_reservations.Name = "flowLayoutPanel_reservations";
