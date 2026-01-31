@@ -40,6 +40,7 @@ namespace AutoRentalSystem
 
 			return newReservation;
 		}
+
         public static void LoadReservationsFromFile(IEnumerable<Vehicle> vehicles, string filePath)
         {
             if (vehicles == null)

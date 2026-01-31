@@ -48,12 +48,6 @@ namespace AutoRentalSystem
         }
         private void LoadVehiclesFromEnterprise()
         {
-            if (flowpanel_list == null)
-            {
-                MessageBox.Show("flowpanel_list é null (Designer / Name errado).");
-                return;
-            }
-
             flowpanel_list.SuspendLayout();
             flowpanel_list.Controls.Clear();
 
@@ -61,8 +55,8 @@ namespace AutoRentalSystem
             {
                 flowpanel_list.ResumeLayout();
                 MessageBox.Show(
-                    $"CSV não encontrado:\n{_vehiclesFilePath}",
-                    "Dados de veículos",
+                    $"CSV not found:\n{_vehiclesFilePath}",
+                    "Vehicle data",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 return;
@@ -84,7 +78,6 @@ namespace AutoRentalSystem
 
             flowpanel_list.ResumeLayout(true);
 
-            // força redesenho
             flowpanel_list.PerformLayout();
             flowpanel_list.Invalidate();
             flowpanel_list.Update();

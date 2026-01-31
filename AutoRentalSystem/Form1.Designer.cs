@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_home));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btn_alterstate = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btn_reservevehicle = new Guna.UI2.WinForms.Guna2GradientButton();
             this.label_actions = new System.Windows.Forms.Label();
@@ -49,10 +50,9 @@
             this.title_label = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel_content = new System.Windows.Forms.Panel();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
-            this.title_bar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.title_bar.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -77,6 +77,17 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(282, 1007);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BorderRadius = 10;
+            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(25, 16);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(49, 49);
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // btn_alterstate
             // 
@@ -121,6 +132,7 @@
             this.btn_reservevehicle.Size = new System.Drawing.Size(230, 45);
             this.btn_reservevehicle.TabIndex = 7;
             this.btn_reservevehicle.Text = "Reserve Vehicle";
+            this.btn_reservevehicle.Click += new System.EventHandler(this.btn_reservevehicle_Click);
             this.btn_reservevehicle.MouseEnter += new System.EventHandler(this.btn_reservevehicle_MouseEnter);
             this.btn_reservevehicle.MouseLeave += new System.EventHandler(this.btn_reservevehicle_MouseLeave);
             // 
@@ -369,17 +381,6 @@
             this.panel_content.Size = new System.Drawing.Size(1920, 1080);
             this.panel_content.TabIndex = 4;
             // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.BorderRadius = 10;
-            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(25, 16);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(49, 49);
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
-            // 
             // form_home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,8 +398,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
-            this.title_bar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            this.title_bar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

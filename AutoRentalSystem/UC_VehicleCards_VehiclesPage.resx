@@ -118,6 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btn_alterState.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAEGSURBVEhLzZUxbsMwDEUz9ggefYSMHXOk3iBjx44dO3rMmLFjjkFYn3uO0OIbliH8RC2NyGgf
+        wIXU/zQoydrt/hPu/gbgqPkmmFkP4GuOzZo8b9IEwLkwLuOxJgA+75guMY7ji2rCALhmI3d/Z87M9q3M
+        l5HknJl1TczN7EnNM5x5zRzAhVrN3+DuA81TStNYInCE8ygHrd1Q+/rfCOvCC4WwLrxQCOvywtCGFaxp
+        cJoXv2qthrt/UBPaZMIbrDnCI6q/h5+O9Spm8zy+jrnSnJdTNWHEfM9cSolvQza/qiZMaV6Ji2pWwZnf
+        MZ02dO1Jq1I2MbOD1psgTXqtN4FN+PBr/k/5BitGrxMeByxWAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btn_reserve_vehicle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAK1JREFUSEvt

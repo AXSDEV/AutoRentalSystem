@@ -62,10 +62,12 @@
             this.btn_edit_reservation.ImageOffset = new System.Drawing.Point(0, 12);
             this.btn_edit_reservation.Location = new System.Drawing.Point(76, 10);
             this.btn_edit_reservation.Name = "btn_edit_reservation";
-            this.btn_edit_reservation.PressedColor = System.Drawing.Color.Yellow;
+            this.btn_edit_reservation.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btn_edit_reservation.Size = new System.Drawing.Size(24, 24);
             this.btn_edit_reservation.TabIndex = 0;
             this.btn_edit_reservation.Text = "guna2Button1";
+            this.btn_edit_reservation.MouseEnter += new System.EventHandler(this.btn_edit_reservation_MouseEnter);
+            this.btn_edit_reservation.MouseLeave += new System.EventHandler(this.btn_edit_reservation_MouseLeave);
             // 
             // btn_delete_reservation
             // 
@@ -87,6 +89,8 @@
             this.btn_delete_reservation.Size = new System.Drawing.Size(24, 24);
             this.btn_delete_reservation.TabIndex = 0;
             this.btn_delete_reservation.Text = "guna2Button1";
+            this.btn_delete_reservation.MouseEnter += new System.EventHandler(this.btn_delete_reservation_MouseEnter);
+            this.btn_delete_reservation.MouseLeave += new System.EventHandler(this.btn_delete_reservation_MouseLeave);
             // 
             // UC_VehicleCards_ReservationPage
             // 

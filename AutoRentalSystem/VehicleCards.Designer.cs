@@ -59,8 +59,7 @@
             this.default_card_panel.Size = new System.Drawing.Size(1570, 50);
             this.default_card_panel.TabIndex = 0;
             this.default_card_panel.Click += new System.EventHandler(this.default_card_panel_Click);
-            this.default_card_panel.MouseEnter += new System.EventHandler(this.default_card_panel_MouseEnter);
-            this.default_card_panel.MouseLeave += new System.EventHandler(this.default_card_panel_MouseLeave);
+
             // 
             // pictureBox_RentState
             // 
