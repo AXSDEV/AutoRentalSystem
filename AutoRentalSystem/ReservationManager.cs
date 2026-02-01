@@ -12,46 +12,67 @@ namespace AutoRentalSystem
 		private static int _nextReservationId = 1;
         private const decimal BaseDailyPrice = 50.0m;
 
+        public static string ReservationsFilePath { get; set; } = string.Empty;
+
+        public static event Action ReservationsChanged;
+
         public static IReadOnlyList<Reservation> Reservations => _reservations.AsReadOnly();
 
-		public static Reservation CreateReservation(Vehicle vehicle, DateTime startDate, DateTime endDate)
-		{
-			if (vehicle == null)
-			{
-				throw new ArgumentNullException(nameof(vehicle), "Vehicle cannot be null.");
-			}
-			if (endDate <= startDate)
-			{
-				throw new ArgumentException("End date must be after start date.");
-			}
-			if (!CheckAvailability(vehicle, startDate, endDate))
-			{
-				throw new InvalidOperationException(
-					$"The vehicle with license plate {vehicle.LicensePlate} is not available in the selected period.");
-			}
-			Reservation newReservation = new Reservation(_nextReservationId++, vehicle, startDate, endDate);
+        public static Reservation CreateReservation(Vehicle vehicle, DateTime startDate, DateTime endDate)
+        {
+            if (vehicle == null)
+                throw new ArgumentNullException(nameof(vehicle), "Vehicle cannot be null.");
 
-			newReservation.CalculatePrice(BaseDailyPrice);
+            if (endDate <= startDate)
+                throw new ArgumentException("End date must be after start date.");
 
-			_reservations.Add(newReservation);
+            if (!CheckAvailability(vehicle, startDate, endDate))
+            {
+                throw new InvalidOperationException(
+                    $"The vehicle with license plate {vehicle.LicensePlate} is not available in the selected period.");
+            }
+
+            Reservation newReservation = new Reservation(_nextReservationId++, vehicle, startDate, endDate);
+            newReservation.CalculatePrice(BaseDailyPrice);
+
+            _reservations.Add(newReservation);
 
 			vehicle.RentState = "Reserved";
 			vehicle.AvailabilityDate = endDate.AddDays(1);
 
-			return newReservation;
+            PersistIfConfigured();
+            NotifyChanged();
+
+            return newReservation;
 		}
+
+        private static void NotifyChanged()
+        {
+            var handler = ReservationsChanged;
+            if (handler != null)
+                handler();
+        }
+
+        private static void PersistIfConfigured()
+        {
+            if (string.IsNullOrWhiteSpace(ReservationsFilePath))
+                return;
+
+            SaveReservationsToFile(ReservationsFilePath);
+        }
 
         public static void LoadReservationsFromFile(IEnumerable<Vehicle> vehicles, string filePath)
         {
             if (vehicles == null)
-            {
                 throw new ArgumentNullException(nameof(vehicles));
-            }
 
             var importedReservations = CsvExportService.ImportReservations(vehicles, filePath);
             _reservations.Clear();
             _reservations.AddRange(importedReservations);
+
             _nextReservationId = _reservations.Count == 0 ? 1 : _reservations.Max(r => r.Id) + 1;
+
+            NotifyChanged();
         }
 
         public static void SaveReservationsToFile(string filePath)
@@ -86,6 +107,9 @@ namespace AutoRentalSystem
             reservation.EndDate = endDate;
             reservation.Status = status;
             reservation.CalculatePrice(BaseDailyPrice);
+
+            PersistIfConfigured();
+            NotifyChanged();
 
             return reservation;
         }

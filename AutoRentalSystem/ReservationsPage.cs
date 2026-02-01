@@ -13,66 +13,30 @@ namespace AutoRentalSystem
 {
     public partial class ReservationsPage_Background : UserControl
     {
-        private readonly string _vehiclesFilePath = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory,
-            "data",
-            "vehicles.csv");
-
-        private readonly string _reservationsFilePath = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory,
-            "data",
-            "reservations.csv");
-
-        private bool _samplesLoaded;
         public ReservationsPage_Background()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
         }
+
         private void ReservationsPage_Load(object sender, EventArgs e)
         {
-            if (_samplesLoaded) return;
-
-            LoadReservationsFromFile();
-            _samplesLoaded = true;
+            ReservationManager.ReservationsChanged += OnReservationsChanged;
+            RenderReservations();
         }
 
-        private void LoadReservationsFromFile()
+        private void OnReservationsChanged()
         {
-            if (!File.Exists(_vehiclesFilePath))
+            if (IsDisposed) return;
+
+            if (InvokeRequired)
             {
-                MessageBox.Show(
-                    $"CSV not found:\n{_vehiclesFilePath}",
-                    "Vehicle Data",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                BeginInvoke(new Action(RenderReservations));
                 return;
             }
 
-            if (!File.Exists(_reservationsFilePath))
-            {
-                MessageBox.Show(
-                    $"CSV not found:\n{_reservationsFilePath}",
-                    "Reservations Data",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return;
-            }
-
-            var vehicles = CsvExportService.ImportVehicles(_vehiclesFilePath);
-
-            ReservationManager.LoadReservationsFromFile(vehicles, _reservationsFilePath);
-
-            flowLayoutPanel_reservations.Controls.Clear();
-
-            foreach (var reservation in ReservationManager.Reservations)
-            {
-                var card = new VehicleCards();
-                card.BindReservation(reservation);
-                flowLayoutPanel_reservations.Controls.Add(card);
-            }
+            RenderReservations();
         }
-
 
         private void RenderReservations()
         {
@@ -85,6 +49,11 @@ namespace AutoRentalSystem
                 flowLayoutPanel_reservations.Controls.Add(card);
             }
         }
-    }
 
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            ReservationManager.ReservationsChanged -= OnReservationsChanged;
+            base.OnHandleDestroyed(e);
+        }
+    }
 }

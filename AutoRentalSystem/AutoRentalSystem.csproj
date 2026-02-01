@@ -58,6 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlterStateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlterStateForm.Designer.cs">
+      <DependentUpon>AlterStateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppClock.cs" />
     <Compile Include="CsvService.cs" />
     <Compile Include="Bus.cs" />
     <Compile Include="Car.cs" />
@@ -177,6 +184,9 @@
     <Compile Include="VehiclesPage.Designer.cs">
       <DependentUpon>VehiclesPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AlterStateForm.resx">
+      <DependentUpon>AlterStateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

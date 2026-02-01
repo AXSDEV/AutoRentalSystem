@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace AutoRentalSystem
 {
@@ -17,6 +19,20 @@ namespace AutoRentalSystem
         public form_home()
         {
             InitializeComponent();
+
+            ReservationManager.ReservationsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory, "data", "reservations.csv");
+
+            var dir = Path.GetDirectoryName(ReservationManager.ReservationsFilePath);
+            if (!string.IsNullOrEmpty(dir))
+                Directory.CreateDirectory(dir);
+
+            var vehiclesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "vehicles.csv");
+            if (File.Exists(vehiclesPath) && File.Exists(ReservationManager.ReservationsFilePath))
+            {
+                var vehicles = CsvExportService.ImportVehicles(vehiclesPath);
+                ReservationManager.LoadReservationsFromFile(vehicles, ReservationManager.ReservationsFilePath);
+            }
 
             ShowPage<VehiclesPage>("Vehicles");
         }
@@ -112,30 +128,7 @@ namespace AutoRentalSystem
             btn_addvehicle.FillColor2 = Color.Transparent;
         }
 
-        private void btn_reservevehicle_MouseEnter(object sender, EventArgs e)
-        {
-            btn_reservevehicle.FillColor = Color.Orange;
-            btn_reservevehicle.FillColor2 = Color.Orange;
-        }
-
-        private void btn_reservevehicle_MouseLeave(object sender, EventArgs e)
-        {
-            btn_reservevehicle.FillColor = Color.Transparent;
-            btn_reservevehicle.FillColor2 = Color.Transparent;
-        }
-
-        private void btn_alterstate_MouseEnter(object sender, EventArgs e)
-        {
-            btn_alterstate.FillColor = Color.Orange;
-            btn_alterstate.FillColor2 = Color.Orange;
-        }
-
-        private void btn_alterstate_MouseLeave(object sender, EventArgs e)
-        {
-            btn_alterstate.FillColor = Color.Transparent;
-            btn_alterstate.FillColor2 = Color.Transparent;
-        }
-
+        
         private void btn_addvehicle_Click(object sender, EventArgs e)
         {
             using (var form = new VehicleAddForm())

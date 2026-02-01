@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_home));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btn_alterstate = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btn_reservevehicle = new Guna.UI2.WinForms.Guna2GradientButton();
             this.label_actions = new System.Windows.Forms.Label();
             this.label_pages = new System.Windows.Forms.Label();
             this.btn_addvehicle = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -50,6 +48,7 @@
             this.title_label = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel_content = new System.Windows.Forms.Panel();
+            this.DateTimePicker_changeDay = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.title_bar.SuspendLayout();
@@ -61,9 +60,8 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.BorderRadius = 20;
+            this.guna2Panel1.Controls.Add(this.DateTimePicker_changeDay);
             this.guna2Panel1.Controls.Add(this.guna2PictureBox1);
-            this.guna2Panel1.Controls.Add(this.btn_alterstate);
-            this.guna2Panel1.Controls.Add(this.btn_reservevehicle);
             this.guna2Panel1.Controls.Add(this.label_actions);
             this.guna2Panel1.Controls.Add(this.label_pages);
             this.guna2Panel1.Controls.Add(this.btn_addvehicle);
@@ -88,53 +86,6 @@
             this.guna2PictureBox1.Size = new System.Drawing.Size(49, 49);
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
-            // 
-            // btn_alterstate
-            // 
-            this.btn_alterstate.BorderRadius = 10;
-            this.btn_alterstate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_alterstate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_alterstate.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_alterstate.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_alterstate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_alterstate.FillColor = System.Drawing.Color.Transparent;
-            this.btn_alterstate.FillColor2 = System.Drawing.Color.Transparent;
-            this.btn_alterstate.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.btn_alterstate.ForeColor = System.Drawing.Color.White;
-            this.btn_alterstate.Image = ((System.Drawing.Image)(resources.GetObject("btn_alterstate.Image")));
-            this.btn_alterstate.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_alterstate.ImageSize = new System.Drawing.Size(23, 23);
-            this.btn_alterstate.Location = new System.Drawing.Point(25, 512);
-            this.btn_alterstate.Name = "btn_alterstate";
-            this.btn_alterstate.Size = new System.Drawing.Size(230, 45);
-            this.btn_alterstate.TabIndex = 8;
-            this.btn_alterstate.Text = "Alter State";
-            this.btn_alterstate.MouseEnter += new System.EventHandler(this.btn_alterstate_MouseEnter);
-            this.btn_alterstate.MouseLeave += new System.EventHandler(this.btn_alterstate_MouseLeave);
-            // 
-            // btn_reservevehicle
-            // 
-            this.btn_reservevehicle.BorderRadius = 10;
-            this.btn_reservevehicle.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_reservevehicle.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btn_reservevehicle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_reservevehicle.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btn_reservevehicle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btn_reservevehicle.FillColor = System.Drawing.Color.Transparent;
-            this.btn_reservevehicle.FillColor2 = System.Drawing.Color.Transparent;
-            this.btn_reservevehicle.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.btn_reservevehicle.ForeColor = System.Drawing.Color.White;
-            this.btn_reservevehicle.Image = ((System.Drawing.Image)(resources.GetObject("btn_reservevehicle.Image")));
-            this.btn_reservevehicle.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btn_reservevehicle.ImageSize = new System.Drawing.Size(25, 25);
-            this.btn_reservevehicle.Location = new System.Drawing.Point(25, 452);
-            this.btn_reservevehicle.Name = "btn_reservevehicle";
-            this.btn_reservevehicle.Size = new System.Drawing.Size(230, 45);
-            this.btn_reservevehicle.TabIndex = 7;
-            this.btn_reservevehicle.Text = "Reserve Vehicle";
-            this.btn_reservevehicle.Click += new System.EventHandler(this.btn_reservevehicle_Click);
-            this.btn_reservevehicle.MouseEnter += new System.EventHandler(this.btn_reservevehicle_MouseEnter);
-            this.btn_reservevehicle.MouseLeave += new System.EventHandler(this.btn_reservevehicle_MouseLeave);
             // 
             // label_actions
             // 
@@ -381,6 +332,23 @@
             this.panel_content.Size = new System.Drawing.Size(1920, 1080);
             this.panel_content.TabIndex = 4;
             // 
+            // DateTimePicker_changeDay
+            // 
+            this.DateTimePicker_changeDay.BorderRadius = 10;
+            this.DateTimePicker_changeDay.Checked = true;
+            this.DateTimePicker_changeDay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
+            this.DateTimePicker_changeDay.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
+            this.DateTimePicker_changeDay.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateTimePicker_changeDay.ForeColor = System.Drawing.Color.White;
+            this.DateTimePicker_changeDay.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.DateTimePicker_changeDay.Location = new System.Drawing.Point(26, 460);
+            this.DateTimePicker_changeDay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.DateTimePicker_changeDay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.DateTimePicker_changeDay.Name = "DateTimePicker_changeDay";
+            this.DateTimePicker_changeDay.Size = new System.Drawing.Size(230, 45);
+            this.DateTimePicker_changeDay.TabIndex = 0;
+            this.DateTimePicker_changeDay.Value = new System.DateTime(2026, 2, 1, 19, 4, 40, 830);
+            // 
             // form_home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -422,11 +390,11 @@
         private Guna.UI2.WinForms.Guna2GradientButton btn_addvehicle;
         private System.Windows.Forms.Label label_actions;
         private System.Windows.Forms.Label label_pages;
-        private Guna.UI2.WinForms.Guna2GradientButton btn_reservevehicle;
         private Guna.UI2.WinForms.Guna2GradientButton btn_reservations;
-        private Guna.UI2.WinForms.Guna2GradientButton btn_alterstate;
         private System.Windows.Forms.Panel panel_content;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private System.Windows.Forms.Label label_nextDay;
+        private Guna.UI2.WinForms.Guna2DateTimePicker DateTimePicker_changeDay;
     }
 }
 
