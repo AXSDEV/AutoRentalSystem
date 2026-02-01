@@ -72,6 +72,7 @@ namespace AutoRentalSystem
                 var card = new VehicleCards(vehicle);
                 card.DeleteRequested += HandleDeleteVehicle;
                 card.EditRequested += HandleEditVehicle;
+                card.AlterStateRequested += HandleAlterStateVehicle;
                 flowpanel_list.Controls.Add(card);
                 added++;
             }
@@ -83,8 +84,6 @@ namespace AutoRentalSystem
             flowpanel_list.Update();
             this.Invalidate();
             this.Update();
-
-            //MessageBox.Show($"Recarregado em runtime: {added} veículos.", "DEBUG");
         }
         private void HandleDeleteVehicle(object sender, VehicleCards.VehicleEventArgs e)
         {
@@ -141,6 +140,32 @@ namespace AutoRentalSystem
                 }
             }
         }
+
+        private void HandleAlterStateVehicle(object sender, VehicleCards.VehicleEventArgs e)
+        {
+            if (e == null || e.Vehicle == null)
+                return;
+
+            using (var form = new AlterStateForm())
+            {
+                form.StartPosition = FormStartPosition.CenterParent;
+
+                if (form.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                e.Vehicle.RentState = form.SelectedState;
+
+                if (form.SelectedState == "Maintenance")
+                    e.Vehicle.AvailabilityDate = DateTime.Today.AddDays(3);
+                else
+                    e.Vehicle.AvailabilityDate = null;
+
+                Enterprise.Instance.SaveVehiclesToCsv(_vehiclesFilePath);
+
+                LoadVehiclesFromEnterprise();
+            }
+        }
+
 
         private void EnsureVehiclesDirectory()
         {

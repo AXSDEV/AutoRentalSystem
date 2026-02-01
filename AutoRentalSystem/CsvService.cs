@@ -338,7 +338,7 @@ namespace AutoRentalSystem
                 return ReservationStatus.Completed;
             }
 
-            var today = DateTime.Today;
+            var today = AppClock.Today;
             if (today >= endDate.Date)
             {
                 return ReservationStatus.Completed;

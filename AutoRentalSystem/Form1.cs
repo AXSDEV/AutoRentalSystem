@@ -20,6 +20,9 @@ namespace AutoRentalSystem
         {
             InitializeComponent();
 
+            DateTimePicker_changeDay.Value = AppClock.Today;
+            DateTimePicker_changeDay.ValueChanged += DateTimePicker_changeDay_ValueChanged;
+            AppClock.DateChanged += OnAppDateChanged;
             ReservationManager.ReservationsFilePath = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory, "data", "reservations.csv");
 
@@ -33,7 +36,7 @@ namespace AutoRentalSystem
                 var vehicles = CsvExportService.ImportVehicles(vehiclesPath);
                 ReservationManager.LoadReservationsFromFile(vehicles, ReservationManager.ReservationsFilePath);
             }
-
+            ReservationManager.UpdateReservationStatuses(AppClock.Today);
             ShowPage<VehiclesPage>("Vehicles");
         }
         
@@ -143,11 +146,28 @@ namespace AutoRentalSystem
                 }
             }
         }
-
-        private void btn_reservevehicle_Click(object sender, EventArgs e)
+        private void DateTimePicker_changeDay_ValueChanged(object sender, EventArgs e)
         {
-
+            AppClock.SetDate(DateTimePicker_changeDay.Value);
+            ReservationManager.UpdateReservationStatuses(AppClock.Today);
         }
+
+        private void OnAppDateChanged(DateTime newDate)
+        {
+            if (DateTimePicker_changeDay.Value.Date != newDate.Date)
+            {
+                DateTimePicker_changeDay.Value = newDate.Date;
+            }
+        }
+
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            DateTimePicker_changeDay.ValueChanged -= DateTimePicker_changeDay_ValueChanged;
+            AppClock.DateChanged -= OnAppDateChanged;
+            base.OnHandleDestroyed(e);
+        }
+
+
     }
 
 }

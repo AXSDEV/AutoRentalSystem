@@ -106,7 +106,7 @@ namespace AutoRentalSystem
 
                     if (newState == "Available")
                     {
-                        vehicle.AvailabilityDate = DateTime.Today;
+                        vehicle.AvailabilityDate = AppClock.Today;
                         return true;
                     }
                     if (availabilityDate.HasValue)

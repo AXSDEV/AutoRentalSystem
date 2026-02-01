@@ -252,7 +252,7 @@ namespace AutoRentalSystem
 
             var rentState = "Available";
             var isAvailable = "True";
-            DateTime? availabilityDate = DateTime.Today;
+            DateTime? availabilityDate = AppClock.Today;
 
             if (string.IsNullOrWhiteSpace(licensePlate)
                 || string.IsNullOrWhiteSpace(fuelType)

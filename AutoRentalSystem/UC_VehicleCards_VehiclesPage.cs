@@ -15,6 +15,8 @@ namespace AutoRentalSystem
         public event EventHandler ReserveClicked;
         public event EventHandler EditClicked;
         public event EventHandler DeleteClicked;
+        public event EventHandler AlterStateClicked;
+
 
         public UC_VehicleCards_VehiclesPage()
         {
@@ -23,6 +25,7 @@ namespace AutoRentalSystem
             btn_reserve_vehicle.Click += btn_reserve_vehicle_Click;
             btn_edit_vehicle.Click += (_, __) => EditClicked?.Invoke(this, EventArgs.Empty);
             btn_delete_vehicle.Click += (_, __) => DeleteClicked?.Invoke(this, EventArgs.Empty);
+            btn_alterState.Click += btn_alterState_Click;
         }
 
         private void btn_reserve_vehicle_Click(object sender, EventArgs e)
@@ -35,6 +38,9 @@ namespace AutoRentalSystem
 
         private void btn_delete_vehicle_Click(object sender, EventArgs e)
             => DeleteClicked?.Invoke(this, EventArgs.Empty);
+
+        private void btn_alterState_Click(object sender, EventArgs e)
+            => AlterStateClicked?.Invoke(this, EventArgs.Empty);
 
         private void btn_reserve_vehicle_MouseEnter(object sender, EventArgs e)
         {

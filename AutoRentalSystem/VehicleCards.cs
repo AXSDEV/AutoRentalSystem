@@ -16,6 +16,7 @@ namespace AutoRentalSystem
         public event EventHandler<VehicleEventArgs> ReserveRequested;
         public event EventHandler<VehicleEventArgs> EditRequested;
         public event EventHandler<VehicleEventArgs> DeleteRequested;
+        public event EventHandler<VehicleEventArgs> AlterStateRequested;
 
         public event EventHandler<ReservationEventArgs> ReservationEditRequested;
         public event EventHandler<ReservationEventArgs> ReservationDeleteRequested;
@@ -77,7 +78,7 @@ namespace AutoRentalSystem
             _isReservationCard = true;
             _reservation = reservation;
             _vehicle = reservation.Vehicle;
-            reservation.UpdateStatus(DateTime.Today);
+            reservation.UpdateStatus(AppClock.Today);
 
             EnsureActionsControl(CardMode.ReservationsPage);
 
@@ -132,6 +133,7 @@ namespace AutoRentalSystem
                 actions.ReserveClicked += (_, __) => BtnReserve_Click();
                 actions.EditClicked += (_, __) => BtnEdit_Click();
                 actions.DeleteClicked += (_, __) => BtnDelete_Click();
+                actions.AlterStateClicked += (_, __) => BtnAlterState_Click();
 
                 _actionsControl = actions;
             }
@@ -185,6 +187,16 @@ namespace AutoRentalSystem
 
             if (_vehicle == null) return;
             DeleteRequested?.Invoke(this, new VehicleEventArgs(_vehicle));
+        }
+
+        private void BtnAlterState_Click()
+        {
+            if (_mode == CardMode.ReservationsPage)
+                return;
+
+            if (_vehicle == null) return;
+
+            AlterStateRequested?.Invoke(this, new VehicleEventArgs(_vehicle));
         }
 
         private void default_card_panel_Click(object sender, EventArgs e)

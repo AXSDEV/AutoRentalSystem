@@ -29,6 +29,8 @@ namespace AutoRentalSystem
             textbox_totalPrice.TabStop = false;
             textbox_totalPrice.Enabled = false;
 
+            dateTimePicker_startDate.Value = AppClock.Today;
+            dateTimePicker_endDate.Value = AppClock.Today.AddDays(1);
 
             dateTimePicker_startDate.ValueChanged += (_, __) => UpdatePricePreview();
             dateTimePicker_endDate.ValueChanged += (_, __) => UpdatePricePreview();

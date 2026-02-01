@@ -72,6 +72,7 @@ namespace AutoRentalSystem
 
             _nextReservationId = _reservations.Count == 0 ? 1 : _reservations.Max(r => r.Id) + 1;
 
+            UpdateReservationStatuses(AppClock.Today);
             NotifyChanged();
         }
 
@@ -113,7 +114,32 @@ namespace AutoRentalSystem
 
             return reservation;
         }
+        public static void UpdateReservationStatuses(DateTime referenceDate)
+        {
+            if (_reservations.Count == 0)
+            {
+                return;
+            }
 
+            bool changed = false;
+
+            foreach (var reservation in _reservations)
+            {
+                var previous = reservation.Status;
+                reservation.UpdateStatus(referenceDate);
+                if (reservation.Status != previous)
+                {
+                    changed = true;
+                }
+            }
+
+            if (changed)
+            {
+                PersistIfConfigured();
+            }
+
+            NotifyChanged();
+        }
         public static bool CheckAvailability(Vehicle vehicle, DateTime startDate, DateTime endDate)
 		{
 			var timeConflict = _reservations.Any(r =>

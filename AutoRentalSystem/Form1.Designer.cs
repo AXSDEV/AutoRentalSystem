@@ -338,16 +338,17 @@
             this.DateTimePicker_changeDay.Checked = true;
             this.DateTimePicker_changeDay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
             this.DateTimePicker_changeDay.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
-            this.DateTimePicker_changeDay.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateTimePicker_changeDay.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.DateTimePicker_changeDay.ForeColor = System.Drawing.Color.White;
-            this.DateTimePicker_changeDay.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.DateTimePicker_changeDay.Location = new System.Drawing.Point(26, 460);
+            this.DateTimePicker_changeDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateTimePicker_changeDay.Location = new System.Drawing.Point(33, 458);
             this.DateTimePicker_changeDay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DateTimePicker_changeDay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.DateTimePicker_changeDay.Name = "DateTimePicker_changeDay";
-            this.DateTimePicker_changeDay.Size = new System.Drawing.Size(230, 45);
+            this.DateTimePicker_changeDay.Size = new System.Drawing.Size(216, 45);
             this.DateTimePicker_changeDay.TabIndex = 0;
-            this.DateTimePicker_changeDay.Value = new System.DateTime(2026, 2, 1, 19, 4, 40, 830);
+            this.DateTimePicker_changeDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DateTimePicker_changeDay.Value = new System.DateTime(2026, 2, 1, 19, 19, 14, 207);
             // 
             // form_home
             // 
@@ -393,7 +394,6 @@
         private Guna.UI2.WinForms.Guna2GradientButton btn_reservations;
         private System.Windows.Forms.Panel panel_content;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private System.Windows.Forms.Label label_nextDay;
         private Guna.UI2.WinForms.Guna2DateTimePicker DateTimePicker_changeDay;
     }
 }
