@@ -1,17 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AutoRentalSystem
 {
     public partial class VehiclesPage : UserControl
     {
+        private List<Vehicle> _allVehicles = new List<Vehicle>();
+
         private readonly string _vehiclesFilePath = Path.Combine(
             AppDomain.CurrentDomain.BaseDirectory,
             "data",
             "vehicles.csv");
-
-        private bool _samplesLoaded;
 
         public VehiclesPage()
         {
@@ -30,61 +32,106 @@ namespace AutoRentalSystem
 
                 if (result == DialogResult.OK)
                 {
-                    BeginInvoke(new Action(LoadVehiclesFromEnterprise));
+                    BeginInvoke(new Action(RefreshVehicles));
                 }
             }
         }
 
         private void VehiclesPage_Load(object sender, EventArgs e)
         {
-            if (_samplesLoaded) return;
+            textBox_search.TextChanged += (_, __) => ApplyFilters();
+            comboBox_status.SelectedIndexChanged += (_, __) => ApplyFilters();
+            comboBox_vehicleType.SelectedIndexChanged += (_, __) => ApplyFilters();
 
-            LoadVehiclesFromEnterprise();
-            _samplesLoaded = true;
+            RefreshVehicles();
         }
-        public void RefreshVehicles()
+
+        private void ApplyFilters()
         {
-            LoadVehiclesFromEnterprise();
+            IEnumerable<Vehicle> query = _allVehicles;
+
+            // SEARCH
+            string q = textBox_search.Text.Trim();
+            if (!string.IsNullOrEmpty(q))
+            {
+                string norm = NormalizePlate(q);
+                query = query.Where(v =>
+                    !string.IsNullOrEmpty(v.LicensePlate) &&
+                    NormalizePlate(v.LicensePlate).IndexOf(norm, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+
+            // STATUS
+            string status = comboBox_status.SelectedItem != null ? comboBox_status.SelectedItem.ToString() : "All";
+            if (!status.Equals("All", StringComparison.OrdinalIgnoreCase))
+            {
+                query = query.Where(v =>
+                    string.Equals(v.RentState, status, StringComparison.OrdinalIgnoreCase));
+            }
+
+            // TYPE
+            string type = comboBox_vehicleType.SelectedItem != null ? comboBox_vehicleType.SelectedItem.ToString() : "All";
+            if (!type.Equals("All", StringComparison.OrdinalIgnoreCase))
+            {
+                query = query.Where(v =>
+                    v.GetType().Name.Equals(type, StringComparison.OrdinalIgnoreCase));
+            }
+
+            RenderVehicles(query.ToList());
         }
-        private void LoadVehiclesFromEnterprise()
+
+        private string NormalizePlate(string s)
+        {
+            return (s ?? "").Replace(" ", "").Replace("-", "").Trim();
+        }
+
+
+        private void RenderVehicles(List<Vehicle> vehicles)
         {
             flowpanel_list.SuspendLayout();
             flowpanel_list.Controls.Clear();
 
-            if (!File.Exists(_vehiclesFilePath))
+            foreach (var vehicle in vehicles)
             {
-                flowpanel_list.ResumeLayout();
-                MessageBox.Show(
-                    $"CSV not found:\n{_vehiclesFilePath}",
-                    "Vehicle data",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return;
-            }
-
-            Enterprise.Instance.LoadVehiclesFromCsv(_vehiclesFilePath);
-            var vehicles = Enterprise.Instance.Vehicles;
-
-            int added = 0;
-            foreach (var vehicle in vehicles)  
-            {
-                if (vehicle == null) continue;
                 var card = new VehicleCards(vehicle);
                 card.DeleteRequested += HandleDeleteVehicle;
                 card.EditRequested += HandleEditVehicle;
                 card.AlterStateRequested += HandleAlterStateVehicle;
                 flowpanel_list.Controls.Add(card);
-                added++;
             }
 
             flowpanel_list.ResumeLayout(true);
-
-            flowpanel_list.PerformLayout();
-            flowpanel_list.Invalidate();
-            flowpanel_list.Update();
-            this.Invalidate();
-            this.Update();
         }
+
+        private bool MatchesType(Vehicle v, string type)
+        {
+            return v.GetType().Name.Equals(type, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public void RefreshVehicles()
+        {
+            if (!File.Exists(_vehiclesFilePath))
+            {
+                _allVehicles = new List<Vehicle>();
+                MessageBox.Show(
+                    $"CSV not found:\n{_vehiclesFilePath}",
+                    "Vehicle data",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                ApplyFilters(); // limpa a UI
+                return;
+            }
+
+            Enterprise.Instance.LoadVehiclesFromCsv(_vehiclesFilePath);
+
+            // guarda a lista base em memória
+            _allVehicles = Enterprise.Instance.Vehicles
+                .Where(v => v != null)
+                .ToList();
+
+            // aplica filtros e desenha
+            ApplyFilters();
+        }
+
         private void HandleDeleteVehicle(object sender, VehicleCards.VehicleEventArgs e)
         {
             if (e?.Vehicle == null)
@@ -120,7 +167,7 @@ namespace AutoRentalSystem
 
             EnsureVehiclesDirectory();
             Enterprise.Instance.SaveVehiclesToCsv(_vehiclesFilePath);
-            LoadVehiclesFromEnterprise();
+            RefreshVehicles();
         }
 
         private void HandleEditVehicle(object sender, VehicleCards.VehicleEventArgs e)
@@ -136,7 +183,7 @@ namespace AutoRentalSystem
                 var result = form.ShowDialog(FindForm());
                 if (result == DialogResult.OK)
                 {
-                    LoadVehiclesFromEnterprise();
+                    RefreshVehicles();
                 }
             }
         }
@@ -162,7 +209,7 @@ namespace AutoRentalSystem
 
                 Enterprise.Instance.SaveVehiclesToCsv(_vehiclesFilePath);
 
-                LoadVehiclesFromEnterprise();
+                RefreshVehicles();
             }
         }
 

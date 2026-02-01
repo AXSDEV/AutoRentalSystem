@@ -178,11 +178,11 @@ namespace AutoRentalSystem
             return !timeConflict;
         }
 
-        public static decimal CalculateTotalInvoiced(DateTime startDate, DateTime endDate)
+        public static decimal CalculateTotalPriceInterval(DateTime startDate, DateTime endDate)
 		{
 			return _reservations
                 .Where(r => r.Status == ReservationStatus.Completed && r.StartDate >= startDate && r.EndDate <= endDate)
                 .Sum(r => r.TotalPrice);
 		}
-	}
+    }
 }

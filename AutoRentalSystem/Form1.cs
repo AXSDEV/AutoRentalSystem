@@ -20,6 +20,16 @@ namespace AutoRentalSystem
         {
             InitializeComponent();
 
+
+
+            var start = new DateTime(2025, 11, 1);
+            var end = new DateTime(2026, 1, 15);
+
+            var total = ReservationManager.CalculateTotalPriceInterval(start, end);
+
+            Console.WriteLine($"Total: {total:0.00} €");
+            Console.ReadLine();
+
             DateTimePicker_changeDay.Value = AppClock.Today;
             DateTimePicker_changeDay.ValueChanged += DateTimePicker_changeDay_ValueChanged;
             AppClock.DateChanged += OnAppDateChanged;

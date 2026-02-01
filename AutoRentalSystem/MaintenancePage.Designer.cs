@@ -33,6 +33,7 @@
             this.label_licensePlate = new System.Windows.Forms.Label();
             this.flowLayoutPanel_maintenance = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2VScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
+            this.label_type = new System.Windows.Forms.Label();
             this.panel_titleBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +48,7 @@
             // panel_titleBar
             // 
             this.panel_titleBar.BorderRadius = 10;
+            this.panel_titleBar.Controls.Add(this.label_type);
             this.panel_titleBar.Controls.Add(this.label_licensePlate);
             this.panel_titleBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.panel_titleBar.Location = new System.Drawing.Point(313, 107);
@@ -67,6 +69,7 @@
             // 
             // flowLayoutPanel_maintenance
             // 
+            this.flowLayoutPanel_maintenance.AutoScroll = true;
             this.flowLayoutPanel_maintenance.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel_maintenance.Location = new System.Drawing.Point(313, 171);
             this.flowLayoutPanel_maintenance.Name = "flowLayoutPanel_maintenance";
@@ -88,6 +91,17 @@
             this.guna2VScrollBar1.Size = new System.Drawing.Size(18, 838);
             this.guna2VScrollBar1.TabIndex = 0;
             this.guna2VScrollBar1.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            // 
+            // label_type
+            // 
+            this.label_type.AutoSize = true;
+            this.label_type.BackColor = System.Drawing.Color.Transparent;
+            this.label_type.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label_type.Location = new System.Drawing.Point(275, 11);
+            this.label_type.Name = "label_type";
+            this.label_type.Size = new System.Drawing.Size(45, 21);
+            this.label_type.TabIndex = 0;
+            this.label_type.Text = "Type";
             // 
             // MaintenancePage
             // 
@@ -114,5 +128,6 @@
         private System.Windows.Forms.Label label_licensePlate;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_maintenance;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar1;
+        private System.Windows.Forms.Label label_type;
     }
 }

@@ -48,6 +48,12 @@ namespace AutoRentalSystem
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox_search = new Guna.UI2.WinForms.Guna2TextBox();
+            this.comboBox_status = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.comboBox_vehicleType = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel_titlebar.SuspendLayout();
             this.panel_VehiclesPage_Description.SuspendLayout();
             this.SuspendLayout();
@@ -192,10 +198,10 @@ namespace AutoRentalSystem
             this.guna2VScrollBar2.BorderRadius = 7;
             this.guna2VScrollBar2.InUpdate = false;
             this.guna2VScrollBar2.LargeChange = 10;
-            this.guna2VScrollBar2.Location = new System.Drawing.Point(1896, 171);
+            this.guna2VScrollBar2.Location = new System.Drawing.Point(1891, 171);
             this.guna2VScrollBar2.Name = "guna2VScrollBar2";
-            this.guna2VScrollBar2.ScrollbarSize = 13;
-            this.guna2VScrollBar2.Size = new System.Drawing.Size(13, 838);
+            this.guna2VScrollBar2.ScrollbarSize = 18;
+            this.guna2VScrollBar2.Size = new System.Drawing.Size(18, 838);
             this.guna2VScrollBar2.TabIndex = 0;
             this.guna2VScrollBar2.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             // 
@@ -218,9 +224,9 @@ namespace AutoRentalSystem
             this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label5.Location = new System.Drawing.Point(479, 8);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(167, 25);
+            this.label5.Size = new System.Drawing.Size(181, 25);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Unavailable";
+            this.label5.Text = "Maintenance";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
@@ -262,11 +268,118 @@ namespace AutoRentalSystem
             this.label1.Text = "Available";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // textBox_search
+            // 
+            this.textBox_search.BorderRadius = 10;
+            this.textBox_search.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox_search.DefaultText = "";
+            this.textBox_search.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.textBox_search.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.textBox_search.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBox_search.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBox_search.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBox_search.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBox_search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox_search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBox_search.Location = new System.Drawing.Point(1704, 65);
+            this.textBox_search.Name = "textBox_search";
+            this.textBox_search.PlaceholderText = "Search Licence Plate...";
+            this.textBox_search.SelectedText = "";
+            this.textBox_search.Size = new System.Drawing.Size(200, 36);
+            this.textBox_search.TabIndex = 9;
+            // 
+            // comboBox_status
+            // 
+            this.comboBox_status.BackColor = System.Drawing.Color.Transparent;
+            this.comboBox_status.BorderRadius = 10;
+            this.comboBox_status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBox_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_status.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.comboBox_status.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.comboBox_status.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.comboBox_status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.comboBox_status.ItemHeight = 30;
+            this.comboBox_status.Items.AddRange(new object[] {
+            "All",
+            "Available",
+            "Reserved",
+            "Rented",
+            "Maintenance"});
+            this.comboBox_status.Location = new System.Drawing.Point(1525, 65);
+            this.comboBox_status.Name = "comboBox_status";
+            this.comboBox_status.Size = new System.Drawing.Size(155, 36);
+            this.comboBox_status.StartIndex = 0;
+            this.comboBox_status.TabIndex = 10;
+            this.comboBox_status.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // comboBox_vehicleType
+            // 
+            this.comboBox_vehicleType.BackColor = System.Drawing.Color.Transparent;
+            this.comboBox_vehicleType.BorderRadius = 10;
+            this.comboBox_vehicleType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBox_vehicleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_vehicleType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.comboBox_vehicleType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.comboBox_vehicleType.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.comboBox_vehicleType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.comboBox_vehicleType.ItemHeight = 30;
+            this.comboBox_vehicleType.Items.AddRange(new object[] {
+            "All",
+            "Car",
+            "Motorcycle",
+            "Bus",
+            "Truck"});
+            this.comboBox_vehicleType.Location = new System.Drawing.Point(1344, 65);
+            this.comboBox_vehicleType.Name = "comboBox_vehicleType";
+            this.comboBox_vehicleType.Size = new System.Drawing.Size(155, 36);
+            this.comboBox_vehicleType.StartIndex = 0;
+            this.comboBox_vehicleType.TabIndex = 10;
+            this.comboBox_vehicleType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(1242, 68);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 25);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Filter by :";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(1388, 42);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 19);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Type";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.25F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(1564, 42);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 19);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Status";
+            // 
             // VehiclesPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.comboBox_vehicleType);
+            this.Controls.Add(this.comboBox_status);
+            this.Controls.Add(this.textBox_search);
             this.Controls.Add(this.guna2VScrollBar2);
             this.Controls.Add(this.panel_VehiclesPage_Description);
             this.Controls.Add(this.flowpanel_list);
@@ -311,5 +424,11 @@ namespace AutoRentalSystem
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private Guna.UI2.WinForms.Guna2TextBox textBox_search;
+        private Guna.UI2.WinForms.Guna2ComboBox comboBox_status;
+        private Guna.UI2.WinForms.Guna2ComboBox comboBox_vehicleType;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

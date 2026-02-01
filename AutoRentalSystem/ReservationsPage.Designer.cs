@@ -41,7 +41,12 @@
             this.guna2VScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.guna2VScrollBar2 = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.guna2VScrollBar3 = new Guna.UI2.WinForms.Guna2VScrollBar();
+            this.panel_ReservationsPage_Description = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel_titleBar.SuspendLayout();
+            this.panel_ReservationsPage_Description.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -192,11 +197,61 @@
             this.guna2VScrollBar3.TabIndex = 0;
             this.guna2VScrollBar3.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             // 
+            // panel_ReservationsPage_Description
+            // 
+            this.panel_ReservationsPage_Description.Controls.Add(this.label3);
+            this.panel_ReservationsPage_Description.Controls.Add(this.label2);
+            this.panel_ReservationsPage_Description.Controls.Add(this.label1);
+            this.panel_ReservationsPage_Description.Location = new System.Drawing.Point(324, 1020);
+            this.panel_ReservationsPage_Description.Name = "panel_ReservationsPage_Description";
+            this.panel_ReservationsPage_Description.Size = new System.Drawing.Size(633, 42);
+            this.panel_ReservationsPage_Description.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Image = global::AutoRentalSystem.Properties.Resources.state_available;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(4, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(166, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Completed";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Image = global::AutoRentalSystem.Properties.Resources.state_reserved;
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Location = new System.Drawing.Point(176, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(151, 25);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Reserved";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Image = global::AutoRentalSystem.Properties.Resources.state_rented;
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(333, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(134, 25);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Rented";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ReservationsPage_Background
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.panel_ReservationsPage_Description);
             this.Controls.Add(this.guna2VScrollBar3);
             this.Controls.Add(this.flowLayoutPanel_reservations);
             this.Controls.Add(this.panel_titleBar);
@@ -206,6 +261,7 @@
             this.Load += new System.EventHandler(this.ReservationsPage_Load);
             this.panel_titleBar.ResumeLayout(false);
             this.panel_titleBar.PerformLayout();
+            this.panel_ReservationsPage_Description.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -225,5 +281,9 @@
         private System.Windows.Forms.Label label_actions;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar2;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar3;
+        private Guna.UI2.WinForms.Guna2Panel panel_ReservationsPage_Description;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
