@@ -77,10 +77,17 @@ namespace AutoRentalSystem
         {
             try
             {
-                ReservationManager.CreateReservation(
+                var reservation = ReservationManager.CreateReservation(
                     _vehicle,
                     dateTimePicker_startDate.Value.Date,
                     dateTimePicker_endDate.Value.Date
+                );
+
+                MessageBox.Show(
+                    $"Reservation created with success!\nTotal: {reservation.TotalPrice:C}",
+                    "Reservation confirmed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
                 );
 
                 DialogResult = DialogResult.OK;
