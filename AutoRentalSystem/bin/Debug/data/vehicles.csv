@@ -678,3 +678,23 @@ Height: 0
 MaxWeight: 0
 Cc: 0
 
+VehicleType: Car
+RentState: Available
+Maker: Ford
+Model: Mustang
+Year: 2024
+LicensePlate: FF-12-DD
+IsAvailable: True
+ShiftType: Automatic
+FuelType: Gasoline
+DailyPrice: 500
+AvailabilityDate: 2026-02-02
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 3
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 0
+
