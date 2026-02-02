@@ -68,6 +68,12 @@
     <Compile Include="CsvService.cs" />
     <Compile Include="Bus.cs" />
     <Compile Include="Car.cs" />
+    <Compile Include="DashboardPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DashboardPage.Designer.cs">
+      <DependentUpon>DashboardPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enterprise.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -122,6 +128,12 @@
     </Compile>
     <Compile Include="UC_AddVehicleForm_Truck.Designer.cs">
       <DependentUpon>UC_AddVehicleForm_Truck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_AlterState_DateTimePicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_AlterState_DateTimePicker.Designer.cs">
+      <DependentUpon>UC_AlterState_DateTimePicker.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_VehicleCards_ReservationPage.cs">
       <SubType>UserControl</SubType>
@@ -187,6 +199,9 @@
     <EmbeddedResource Include="AlterStateForm.resx">
       <DependentUpon>AlterStateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DashboardPage.resx">
+      <DependentUpon>DashboardPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AddVehicleForm_Truck.resx">
       <DependentUpon>UC_AddVehicleForm_Truck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_AlterState_DateTimePicker.resx">
+      <DependentUpon>UC_AlterState_DateTimePicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_VehicleCards_ReservationPage.resx">
       <DependentUpon>UC_VehicleCards_ReservationPage.cs</DependentUpon>

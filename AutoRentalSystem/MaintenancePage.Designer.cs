@@ -34,6 +34,12 @@
             this.flowLayoutPanel_maintenance = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2VScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.label_type = new System.Windows.Forms.Label();
+            this.label_maker = new System.Windows.Forms.Label();
+            this.label_model = new System.Windows.Forms.Label();
+            this.label_startDate = new System.Windows.Forms.Label();
+            this.label_endDate = new System.Windows.Forms.Label();
+            this.label_actions = new System.Windows.Forms.Label();
+            this.textBox_search = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel_titleBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +54,11 @@
             // panel_titleBar
             // 
             this.panel_titleBar.BorderRadius = 10;
+            this.panel_titleBar.Controls.Add(this.label_actions);
+            this.panel_titleBar.Controls.Add(this.label_endDate);
+            this.panel_titleBar.Controls.Add(this.label_startDate);
+            this.panel_titleBar.Controls.Add(this.label_model);
+            this.panel_titleBar.Controls.Add(this.label_maker);
             this.panel_titleBar.Controls.Add(this.label_type);
             this.panel_titleBar.Controls.Add(this.label_licensePlate);
             this.panel_titleBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -97,17 +108,92 @@
             this.label_type.AutoSize = true;
             this.label_type.BackColor = System.Drawing.Color.Transparent;
             this.label_type.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label_type.Location = new System.Drawing.Point(275, 11);
+            this.label_type.Location = new System.Drawing.Point(331, 11);
             this.label_type.Name = "label_type";
             this.label_type.Size = new System.Drawing.Size(45, 21);
             this.label_type.TabIndex = 0;
             this.label_type.Text = "Type";
+            // 
+            // label_maker
+            // 
+            this.label_maker.AutoSize = true;
+            this.label_maker.BackColor = System.Drawing.Color.Transparent;
+            this.label_maker.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label_maker.Location = new System.Drawing.Point(509, 11);
+            this.label_maker.Name = "label_maker";
+            this.label_maker.Size = new System.Drawing.Size(56, 21);
+            this.label_maker.TabIndex = 0;
+            this.label_maker.Text = "Maker";
+            // 
+            // label_model
+            // 
+            this.label_model.AutoSize = true;
+            this.label_model.BackColor = System.Drawing.Color.Transparent;
+            this.label_model.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label_model.Location = new System.Drawing.Point(742, 11);
+            this.label_model.Name = "label_model";
+            this.label_model.Size = new System.Drawing.Size(58, 21);
+            this.label_model.TabIndex = 0;
+            this.label_model.Text = "Model";
+            // 
+            // label_startDate
+            // 
+            this.label_startDate.AutoSize = true;
+            this.label_startDate.BackColor = System.Drawing.Color.Transparent;
+            this.label_startDate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label_startDate.Location = new System.Drawing.Point(957, 11);
+            this.label_startDate.Name = "label_startDate";
+            this.label_startDate.Size = new System.Drawing.Size(83, 21);
+            this.label_startDate.TabIndex = 0;
+            this.label_startDate.Text = "Start Date";
+            // 
+            // label_endDate
+            // 
+            this.label_endDate.AutoSize = true;
+            this.label_endDate.BackColor = System.Drawing.Color.Transparent;
+            this.label_endDate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label_endDate.Location = new System.Drawing.Point(1119, 11);
+            this.label_endDate.Name = "label_endDate";
+            this.label_endDate.Size = new System.Drawing.Size(75, 21);
+            this.label_endDate.TabIndex = 0;
+            this.label_endDate.Text = "End Date";
+            // 
+            // label_actions
+            // 
+            this.label_actions.AutoSize = true;
+            this.label_actions.BackColor = System.Drawing.Color.Transparent;
+            this.label_actions.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label_actions.Location = new System.Drawing.Point(1379, 11);
+            this.label_actions.Name = "label_actions";
+            this.label_actions.Size = new System.Drawing.Size(65, 21);
+            this.label_actions.TabIndex = 0;
+            this.label_actions.Text = "Actions";
+            // 
+            // textBox_search
+            // 
+            this.textBox_search.BorderRadius = 10;
+            this.textBox_search.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBox_search.DefaultText = "";
+            this.textBox_search.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.textBox_search.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.textBox_search.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBox_search.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBox_search.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBox_search.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBox_search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBox_search.Location = new System.Drawing.Point(1704, 65);
+            this.textBox_search.Name = "textBox_search";
+            this.textBox_search.PlaceholderText = "";
+            this.textBox_search.SelectedText = "";
+            this.textBox_search.Size = new System.Drawing.Size(200, 36);
+            this.textBox_search.TabIndex = 3;
             // 
             // MaintenancePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.textBox_search);
             this.Controls.Add(this.guna2VScrollBar1);
             this.Controls.Add(this.flowLayoutPanel_maintenance);
             this.Controls.Add(this.panel_titleBar);
@@ -129,5 +215,11 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_maintenance;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2VScrollBar1;
         private System.Windows.Forms.Label label_type;
+        private System.Windows.Forms.Label label_maker;
+        private System.Windows.Forms.Label label_model;
+        private System.Windows.Forms.Label label_startDate;
+        private System.Windows.Forms.Label label_endDate;
+        private System.Windows.Forms.Label label_actions;
+        private Guna.UI2.WinForms.Guna2TextBox textBox_search;
     }
 }

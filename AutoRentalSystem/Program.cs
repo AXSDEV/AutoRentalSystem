@@ -16,7 +16,6 @@ namespace AutoRentalSystem
         [STAThread]
         static void Main()
         {
-            Console.WriteLine("Hello");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new form_home());

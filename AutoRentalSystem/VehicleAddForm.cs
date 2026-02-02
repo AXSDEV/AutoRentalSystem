@@ -36,8 +36,8 @@ namespace AutoRentalSystem
             }
             ComboBox_year.SelectedItem = currentYear;
 
-            this.BackColor = Color.Black;
-            this.TransparencyKey = Color.Black;
+            this.BackColor = Color.FromArgb(34, 33, 42);
+            this.TransparencyKey = Color.FromArgb(34, 33, 42);
 
             ucCar = new UC_AddVehicleForm_Car_Background { Dock = DockStyle.Fill, Visible = false };
             ucBike = new UC_AddVehicleForm_Bike { Dock = DockStyle.Fill, Visible = false };

@@ -52,7 +52,7 @@ LicensePlate: DE-90-FG
 StartDate: 2026-01-29
 EndDate: 2026-02-02
 TotalPrice: 180.00
-Status: Active
+Status: Completed
 
 Id: 9
 VehicleType: Car
@@ -108,7 +108,7 @@ LicensePlate: GH-78-IJ
 StartDate: 2026-01-25
 EndDate: 2026-02-02
 TotalPrice: 280.00
-Status: Active
+Status: Completed
 
 Id: 18
 VehicleType: Motorcycle
@@ -164,7 +164,7 @@ LicensePlate: KK-11-LL
 StartDate: 2026-02-01
 EndDate: 2026-02-02
 TotalPrice: 69
-Status: Active
+Status: Completed
 
 Id: 25
 VehicleType: Car
@@ -173,4 +173,12 @@ StartDate: 2026-02-01
 EndDate: 2026-02-12
 TotalPrice: 759
 Status: Active
+
+Id: 26
+VehicleType: Car
+LicensePlate: II-90-JJ
+StartDate: 2026-02-02
+EndDate: 2026-02-03
+TotalPrice: 38
+Status: Reserved
 

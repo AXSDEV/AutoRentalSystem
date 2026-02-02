@@ -2,12 +2,12 @@
 using System.Windows.Forms;
 using System.Drawing;
 
-
 namespace AutoRentalSystem
 {
     public partial class AlterStateForm : Form
     {
         public string SelectedState { get; private set; }
+        private UserControl _currentStateUC;
 
         public AlterStateForm()
         {
@@ -19,10 +19,45 @@ namespace AutoRentalSystem
                 comboBox_status.Items.Add("Maintenance");
             }
 
-            comboBox_status.SelectedIndex = 0;
+            comboBox_status.SelectedIndexChanged += comboBox_status_SelectedIndexChanged;
+            comboBox_status.SelectedIndex = 0; // garante item selecionado
 
-            this.BackColor = Color.Black;
-            this.TransparencyKey = Color.Black;
+            LoadStatePanel(comboBox_status.SelectedItem?.ToString());
+
+            this.BackColor = Color.FromArgb(34, 33, 42);
+            this.TransparencyKey = Color.FromArgb(34, 33, 42);
+        }
+
+
+
+        private void LoadStatePanel(string state)
+        {
+            if (panel_dateTimePicker == null) return;
+
+            panel_dateTimePicker.Controls.Clear();
+            _currentStateUC?.Dispose();
+            _currentStateUC = null;
+
+            if (string.IsNullOrWhiteSpace(state))
+                return;
+
+            switch (state)
+            {
+                case "Maintenance":
+                    _currentStateUC = new UC_AlterState_DateTimePicker();
+                    break;
+
+                default:
+                    return;
+            }
+
+            _currentStateUC.Dock = DockStyle.Fill;
+            panel_dateTimePicker.Controls.Add(_currentStateUC);
+        }
+
+        private void comboBox_status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadStatePanel(comboBox_status.SelectedItem?.ToString());
         }
 
         private void btn_alterState_Click(object sender, EventArgs e)

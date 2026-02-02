@@ -37,8 +37,8 @@ namespace AutoRentalSystem
 
             UpdatePricePreview();
 
-            this.BackColor = Color.Black;
-            this.TransparencyKey = Color.Black;
+            this.BackColor = Color.FromArgb(34, 33, 42);
+            this.TransparencyKey = Color.FromArgb(34, 33, 42);
         }
 
         private void UpdatePricePreview()

@@ -23,7 +23,6 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btn_close = new Guna.UI2.WinForms.Guna2Button();
             this.btn_reserveVehicle = new Guna.UI2.WinForms.Guna2Button();
-            this.btn_reserveVehicle.Click += new System.EventHandler(this.btn_reserveVehicle_Click);
             this.dateTimePicker_endDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dateTimePicker_startDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.textbox_totalPrice = new Guna.UI2.WinForms.Guna2TextBox();
@@ -96,15 +95,16 @@
             this.btn_reserveVehicle.Size = new System.Drawing.Size(500, 45);
             this.btn_reserveVehicle.TabIndex = 4;
             this.btn_reserveVehicle.Text = "Reserve Vehicle";
+            this.btn_reserveVehicle.Click += new System.EventHandler(this.btn_reserveVehicle_Click);
             // 
             // dateTimePicker_endDate
             // 
             this.dateTimePicker_endDate.BorderRadius = 10;
             this.dateTimePicker_endDate.Checked = true;
             this.dateTimePicker_endDate.FillColor = System.Drawing.Color.White;
-            this.dateTimePicker_endDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dateTimePicker_endDate.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.dateTimePicker_endDate.ForeColor = System.Drawing.Color.Black;
-            this.dateTimePicker_endDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dateTimePicker_endDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker_endDate.Location = new System.Drawing.Point(349, 224);
             this.dateTimePicker_endDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker_endDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -119,9 +119,9 @@
             this.dateTimePicker_startDate.BorderRadius = 10;
             this.dateTimePicker_startDate.Checked = true;
             this.dateTimePicker_startDate.FillColor = System.Drawing.Color.White;
-            this.dateTimePicker_startDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dateTimePicker_startDate.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.dateTimePicker_startDate.ForeColor = System.Drawing.Color.Black;
-            this.dateTimePicker_startDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dateTimePicker_startDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker_startDate.Location = new System.Drawing.Point(49, 224);
             this.dateTimePicker_startDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker_startDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
