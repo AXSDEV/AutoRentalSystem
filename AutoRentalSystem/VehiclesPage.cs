@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -42,8 +42,15 @@ namespace AutoRentalSystem
             textBox_search.TextChanged += (_, __) => ApplyFilters();
             comboBox_status.SelectedIndexChanged += (_, __) => ApplyFilters();
             comboBox_vehicleType.SelectedIndexChanged += (_, __) => ApplyFilters();
+            AppClock.DateChanged += OnAppDateChanged;
 
             RefreshVehicles();
+        }
+
+        private void OnAppDateChanged(DateTime newDate)
+        {
+            if (IsDisposed || !IsHandleCreated) return;
+            BeginInvoke(new Action(RefreshVehicles));
         }
 
         private void ApplyFilters()
@@ -124,6 +131,7 @@ namespace AutoRentalSystem
 
             Enterprise.Instance.LoadVehiclesFromCsv(_vehiclesFilePath);
             Enterprise.Instance.UpdateMaintenanceStates(AppClock.Today);
+            ReservationManager.UpdateAllVehicleStatesFromReservations(Enterprise.Instance.Vehicles);
             // guarda a lista base em memória
             _allVehicles = Enterprise.Instance.Vehicles
                 .Where(v => v != null)
@@ -234,5 +242,12 @@ namespace AutoRentalSystem
                 Directory.CreateDirectory(directory);
             }
         }
+
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            AppClock.DateChanged -= OnAppDateChanged;
+            base.OnHandleDestroyed(e);
+        }
     }
 }
+ 

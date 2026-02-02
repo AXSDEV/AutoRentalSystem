@@ -1,4 +1,4 @@
-﻿using Guna.UI2.WinForms;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -162,6 +162,7 @@ namespace AutoRentalSystem
             AppClock.SetDate(DateTimePicker_changeDay.Value);
             ReservationManager.UpdateReservationStatuses(AppClock.Today);
             Enterprise.Instance.UpdateMaintenanceStates(AppClock.Today);
+            ReservationManager.UpdateAllVehicleStatesFromReservations(Enterprise.Instance.Vehicles);
         }
 
         private void OnAppDateChanged(DateTime newDate)

@@ -1,5 +1,5 @@
 ﻿VehicleType: Car
-RentState: Reserved
+RentState: Maintenance
 Maker: Toyota
 Model: Supra
 Year: 2002
@@ -8,8 +8,8 @@ IsAvailable: True
 ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 12
-AvailabilityDate: 2026-02-22
-MaintenanceStartDate: 2026-02-05
+AvailabilityDate: 
+MaintenanceStartDate: 2026-02-03
 MaintenanceEndDate: 2026-02-08
 NumberDoors: 4
 AxelNumber: 0

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -57,12 +57,8 @@ namespace AutoRentalSystem
         {
             var start = dateTimePicker_startDate.Value.Date;
             var end = dateTimePicker_endDate.Value.Date;
-
             if (end < start)
-            {
-                dateTimePicker_startDate.Value = start;
-            }
-
+                dateTimePicker_endDate.Value = start;
             UpdateIncomeInterval();
             UpdateRentChart();
         }

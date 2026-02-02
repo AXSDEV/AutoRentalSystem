@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -88,6 +88,12 @@ namespace AutoRentalSystem
                 label6.Text = vehicle.MaintenanceEndDate.HasValue
                     ? vehicle.MaintenanceEndDate.Value.ToString("yyyy-MM-dd")
                     : "—";
+
+                // Scheduled = amarelo (legend: Scheduled). On Going = laranja/vermelho (legend: On Going)
+                bool onGoing = vehicle.IsInMaintenance(AppClock.Today);
+                pictureBox_RentState.Image = onGoing
+                    ? Properties.Resources.state_maintenance   // On Going: ícone vermelho/laranja
+                    : Properties.Resources.state_reserved;       // Scheduled: ícone amarelo
             }
             else
             {

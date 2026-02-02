@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -100,6 +100,16 @@ namespace AutoRentalSystem
             {
                 var startDate = dateTimePicker_startDate.Value.Date;
                 var endDate = dateTimePicker_endDate.Value.Date;
+
+                if (endDate < startDate)
+                {
+                    MessageBox.Show(
+                        "End date must be on or after start date.",
+                        _reservation != null ? "Edit Reservation" : "Reserve Vehicle",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
 
                 if (_reservation != null)
                 {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -169,6 +169,20 @@ namespace AutoRentalSystem
 
             NotifyChanged();
         }
+
+        /// <summary>
+        /// Updates RentState (Available/Reserved/Rented) for all given vehicles based on current reservations and AppClock.Today.
+        /// </summary>
+        public static void UpdateAllVehicleStatesFromReservations(IEnumerable<Vehicle> vehicles)
+        {
+            if (vehicles == null) return;
+            foreach (var vehicle in vehicles)
+            {
+                if (vehicle != null)
+                    UpdateVehicleStateFromReservations(vehicle);
+            }
+        }
+
         public static bool CheckAvailability(Vehicle vehicle, DateTime startDate, DateTime endDate)
         {
             if (vehicle.RentState == "Maintenance")
@@ -202,9 +216,11 @@ namespace AutoRentalSystem
                 return false;
             }
 
+            var plate = reservation.Vehicle.LicensePlate?.Trim() ?? "";
             var timeConflict = _reservations.Any(r =>
                 r.Id != reservation.Id &&
-                r.Vehicle == reservation.Vehicle &&
+                r.Vehicle != null &&
+                string.Equals(r.Vehicle.LicensePlate?.Trim(), plate, StringComparison.OrdinalIgnoreCase) &&
                 r.StartDate < endDate &&
                 r.EndDate > startDate
                 );
@@ -245,9 +261,13 @@ namespace AutoRentalSystem
 
         private static void UpdateVehicleStateFromReservations(Vehicle vehicle)
         {
+            if (vehicle?.LicensePlate == null) return;
             var today = AppClock.Today.Date;
+            var plate = vehicle.LicensePlate.Trim();
             var futureReservations = _reservations
-                .Where(r => r.Vehicle == vehicle && r.EndDate.Date >= today)
+                .Where(r => r.Vehicle != null &&
+                    string.Equals(r.Vehicle.LicensePlate?.Trim(), plate, StringComparison.OrdinalIgnoreCase) &&
+                    r.EndDate.Date >= today)
                 .OrderBy(r => r.StartDate)
                 .ToList();
 

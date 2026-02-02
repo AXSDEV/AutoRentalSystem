@@ -1,4 +1,4 @@
-﻿namespace AutoRentalSystem
+namespace AutoRentalSystem
 {
     partial class MaintenancePage
     {
@@ -211,7 +211,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(160, 23);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Reserved";
+            this.label2.Text = "Scheduled";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3
@@ -224,7 +224,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(137, 23);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Active";
+            this.label3.Text = "On Going";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // MaintenancePage
