@@ -9,6 +9,8 @@ ShiftType: Manual
 FuelType: Diesel
 DailyPrice: 42.5
 AvailabilityDate: 2024-02-15
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -27,6 +29,8 @@ ShiftType: Automatic
 FuelType: Gasoline
 DailyPrice: 75
 AvailabilityDate: 2024-03-01
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -45,6 +49,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 40
 AvailabilityDate: 2026-02-04
+MaintenanceStartDate: 2026-01-21
+MaintenanceEndDate: 2026-02-04
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -63,6 +69,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 38
 AvailabilityDate: 2024-05-12
+MaintenanceStartDate: 2024-04-28
+MaintenanceEndDate: 2024-05-12
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -81,6 +89,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 69
 AvailabilityDate: 2026-01-29
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -99,6 +109,8 @@ ShiftType: Automatic
 FuelType: Gasoline
 DailyPrice: 65
 AvailabilityDate: 2024-05-25
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -117,6 +129,8 @@ ShiftType: Automatic
 FuelType: Gasoline
 DailyPrice: 60
 AvailabilityDate: 2026-01-31
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -135,6 +149,8 @@ ShiftType: Manual
 FuelType: Diesel
 DailyPrice: 42
 AvailabilityDate: 2024-06-15
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -153,6 +169,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 120
 AvailabilityDate: 2024-04-10
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 2
 MaxPax: 18
@@ -171,6 +189,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 220
 AvailabilityDate: 2024-08-01
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 3
 MaxPax: 45
@@ -189,6 +209,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 240
 AvailabilityDate: 2024-09-15
+MaintenanceStartDate: 2024-09-01
+MaintenanceEndDate: 2024-09-15
 NumberDoors: 0
 AxelNumber: 3
 MaxPax: 50
@@ -207,6 +229,8 @@ ShiftType: Manual
 FuelType: Diesel
 DailyPrice: 180
 AvailabilityDate: 2024-04-22
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 2
 MaxPax: 40
@@ -225,6 +249,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 250
 AvailabilityDate: 2024-10-05
+MaintenanceStartDate: 2024-09-21
+MaintenanceEndDate: 2024-10-05
 NumberDoors: 0
 AxelNumber: 3
 MaxPax: 52
@@ -243,6 +269,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 170
 AvailabilityDate: 2024-03-28
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 2
 MaxPax: 34
@@ -261,6 +289,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 300
 AvailabilityDate: 2024-04-12
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -279,6 +309,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 280
 AvailabilityDate: 2024-08-18
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -297,6 +329,8 @@ ShiftType: Manual
 FuelType: Diesel
 DailyPrice: 290
 AvailabilityDate: 2024-09-30
+MaintenanceStartDate: 2024-09-16
+MaintenanceEndDate: 2024-09-30
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -315,6 +349,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 320
 AvailabilityDate: 2024-05-16
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -333,6 +369,8 @@ ShiftType: Manual
 FuelType: Diesel
 DailyPrice: 270
 AvailabilityDate: 2024-07-02
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -351,6 +389,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 310
 AvailabilityDate: 2024-04-25
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -369,6 +409,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 330
 AvailabilityDate: 2024-06-08
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -387,6 +429,8 @@ ShiftType: Manual
 FuelType: Diesel
 DailyPrice: 260
 AvailabilityDate: 2024-08-30
+MaintenanceStartDate: 2024-08-16
+MaintenanceEndDate: 2024-08-30
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -405,6 +449,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 35
 AvailabilityDate: 2024-04-03
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -423,6 +469,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 32
 AvailabilityDate: 2024-03-22
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -441,6 +489,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 30
 AvailabilityDate: 2024-06-12
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -459,6 +509,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 55
 AvailabilityDate: 2024-09-05
+MaintenanceStartDate: 2024-08-22
+MaintenanceEndDate: 2024-09-05
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -477,6 +529,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 34
 AvailabilityDate: 2024-04-14
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -495,6 +549,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 28
 AvailabilityDate: 2024-04-28
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -513,6 +569,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 45
 AvailabilityDate: 2024-07-18
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -531,6 +589,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 45
 AvailabilityDate: 2026-01-22
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -549,6 +609,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 25
 AvailabilityDate: 2026-01-22
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -567,6 +629,8 @@ ShiftType: Automatic
 FuelType: Gasoline
 DailyPrice: 115
 AvailabilityDate: 2026-01-22
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -585,6 +649,8 @@ ShiftType: Manual
 FuelType: Diesel
 DailyPrice: 230
 AvailabilityDate: 2026-01-22
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -603,10 +669,11 @@ ShiftType: Automatic
 FuelType: Eletric
 DailyPrice: 45
 AvailabilityDate: 
+MaintenanceStartDate: 
+MaintenanceEndDate: 
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
 Height: 0
 MaxWeight: 0
 Cc: 0
-

@@ -28,6 +28,11 @@ namespace AutoRentalSystem
             btn_alterState.Click += btn_alterState_Click;
         }
 
+        public void SetReserveVisible(bool visible)
+        {
+            btn_reserve_vehicle.Visible = visible;   
+        }
+
         private void btn_reserve_vehicle_Click(object sender, EventArgs e)
         {
             ReserveClicked?.Invoke(this, EventArgs.Empty);

@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace AutoRentalSystem
 {
     public partial class ReservationsPage_Background : UserControl
     {
+        private List<Reservation> _allReservations = new List<Reservation>();
+
         public ReservationsPage_Background()
         {
             InitializeComponent();
@@ -21,8 +17,12 @@ namespace AutoRentalSystem
 
         private void ReservationsPage_Load(object sender, EventArgs e)
         {
+            if (textBox_search != null)
+                textBox_search.TextChanged += (_, __) => ApplyFilters();
+
             ReservationManager.ReservationsChanged += OnReservationsChanged;
-            RenderReservations();
+
+            RefreshReservations();
         }
 
         private void OnReservationsChanged()
@@ -31,23 +31,66 @@ namespace AutoRentalSystem
 
             if (InvokeRequired)
             {
-                BeginInvoke(new Action(RenderReservations));
+                BeginInvoke(new Action(RefreshReservations)); 
                 return;
             }
 
-            RenderReservations();
+            RefreshReservations();
+        }
+
+        private void RefreshReservations()
+        {
+            _allReservations = ReservationManager.Reservations
+                .Where(r => r != null)
+                .ToList();
+
+            ApplyFilters();
+        }
+
+        private void ApplyFilters()
+        {
+            IEnumerable<Reservation> query = _allReservations;
+
+            // SEARCH por matrícula do veículo na reserva
+            string q = (textBox_search?.Text ?? string.Empty).Trim();
+            if (!string.IsNullOrEmpty(q))
+            {
+                string norm = NormalizePlate(q);
+                query = query.Where(r =>
+                    r.Vehicle != null &&
+                    !string.IsNullOrEmpty(r.Vehicle.LicensePlate) &&
+                    NormalizePlate(r.Vehicle.LicensePlate)
+                        .IndexOf(norm, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+
+            RenderReservations(query.ToList());
+        }
+
+        private static string NormalizePlate(string s)
+        {
+            return (s ?? string.Empty).Replace(" ", "").Replace("-", "").Trim();
         }
 
         private void RenderReservations()
         {
+            RenderReservations(_allReservations);
+        }
+
+        private void RenderReservations(List<Reservation> reservations)
+        {
+            if (flowLayoutPanel_reservations == null) return;
+
+            flowLayoutPanel_reservations.SuspendLayout();
             flowLayoutPanel_reservations.Controls.Clear();
 
-            foreach (var r in ReservationManager.Reservations)
+            foreach (var r in reservations)
             {
                 var card = new VehicleCards();
                 card.BindReservation(r);
                 flowLayoutPanel_reservations.Controls.Add(card);
             }
+
+            flowLayoutPanel_reservations.ResumeLayout(true);
         }
 
         protected override void OnHandleDestroyed(EventArgs e)

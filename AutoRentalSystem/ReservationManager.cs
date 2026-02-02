@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 
 namespace AutoRentalSystem
 {
@@ -142,13 +141,20 @@ namespace AutoRentalSystem
         }
         public static bool CheckAvailability(Vehicle vehicle, DateTime startDate, DateTime endDate)
 		{
-			var timeConflict = _reservations.Any(r =>
+            if (vehicle.RentState == "Maintenance")
+            {
+                return false;
+            }
+            var timeConflict = _reservations.Any(r =>
 				r.Vehicle == vehicle &&
 				r.StartDate < endDate &&
 				r.EndDate > startDate
 				);
-
-			if (vehicle.AvailabilityDate.HasValue && vehicle.AvailabilityDate.Value > startDate)
+            if (vehicle.IsMaintenanceOverlap(startDate, endDate))
+            {
+                return false;
+            }
+            if (vehicle.AvailabilityDate.HasValue && vehicle.AvailabilityDate.Value > startDate)
 			{
 				return false;
 			}
@@ -161,6 +167,10 @@ namespace AutoRentalSystem
             {
                 return false;
             }
+            if (reservation.Vehicle.RentState == "Maintenance")
+            {
+                return false;
+            }
 
             var timeConflict = _reservations.Any(r =>
                 r.Id != reservation.Id &&
@@ -168,13 +178,17 @@ namespace AutoRentalSystem
                 r.StartDate < endDate &&
                 r.EndDate > startDate
                 );
+            if (reservation.Vehicle.IsMaintenanceOverlap(startDate, endDate))
+            {
+                return false;
+            }
 
             if (reservation.Vehicle.AvailabilityDate.HasValue
                 && reservation.Vehicle.AvailabilityDate.Value > startDate)
             {
                 return false;
             }
-
+            
             return !timeConflict;
         }
 

@@ -150,6 +150,7 @@ namespace AutoRentalSystem
         {
             AppClock.SetDate(DateTimePicker_changeDay.Value);
             ReservationManager.UpdateReservationStatuses(AppClock.Today);
+            Enterprise.Instance.UpdateMaintenanceStates(AppClock.Today);
         }
 
         private void OnAppDateChanged(DateTime newDate)

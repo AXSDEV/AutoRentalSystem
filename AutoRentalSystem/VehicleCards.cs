@@ -24,7 +24,8 @@ namespace AutoRentalSystem
         public enum CardMode
         {
             VehiclesPage,
-            ReservationsPage
+            ReservationsPage,
+            MaintenancePage
         }
 
         public VehicleCards()
@@ -49,6 +50,13 @@ namespace AutoRentalSystem
 
         public VehicleCards(Vehicle vehicle) : this()
         {
+            _mode = CardMode.VehiclesPage;
+            BindVehicle(vehicle);
+        }
+
+        public VehicleCards(Vehicle vehicle, CardMode mode) : this()
+        {
+            _mode = mode;
             BindVehicle(vehicle);
         }
 
@@ -60,15 +68,30 @@ namespace AutoRentalSystem
             _reservation = null;
             _vehicle = vehicle;
 
-            EnsureActionsControl(CardMode.VehiclesPage);
+            EnsureActionsControl(_mode);
 
             pictureBox_RentState.Image = GetRentStateIcon(vehicle.RentState);
+
             label1.Text = vehicle.LicensePlate;
             label2.Text = vehicle.VehicleType;
             label3.Text = vehicle.Maker;
             label4.Text = vehicle.Model;
-            label5.Text = vehicle.Year.ToString();
-            label6.Text = vehicle.DailyPrice.ToString("C", new CultureInfo("pt-PT"));
+
+            if (_mode == CardMode.MaintenancePage)
+            {
+                label5.Text = vehicle.MaintenanceStartDate.HasValue
+                    ? vehicle.MaintenanceStartDate.Value.ToString("yyyy-MM-dd")
+                    : "—";
+
+                label6.Text = vehicle.MaintenanceEndDate.HasValue
+                    ? vehicle.MaintenanceEndDate.Value.ToString("yyyy-MM-dd")
+                    : "—";
+            }
+            else
+            {
+                label5.Text = vehicle.Year.ToString();
+                label6.Text = vehicle.DailyPrice.ToString("C", new CultureInfo("pt-PT"));
+            }
         }
 
         public void BindReservation(Reservation reservation)
@@ -78,6 +101,7 @@ namespace AutoRentalSystem
             _isReservationCard = true;
             _reservation = reservation;
             _vehicle = reservation.Vehicle;
+
             reservation.UpdateStatus(AppClock.Today);
 
             EnsureActionsControl(CardMode.ReservationsPage);
@@ -88,6 +112,7 @@ namespace AutoRentalSystem
             label4.Text = reservation.EndDate.ToString("yyyy-MM-dd");
             label5.Text = reservation.TotalPrice.ToString("C", new CultureInfo("pt-PT"));
             label6.Text = GetReservationStatusLabel(reservation.Status);
+
             pictureBox_RentState.Image = GetReservationStatusIcon(reservation.Status);
         }
 
@@ -125,6 +150,7 @@ namespace AutoRentalSystem
 
             panel_actions.Controls.Clear();
             _actionsControl?.Dispose();
+            _actionsControl = null;
 
             if (mode == CardMode.VehiclesPage)
             {
@@ -133,6 +159,14 @@ namespace AutoRentalSystem
                 actions.ReserveClicked += (_, __) => BtnReserve_Click();
                 actions.EditClicked += (_, __) => BtnEdit_Click();
                 actions.DeleteClicked += (_, __) => BtnDelete_Click();
+                actions.AlterStateClicked += (_, __) => BtnAlterState_Click();
+
+                _actionsControl = actions;
+            }
+            else if (mode == CardMode.MaintenancePage)
+            {
+                var actions = new UC_VehicleCards_MaintenancePage();
+
                 actions.AlterStateClicked += (_, __) => BtnAlterState_Click();
 
                 _actionsControl = actions;
@@ -147,6 +181,8 @@ namespace AutoRentalSystem
                 _actionsControl = actions;
             }
 
+            if (_actionsControl == null) return;
+
             _actionsControl.Dock = DockStyle.Fill;
             panel_actions.Controls.Add(_actionsControl);
         }
@@ -155,11 +191,21 @@ namespace AutoRentalSystem
         {
             if (_vehicle == null) return;
 
+            // Nota: tu usas strings ("Maintenance", "available"...). Mantive.
+            if (string.Equals(_vehicle.RentState, "Maintenance", StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show(
+                    "This vehicle is in maintenance and cannot be reserved.",
+                    "Reservation unavailable",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
             using (var form = new ReserveVehicleForm(_vehicle))
             {
                 form.StartPosition = FormStartPosition.CenterParent;
-
-                form.ShowDialog(this.FindForm());
+                form.ShowDialog(FindForm());
             }
         }
 
@@ -191,8 +237,7 @@ namespace AutoRentalSystem
 
         private void BtnAlterState_Click()
         {
-            if (_mode == CardMode.ReservationsPage)
-                return;
+            if (_mode == CardMode.ReservationsPage) return;
 
             if (_vehicle == null) return;
 
@@ -206,7 +251,7 @@ namespace AutoRentalSystem
             using (var details = new VehicleDetailsForm(_vehicle))
             {
                 details.StartPosition = FormStartPosition.CenterParent;
-                details.ShowDialog(this.FindForm());
+                details.ShowDialog(FindForm());
             }
         }
 

@@ -7,6 +7,8 @@ namespace AutoRentalSystem
     public partial class AlterStateForm : Form
     {
         public string SelectedState { get; private set; }
+        public DateTime? MaintenanceStartDate { get; private set; }
+        public DateTime? MaintenanceEndDate { get; private set; }
         private UserControl _currentStateUC;
 
         public AlterStateForm()
@@ -27,7 +29,6 @@ namespace AutoRentalSystem
             this.BackColor = Color.FromArgb(34, 33, 42);
             this.TransparencyKey = Color.FromArgb(34, 33, 42);
         }
-
 
 
         private void LoadStatePanel(string state)
@@ -73,7 +74,30 @@ namespace AutoRentalSystem
             }
 
             SelectedState = comboBox_status.SelectedItem.ToString();
+            MaintenanceStartDate = null;
+            MaintenanceEndDate = null;
 
+            if (SelectedState == "Maintenance")
+            {
+                if (_currentStateUC is UC_AlterState_DateTimePicker maintenancePicker)
+                {
+                    var start = maintenancePicker.MaintenanceStartDate;
+                    var end = maintenancePicker.MaintenanceEndDate;
+
+                    if (end < start)
+                    {
+                        MessageBox.Show(
+                            "End date must be after start date.",
+                            "Alter state",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    MaintenanceStartDate = start;
+                    MaintenanceEndDate = end;
+                }
+            }
             DialogResult = DialogResult.OK;
             Close();
         }

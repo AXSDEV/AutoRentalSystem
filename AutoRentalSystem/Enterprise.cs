@@ -85,6 +85,25 @@ namespace AutoRentalSystem
         {
             CsvExportService.ExportVehicles(vehicles, filePath);
         }
+        public void UpdateMaintenanceStates(DateTime referenceDate)
+        {
+            foreach (var vehicle in vehicles)
+            {
+                if (vehicle == null)
+                {
+                    continue;
+                }
+
+                if (vehicle.IsInMaintenance(referenceDate))
+                {
+                    vehicle.RentState = "Maintenance";
+                }
+                else if (vehicle.RentState == "Maintenance")
+                {
+                    vehicle.RentState = "Available";
+                }
+            }
+        }
         public Vehicle GetVehicleByLicensePlate(string licensePlate)
         {
             foreach (Vehicle vehicle in vehicles)

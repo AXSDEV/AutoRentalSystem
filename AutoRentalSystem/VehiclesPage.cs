@@ -122,7 +122,7 @@ namespace AutoRentalSystem
             }
 
             Enterprise.Instance.LoadVehiclesFromCsv(_vehiclesFilePath);
-
+            Enterprise.Instance.UpdateMaintenanceStates(AppClock.Today);
             // guarda a lista base em memória
             _allVehicles = Enterprise.Instance.Vehicles
                 .Where(v => v != null)
@@ -203,16 +203,24 @@ namespace AutoRentalSystem
                 e.Vehicle.RentState = form.SelectedState;
 
                 if (form.SelectedState == "Maintenance")
-                    e.Vehicle.AvailabilityDate = DateTime.Today.AddDays(3);
-                else
+                {
+                    e.Vehicle.MaintenanceStartDate = form.MaintenanceStartDate;
+                    e.Vehicle.MaintenanceEndDate = form.MaintenanceEndDate;
                     e.Vehicle.AvailabilityDate = null;
+                }
+                else
+                {
+                    e.Vehicle.MaintenanceStartDate = null;
+                    e.Vehicle.MaintenanceEndDate = null;
+                    e.Vehicle.AvailabilityDate = null;
+                }
+
+                Enterprise.Instance.UpdateMaintenanceStates(AppClock.Today);
 
                 Enterprise.Instance.SaveVehiclesToCsv(_vehiclesFilePath);
-
                 RefreshVehicles();
             }
         }
-
 
         private void EnsureVehiclesDirectory()
         {

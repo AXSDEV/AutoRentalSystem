@@ -20,6 +20,8 @@ namespace AutoRentalSystem
         public string FuelType { get; set; }
         public decimal DailyPrice { get; set; }
         public DateTime? AvailabilityDate { get; set; }
+        public DateTime? MaintenanceStartDate { get; set; }
+        public DateTime? MaintenanceEndDate { get; set; }
         public Vehicle(string rentState, string maker, string model, int year, string licensePlate, string isAvailable, string shiftType, string fuelType, decimal dailyPrice, DateTime? availabilityDate = null)
         {
             this.RentState = rentState;
@@ -36,6 +38,31 @@ namespace AutoRentalSystem
         public string VehicleType => GetType().Name;
 
         public string ShortDescription => $"{Maker} {Model} ({Year})";
+        public bool HasMaintenanceWindow => MaintenanceStartDate.HasValue && MaintenanceEndDate.HasValue;
+
+        public bool IsInMaintenance(DateTime date)
+        {
+            if (!HasMaintenanceWindow)
+            {
+                return false;
+            }
+
+            var start = MaintenanceStartDate.Value.Date;
+            var end = MaintenanceEndDate.Value.Date;
+            return date.Date >= start && date.Date <= end;
+        }
+
+        public bool IsMaintenanceOverlap(DateTime startDate, DateTime endDate)
+        {
+            if (!HasMaintenanceWindow)
+            {
+                return false;
+            }
+
+            var start = MaintenanceStartDate.Value.Date;
+            var end = MaintenanceEndDate.Value.Date; 
+            return startDate.Date <= end && endDate.Date >= start;
+        }
         public override string ToString()
         {
             return $"{VehicleType} | {ShortDescription} | Matrícula: {LicensePlate} | Estado: {RentState} | Daily Price: {DailyPrice:C}";

@@ -36,6 +36,8 @@ namespace AutoRentalSystem
                 AppendAttribute(builder, "FuelType", vehicle?.FuelType);
                 AppendAttribute(builder, "DailyPrice", FormatDecimal(vehicle?.DailyPrice));
                 AppendAttribute(builder, "AvailabilityDate", FormatDate(vehicle?.AvailabilityDate));
+                AppendAttribute(builder, "MaintenanceStartDate", FormatDate(vehicle?.MaintenanceStartDate));
+                AppendAttribute(builder, "MaintenanceEndDate", FormatDate(vehicle?.MaintenanceEndDate));
                 AppendAttribute(builder, "NumberDoors", GetNumberDoors(vehicle));
                 AppendAttribute(builder, "AxelNumber", GetAxelNumber(vehicle));
                 AppendAttribute(builder, "MaxPax", GetMaxPax(vehicle));
@@ -232,38 +234,48 @@ namespace AutoRentalSystem
             block.TryGetValue("FuelType", out var fuelType);
             block.TryGetValue("DailyPrice", out var dailyPriceText);
             block.TryGetValue("AvailabilityDate", out var availabilityDateText);
-
+            block.TryGetValue("MaintenanceStartDate", out var maintenanceStartDateText);
+            block.TryGetValue("MaintenanceEndDate", out var maintenanceEndDateText);
             var year = ParseInt(yearText);
             var dailyPrice = ParseDecimal(dailyPriceText);
             var availabilityDate = ParseDate(availabilityDateText);
-
+            var maintenanceStartDate = ParseDate(maintenanceStartDateText);
+            var maintenanceEndDate = ParseDate(maintenanceEndDateText);
             switch (type)
             {
                 case nameof(Car):
                     block.TryGetValue("NumberDoors", out var doorsText);
                     return new Car(rentState, maker, model, year, licensePlate, isAvailable, ParseInt(doorsText), shiftType, fuelType, dailyPrice)
                     {
-                        AvailabilityDate = availabilityDate
+                        AvailabilityDate = availabilityDate,
+                        MaintenanceStartDate = maintenanceStartDate,
+                        MaintenanceEndDate = maintenanceEndDate
                     };
                 case nameof(Bus):
                     block.TryGetValue("AxelNumber", out var axelText);
                     block.TryGetValue("MaxPax", out var maxPaxText);
                     return new Bus(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType, ParseInt(axelText), ParseInt(maxPaxText), dailyPrice)
                     {
-                        AvailabilityDate = availabilityDate
+                        AvailabilityDate = availabilityDate,
+                        MaintenanceStartDate = maintenanceStartDate,
+                        MaintenanceEndDate = maintenanceEndDate
                     };
                 case nameof(Truck):
                     block.TryGetValue("MaxWeight", out var maxWeightText);
                     block.TryGetValue("Height", out var heightText);
                     return new Truck(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType, ParseInt(maxWeightText), ParseInt(heightText), dailyPrice)
                     {
-                        AvailabilityDate = availabilityDate
+                        AvailabilityDate = availabilityDate,
+                        MaintenanceStartDate = maintenanceStartDate,
+                        MaintenanceEndDate = maintenanceEndDate
                     };
                 case nameof(Motorcycle):
                     block.TryGetValue("Cc", out var ccText);
                     return new Motorcycle(rentState, maker, model, year, licensePlate, isAvailable, shiftType, fuelType, ParseInt(ccText), dailyPrice)
                     {
-                        AvailabilityDate = availabilityDate
+                        AvailabilityDate = availabilityDate,
+                        MaintenanceStartDate = maintenanceStartDate,
+                        MaintenanceEndDate = maintenanceEndDate
                     };
                 default:
                     return null;

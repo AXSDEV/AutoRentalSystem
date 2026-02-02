@@ -135,6 +135,12 @@
     <Compile Include="UC_AlterState_DateTimePicker.Designer.cs">
       <DependentUpon>UC_AlterState_DateTimePicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_VehicleCards_MaintenancePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_VehicleCards_MaintenancePage.Designer.cs">
+      <DependentUpon>UC_VehicleCards_MaintenancePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_VehicleCards_ReservationPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -238,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AlterState_DateTimePicker.resx">
       <DependentUpon>UC_AlterState_DateTimePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_VehicleCards_MaintenancePage.resx">
+      <DependentUpon>UC_VehicleCards_MaintenancePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_VehicleCards_ReservationPage.resx">
       <DependentUpon>UC_VehicleCards_ReservationPage.cs</DependentUpon>
