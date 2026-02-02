@@ -57,6 +57,10 @@ namespace AutoRentalSystem
 
             page.Visible = true;
             page.BringToFront();
+            if (page is MaintenancePage maintenancePage)
+            {
+                maintenancePage.RefreshVehicles();
+            }
         }
 
         private void btn_vehicles_Click(object sender, EventArgs e)
