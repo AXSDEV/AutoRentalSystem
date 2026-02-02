@@ -17,6 +17,8 @@ namespace AutoRentalSystem
         public event EventHandler<VehicleEventArgs> EditRequested;
         public event EventHandler<VehicleEventArgs> DeleteRequested;
         public event EventHandler<VehicleEventArgs> AlterStateRequested;
+       
+        public event EventHandler ReservationCreated;
 
         public event EventHandler<ReservationEventArgs> ReservationEditRequested;
         public event EventHandler<ReservationEventArgs> ReservationDeleteRequested;
@@ -205,7 +207,9 @@ namespace AutoRentalSystem
             using (var form = new ReserveVehicleForm(_vehicle))
             {
                 form.StartPosition = FormStartPosition.CenterParent;
-                form.ShowDialog(FindForm());
+                var result = form.ShowDialog(FindForm());
+                if (result == DialogResult.OK)
+                    ReservationCreated?.Invoke(this, EventArgs.Empty);
             }
         }
 

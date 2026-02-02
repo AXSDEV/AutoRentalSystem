@@ -335,11 +335,11 @@
             // 
             this.title_label.AutoSize = true;
             this.title_label.BackColor = System.Drawing.Color.Transparent;
-            this.title_label.Font = new System.Drawing.Font("Bahnschrift SemiBold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title_label.Font = new System.Drawing.Font("Bahnschrift SemiBold", 20.25F, System.Drawing.FontStyle.Bold);
             this.title_label.ForeColor = System.Drawing.SystemColors.Control;
             this.title_label.Location = new System.Drawing.Point(313, 65);
             this.title_label.Name = "title_label";
-            this.title_label.Size = new System.Drawing.Size(62, 23);
+            this.title_label.Size = new System.Drawing.Size(88, 33);
             this.title_label.TabIndex = 3;
             this.title_label.Text = "label2";
             // 

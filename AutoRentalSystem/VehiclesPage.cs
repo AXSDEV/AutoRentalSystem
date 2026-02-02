@@ -96,6 +96,7 @@ namespace AutoRentalSystem
                 card.DeleteRequested += HandleDeleteVehicle;
                 card.EditRequested += HandleEditVehicle;
                 card.AlterStateRequested += HandleAlterStateVehicle;
+                card.ReservationCreated += (s, e) => RefreshVehicles();
                 flowpanel_list.Controls.Add(card);
             }
 

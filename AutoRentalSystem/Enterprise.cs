@@ -10,6 +10,7 @@ namespace AutoRentalSystem
         private List<Vehicle> vehicles;
         public static Enterprise Instance { get; } = new Enterprise();
         public IReadOnlyList<Vehicle> Vehicles => vehicles.AsReadOnly();
+        public event Action VehiclesChanged;
         public Enterprise()
         {
             vehicles = new List<Vehicle>();
@@ -23,6 +24,7 @@ namespace AutoRentalSystem
                 return false;
 
             vehicles.Add(vehicle);
+            NotifyVehiclesChanged();
             return true;
         }
 
@@ -55,6 +57,7 @@ namespace AutoRentalSystem
 
             var index = vehicles.IndexOf(existing);
             vehicles[index] = updatedVehicle;
+            NotifyVehiclesChanged();
             return true;
         }
 
@@ -71,6 +74,7 @@ namespace AutoRentalSystem
             }
 
             vehicles.Remove(existing);
+            NotifyVehiclesChanged();
             return true;
         }
 
@@ -79,6 +83,7 @@ namespace AutoRentalSystem
             vehicles = File.Exists(filePath)
                 ? CsvExportService.ImportVehicles(filePath)
                 : new List<Vehicle>();
+                NotifyVehiclesChanged();
         }
 
         public void SaveVehiclesToCsv(string filePath)
@@ -103,6 +108,7 @@ namespace AutoRentalSystem
                     vehicle.RentState = "Available";
                 }
             }
+            
         }
         public Vehicle GetVehicleByLicensePlate(string licensePlate)
         {
@@ -126,11 +132,13 @@ namespace AutoRentalSystem
                     if (newState == "Available")
                     {
                         vehicle.AvailabilityDate = AppClock.Today;
+                        NotifyVehiclesChanged();
                         return true;
                     }
                     if (availabilityDate.HasValue)
                     {
                         vehicle.AvailabilityDate = availabilityDate.Value;
+                        NotifyVehiclesChanged();
                     }
                     return true;
                 }
@@ -165,6 +173,14 @@ namespace AutoRentalSystem
                 }
             }
             return result;
+        }
+        private void NotifyVehiclesChanged()
+        {
+            var handler = VehiclesChanged;
+            if (handler != null)
+            {
+                handler();
+            }
         }
     }
 }

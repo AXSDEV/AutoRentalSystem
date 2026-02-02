@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardPage));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend16 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel_totalVehicles = new Guna.UI2.WinForms.Guna2Panel();
@@ -123,14 +123,14 @@
             // 
             // label_totalVehicles_info
             // 
-            this.label_totalVehicles_info.AutoSize = true;
             this.label_totalVehicles_info.Font = new System.Drawing.Font("Segoe UI Semibold", 18.25F, System.Drawing.FontStyle.Bold);
             this.label_totalVehicles_info.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_totalVehicles_info.Location = new System.Drawing.Point(129, 99);
+            this.label_totalVehicles_info.Location = new System.Drawing.Point(2, 99);
             this.label_totalVehicles_info.Name = "label_totalVehicles_info";
-            this.label_totalVehicles_info.Size = new System.Drawing.Size(80, 35);
+            this.label_totalVehicles_info.Size = new System.Drawing.Size(300, 35);
             this.label_totalVehicles_info.TabIndex = 2;
             this.label_totalVehicles_info.Text = "label1";
+            this.label_totalVehicles_info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_totalVehicles
             // 
@@ -180,14 +180,14 @@
             // 
             // label_rentedVehicles_info
             // 
-            this.label_rentedVehicles_info.AutoSize = true;
             this.label_rentedVehicles_info.Font = new System.Drawing.Font("Segoe UI Semibold", 18.25F, System.Drawing.FontStyle.Bold);
             this.label_rentedVehicles_info.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_rentedVehicles_info.Location = new System.Drawing.Point(132, 99);
+            this.label_rentedVehicles_info.Location = new System.Drawing.Point(2, 99);
             this.label_rentedVehicles_info.Name = "label_rentedVehicles_info";
-            this.label_rentedVehicles_info.Size = new System.Drawing.Size(80, 35);
+            this.label_rentedVehicles_info.Size = new System.Drawing.Size(300, 35);
             this.label_rentedVehicles_info.TabIndex = 2;
             this.label_rentedVehicles_info.Text = "label1";
+            this.label_rentedVehicles_info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_rentedVehicles
             // 
@@ -237,14 +237,14 @@
             // 
             // label_maintenance_info
             // 
-            this.label_maintenance_info.AutoSize = true;
             this.label_maintenance_info.Font = new System.Drawing.Font("Segoe UI Semibold", 18.25F, System.Drawing.FontStyle.Bold);
             this.label_maintenance_info.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_maintenance_info.Location = new System.Drawing.Point(139, 99);
+            this.label_maintenance_info.Location = new System.Drawing.Point(1, 99);
             this.label_maintenance_info.Name = "label_maintenance_info";
-            this.label_maintenance_info.Size = new System.Drawing.Size(80, 35);
+            this.label_maintenance_info.Size = new System.Drawing.Size(301, 35);
             this.label_maintenance_info.TabIndex = 2;
             this.label_maintenance_info.Text = "label1";
+            this.label_maintenance_info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_maintenance
             // 
@@ -294,14 +294,14 @@
             // 
             // label_totalRevenue_info
             // 
-            this.label_totalRevenue_info.AutoSize = true;
             this.label_totalRevenue_info.Font = new System.Drawing.Font("Segoe UI Semibold", 18.25F, System.Drawing.FontStyle.Bold);
             this.label_totalRevenue_info.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_totalRevenue_info.Location = new System.Drawing.Point(93, 99);
+            this.label_totalRevenue_info.Location = new System.Drawing.Point(2, 99);
             this.label_totalRevenue_info.Name = "label_totalRevenue_info";
-            this.label_totalRevenue_info.Size = new System.Drawing.Size(80, 35);
+            this.label_totalRevenue_info.Size = new System.Drawing.Size(300, 35);
             this.label_totalRevenue_info.TabIndex = 2;
             this.label_totalRevenue_info.Text = "label1";
+            this.label_totalRevenue_info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_revenue
             // 
@@ -420,17 +420,17 @@
             // chart_rentsVehicleType
             // 
             this.chart_rentsVehicleType.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chart_rentsVehicleType.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart_rentsVehicleType.Legends.Add(legend1);
+            chartArea15.Name = "ChartArea1";
+            this.chart_rentsVehicleType.ChartAreas.Add(chartArea15);
+            legend15.Name = "Legend1";
+            this.chart_rentsVehicleType.Legends.Add(legend15);
             this.chart_rentsVehicleType.Location = new System.Drawing.Point(149, 47);
             this.chart_rentsVehicleType.Name = "chart_rentsVehicleType";
             this.chart_rentsVehicleType.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart_rentsVehicleType.Series.Add(series1);
+            series15.ChartArea = "ChartArea1";
+            series15.Legend = "Legend1";
+            series15.Name = "Series1";
+            this.chart_rentsVehicleType.Series.Add(series15);
             this.chart_rentsVehicleType.Size = new System.Drawing.Size(350, 232);
             this.chart_rentsVehicleType.TabIndex = 0;
             this.chart_rentsVehicleType.Text = "chart1";
@@ -463,19 +463,19 @@
             // 
             this.chart_rentsMonth.BackColor = System.Drawing.Color.Transparent;
             this.chart_rentsMonth.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.chart_rentsMonth.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart_rentsMonth.Legends.Add(legend2);
+            chartArea16.Name = "ChartArea1";
+            this.chart_rentsMonth.ChartAreas.Add(chartArea16);
+            legend16.Name = "Legend1";
+            this.chart_rentsMonth.Legends.Add(legend16);
             this.chart_rentsMonth.Location = new System.Drawing.Point(-7, 7);
             this.chart_rentsMonth.Name = "chart_rentsMonth";
             this.chart_rentsMonth.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.YValuesPerPoint = 4;
-            this.chart_rentsMonth.Series.Add(series2);
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series16.Legend = "Legend1";
+            series16.Name = "Series1";
+            series16.YValuesPerPoint = 4;
+            this.chart_rentsMonth.Series.Add(series16);
             this.chart_rentsMonth.Size = new System.Drawing.Size(1081, 318);
             this.chart_rentsMonth.TabIndex = 0;
             this.chart_rentsMonth.Text = "chart1";
@@ -485,7 +485,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(572, 11);
+            this.label4.Location = new System.Drawing.Point(588, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(146, 25);
             this.label4.TabIndex = 2;

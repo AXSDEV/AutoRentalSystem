@@ -25,6 +25,8 @@ namespace AutoRentalSystem
             AppClock.DateChanged += OnAppDateChanged;
             ReservationManager.ReservationsFilePath = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory, "data", "reservations.csv");
+            ReservationManager.VehiclesFilePath = Path.Combine(
+              AppDomain.CurrentDomain.BaseDirectory, "data", "vehicles.csv");
 
             var dir = Path.GetDirectoryName(ReservationManager.ReservationsFilePath);
             if (!string.IsNullOrEmpty(dir))
@@ -59,6 +61,10 @@ namespace AutoRentalSystem
             if (page is MaintenancePage maintenancePage)
             {
                 maintenancePage.RefreshVehicles();
+            }
+            if (page is VehiclesPage vehiclesPage)
+            {
+                vehiclesPage.RefreshVehicles();
             }
         }
 

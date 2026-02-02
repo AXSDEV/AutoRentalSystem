@@ -34,6 +34,7 @@ namespace AutoRentalSystem
             dateTimePicker_startDate.ValueChanged += HandleDateRangeChanged;
             dateTimePicker_endDate.ValueChanged += HandleDateRangeChanged;
             ReservationManager.ReservationsChanged += HandleReservationsChanged;
+            Enterprise.Instance.VehiclesChanged += HandleVehiclesChanged;
             AppClock.DateChanged += HandleDateChanged;
             _eventsHooked = true;
         }
@@ -67,11 +68,14 @@ namespace AutoRentalSystem
 
         private void HandleReservationsChanged()
         {
-            UpdateRevenueTotals();
+            UpdateRevenueTotal();
             UpdateIncomeInterval();
             UpdateRentChart();
         }
-
+        private void HandleVehiclesChanged()
+        {
+           UpdateVehicleStats();
+        }
         private void HandleDateChanged(DateTime newDate)
         {
             RefreshDashboard();
@@ -81,7 +85,7 @@ namespace AutoRentalSystem
         {
             LoadVehicles();
             UpdateVehicleStats();
-            UpdateRevenueTotals();
+            UpdateRevenueTotal();
             UpdateIncomeInterval();
             UpdateRentChart();
         }
@@ -113,7 +117,7 @@ namespace AutoRentalSystem
             label_maintenance_info.Text = maintenanceCount.ToString();
         }
 
-        private void UpdateRevenueTotals()
+        private void UpdateRevenueTotal()
         {
             var totalRevenue = ReservationManager.Reservations
                 .Where(r => r.Status == ReservationStatus.Completed)
@@ -161,6 +165,7 @@ namespace AutoRentalSystem
                 dateTimePicker_startDate.ValueChanged -= HandleDateRangeChanged;
                 dateTimePicker_endDate.ValueChanged -= HandleDateRangeChanged;
                 ReservationManager.ReservationsChanged -= HandleReservationsChanged;
+                Enterprise.Instance.VehiclesChanged -= HandleVehiclesChanged;
                 AppClock.DateChanged -= HandleDateChanged;
                 _eventsHooked = false;
             }

@@ -167,18 +167,10 @@ TotalPrice: 69
 Status: Completed
 
 Id: 25
-VehicleType: Car
-LicensePlate: KK-11-LL
-StartDate: 2026-02-01
-EndDate: 2026-02-12
-TotalPrice: 759
-Status: Active
-
-Id: 26
-VehicleType: Car
-LicensePlate: II-90-JJ
+VehicleType: Bus
+LicensePlate: UU-66-VV
 StartDate: 2026-02-02
 EndDate: 2026-02-03
-TotalPrice: 38
-Status: Active
+TotalPrice: 120
+Status: Reserved
 

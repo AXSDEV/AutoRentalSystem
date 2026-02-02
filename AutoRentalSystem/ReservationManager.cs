@@ -12,6 +12,7 @@ namespace AutoRentalSystem
         private const decimal BaseDailyPrice = 50.0m;
 
         public static string ReservationsFilePath { get; set; } = string.Empty;
+        public static string VehiclesFilePath { get; set; } = string.Empty;
 
         public static event Action ReservationsChanged;
 
@@ -36,14 +37,26 @@ namespace AutoRentalSystem
 
             _reservations.Add(newReservation);
 
-			vehicle.RentState = "Reserved";
-			vehicle.AvailabilityDate = endDate.AddDays(1);
+            var today = AppClock.Today.Date;
+
+            if (startDate.Date > today)
+            {
+                vehicle.RentState = "Reserved";
+                vehicle.AvailabilityDate = endDate.Date.AddDays(1);
+            }
+            else if (startDate.Date == today)
+            {
+                vehicle.RentState = "Rented";
+                vehicle.AvailabilityDate = endDate.Date.AddDays(1);
+            }
+
 
             PersistIfConfigured();
+            PersistVehiclesIfConfigured();
             NotifyChanged();
-
+            
             return newReservation;
-		}
+        }
 
         private static void NotifyChanged()
         {
@@ -58,6 +71,14 @@ namespace AutoRentalSystem
                 return;
 
             SaveReservationsToFile(ReservationsFilePath);
+        }
+
+        private static void PersistVehiclesIfConfigured()
+        {
+            if (string.IsNullOrWhiteSpace(VehiclesFilePath))
+                return;
+
+            Enterprise.Instance.SaveVehiclesToCsv(VehiclesFilePath);
         }
 
         public static void LoadReservationsFromFile(IEnumerable<Vehicle> vehicles, string filePath)
@@ -113,6 +134,7 @@ namespace AutoRentalSystem
 
             return reservation;
         }
+
         public static void UpdateReservationStatuses(DateTime referenceDate)
         {
             if (_reservations.Count == 0)
