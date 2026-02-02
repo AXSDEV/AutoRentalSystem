@@ -37,9 +37,10 @@ namespace AutoRentalSystem
                 ReservationManager.LoadReservationsFromFile(vehicles, ReservationManager.ReservationsFilePath);
             }
             ReservationManager.UpdateReservationStatuses(AppClock.Today);
-            ShowPage<VehiclesPage>("Vehicles");
+            ShowPage<DashboardPage>("Dashboard");
+
         }
-        
+
         private void ShowPage<T>(string title) where T : UserControl, new()
         {
             title_label.Text = title;
@@ -58,9 +59,10 @@ namespace AutoRentalSystem
             page.BringToFront();
         }
 
-        private void btn_dashboard_Click(object sender, EventArgs e)
+        private void btn_vehicles_Click(object sender, EventArgs e)
         {
             ShowPage<VehiclesPage>("Vehicles");
+
         }
 
         private void btn_reservations_Click(object sender, EventArgs e)
@@ -168,7 +170,9 @@ namespace AutoRentalSystem
             base.OnHandleDestroyed(e);
         }
 
-
+        private void label_dashboard_Click(object sender, EventArgs e)
+        {
+            ShowPage<DashboardPage>("Dashboard");
+        }
     }
-
 }

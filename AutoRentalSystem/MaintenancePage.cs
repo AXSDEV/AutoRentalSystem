@@ -82,10 +82,60 @@ namespace AutoRentalSystem
             foreach (var vehicle in vehicles)
             {
                 var card = new VehicleCards(vehicle, VehicleCards.CardMode.MaintenancePage);
+                card.AlterStateRequested += HandleAlterStateVehicle;
                 flowLayoutPanel_maintenance.Controls.Add(card);
             }
 
             flowLayoutPanel_maintenance.ResumeLayout(true);
+        }
+        private void HandleAlterStateVehicle(object sender, VehicleCards.VehicleEventArgs e)
+        {
+            if (e?.Vehicle == null)
+            {
+                return;
+            }
+
+            using (var form = new AlterStateForm(
+                e.Vehicle.RentState,
+                e.Vehicle.MaintenanceStartDate,
+                e.Vehicle.MaintenanceEndDate))
+            {
+                form.StartPosition = FormStartPosition.CenterParent;
+
+                if (form.ShowDialog(this) != DialogResult.OK)
+                {
+                    return;
+                }
+
+                e.Vehicle.RentState = form.SelectedState;
+
+                if (form.SelectedState == "Maintenance")
+                {
+                    e.Vehicle.MaintenanceStartDate = form.MaintenanceStartDate;
+                    e.Vehicle.MaintenanceEndDate = form.MaintenanceEndDate;
+                    e.Vehicle.AvailabilityDate = null;
+                }
+                else
+                {
+                    e.Vehicle.MaintenanceStartDate = null;
+                    e.Vehicle.MaintenanceEndDate = null;
+                    e.Vehicle.AvailabilityDate = null;
+                }
+
+                Enterprise.Instance.UpdateMaintenanceStates(AppClock.Today);
+                EnsureVehiclesDirectory();
+                Enterprise.Instance.SaveVehiclesToCsv(_vehiclesFilePath);
+                RefreshVehicles();
+            }
+        }
+
+        private void EnsureVehiclesDirectory()
+        {
+            var directory = Path.GetDirectoryName(_vehiclesFilePath);
+            if (!string.IsNullOrWhiteSpace(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
         }
 
     }

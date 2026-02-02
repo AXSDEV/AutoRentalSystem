@@ -193,7 +193,10 @@ namespace AutoRentalSystem
             if (e == null || e.Vehicle == null)
                 return;
 
-            using (var form = new AlterStateForm())
+            using (var form = new AlterStateForm(
+                e.Vehicle.RentState,
+                e.Vehicle.MaintenanceStartDate,
+                e.Vehicle.MaintenanceEndDate))
             {
                 form.StartPosition = FormStartPosition.CenterParent;
 

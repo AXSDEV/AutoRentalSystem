@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_home));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.DateTimePicker_changeDay = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label_actions = new System.Windows.Forms.Label();
             this.label_pages = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
             this.title_label = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel_content = new System.Windows.Forms.Panel();
-            this.DateTimePicker_changeDay = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.title_bar.SuspendLayout();
@@ -75,6 +75,24 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(282, 1007);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // DateTimePicker_changeDay
+            // 
+            this.DateTimePicker_changeDay.BorderRadius = 10;
+            this.DateTimePicker_changeDay.Checked = true;
+            this.DateTimePicker_changeDay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
+            this.DateTimePicker_changeDay.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
+            this.DateTimePicker_changeDay.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.DateTimePicker_changeDay.ForeColor = System.Drawing.Color.White;
+            this.DateTimePicker_changeDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateTimePicker_changeDay.Location = new System.Drawing.Point(33, 458);
+            this.DateTimePicker_changeDay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.DateTimePicker_changeDay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.DateTimePicker_changeDay.Name = "DateTimePicker_changeDay";
+            this.DateTimePicker_changeDay.Size = new System.Drawing.Size(216, 45);
+            this.DateTimePicker_changeDay.TabIndex = 0;
+            this.DateTimePicker_changeDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DateTimePicker_changeDay.Value = new System.DateTime(2026, 2, 1, 19, 19, 14, 207);
             // 
             // guna2PictureBox1
             // 
@@ -208,7 +226,7 @@
             this.btn_vehicles.Size = new System.Drawing.Size(230, 45);
             this.btn_vehicles.TabIndex = 2;
             this.btn_vehicles.Text = "Vehicles";
-            this.btn_vehicles.Click += new System.EventHandler(this.btn_dashboard_Click);
+            this.btn_vehicles.Click += new System.EventHandler(this.btn_vehicles_Click);
             this.btn_vehicles.MouseEnter += new System.EventHandler(this.btn_vehicles_MouseEnter);
             this.btn_vehicles.MouseLeave += new System.EventHandler(this.btn_vehicles_MouseLeave);
             // 
@@ -222,6 +240,7 @@
             this.label_dashboard.Size = new System.Drawing.Size(185, 25);
             this.label_dashboard.TabIndex = 0;
             this.label_dashboard.Text = "Auto Rental System";
+            this.label_dashboard.Click += new System.EventHandler(this.label_dashboard_Click);
             // 
             // btn_close
             // 
@@ -331,24 +350,6 @@
             this.panel_content.Name = "panel_content";
             this.panel_content.Size = new System.Drawing.Size(1920, 1080);
             this.panel_content.TabIndex = 4;
-            // 
-            // DateTimePicker_changeDay
-            // 
-            this.DateTimePicker_changeDay.BorderRadius = 10;
-            this.DateTimePicker_changeDay.Checked = true;
-            this.DateTimePicker_changeDay.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
-            this.DateTimePicker_changeDay.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
-            this.DateTimePicker_changeDay.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.DateTimePicker_changeDay.ForeColor = System.Drawing.Color.White;
-            this.DateTimePicker_changeDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateTimePicker_changeDay.Location = new System.Drawing.Point(33, 458);
-            this.DateTimePicker_changeDay.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.DateTimePicker_changeDay.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.DateTimePicker_changeDay.Name = "DateTimePicker_changeDay";
-            this.DateTimePicker_changeDay.Size = new System.Drawing.Size(216, 45);
-            this.DateTimePicker_changeDay.TabIndex = 0;
-            this.DateTimePicker_changeDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DateTimePicker_changeDay.Value = new System.DateTime(2026, 2, 1, 19, 19, 14, 207);
             // 
             // form_home
             // 
