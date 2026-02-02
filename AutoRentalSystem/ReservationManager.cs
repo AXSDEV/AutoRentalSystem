@@ -194,9 +194,19 @@ namespace AutoRentalSystem
 
         public static decimal CalculateTotalPriceInterval(DateTime startDate, DateTime endDate)
 		{
-			return _reservations
-                .Where(r => r.Status == ReservationStatus.Completed && r.StartDate >= startDate && r.EndDate <= endDate)
-                .Sum(r => r.TotalPrice);
-		}
+            if (endDate < startDate)
+            {
+                throw new ArgumentException("End date must be on or after start date.");
+            }
+
+            var intervalStart = startDate.Date;
+            var intervalEnd = endDate.Date;
+
+            return _reservations
+                 .Where(r => r.Status == ReservationStatus.Completed
+                    && r.StartDate.Date <= intervalEnd
+                    && r.EndDate.Date >= intervalStart)
+                    .Sum(r => r.TotalPrice);
+        }
     }
 }

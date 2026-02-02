@@ -38,7 +38,6 @@ namespace AutoRentalSystem
             }
             ReservationManager.UpdateReservationStatuses(AppClock.Today);
             ShowPage<DashboardPage>("Dashboard");
-
         }
 
         private void ShowPage<T>(string title) where T : UserControl, new()

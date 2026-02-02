@@ -29,13 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardPage));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel_totalVehicles = new Guna.UI2.WinForms.Guna2Panel();
-            this.panel_imageBackground = new Guna.UI2.WinForms.Guna2Panel();
-            this.label_totalVehicles = new System.Windows.Forms.Label();
-            this.pictureBox_icon = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label_totalVehicles_info = new System.Windows.Forms.Label();
+            this.label_totalVehicles = new System.Windows.Forms.Label();
+            this.panel_imageBackground = new Guna.UI2.WinForms.Guna2Panel();
+            this.pictureBox_icon = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.label_rentedVehicles_info = new System.Windows.Forms.Label();
             this.label_rentedVehicles = new System.Windows.Forms.Label();
@@ -47,13 +50,18 @@
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label_revenue_info = new System.Windows.Forms.Label();
+            this.label_totalRevenue_info = new System.Windows.Forms.Label();
             this.label_revenue = new System.Windows.Forms.Label();
             this.guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label_income_info = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.guna2DateTimePicker2 = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.guna2Panel9 = new Guna.UI2.WinForms.Guna2Panel();
+            this.chart_rentsVehicleType = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel_totalVehicles.SuspendLayout();
             this.panel_imageBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_icon)).BeginInit();
@@ -67,6 +75,8 @@
             this.guna2Panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
             this.guna2Panel8.SuspendLayout();
+            this.guna2Panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_rentsVehicleType)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -101,15 +111,16 @@
             this.panel_totalVehicles.Size = new System.Drawing.Size(300, 150);
             this.panel_totalVehicles.TabIndex = 2;
             // 
-            // panel_imageBackground
+            // label_totalVehicles_info
             // 
-            this.panel_imageBackground.BorderRadius = 10;
-            this.panel_imageBackground.Controls.Add(this.pictureBox_icon);
-            this.panel_imageBackground.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.panel_imageBackground.Location = new System.Drawing.Point(125, 14);
-            this.panel_imageBackground.Name = "panel_imageBackground";
-            this.panel_imageBackground.Size = new System.Drawing.Size(50, 50);
-            this.panel_imageBackground.TabIndex = 1;
+            this.label_totalVehicles_info.AutoSize = true;
+            this.label_totalVehicles_info.Font = new System.Drawing.Font("Segoe UI Semibold", 18.25F, System.Drawing.FontStyle.Bold);
+            this.label_totalVehicles_info.ForeColor = System.Drawing.SystemColors.Control;
+            this.label_totalVehicles_info.Location = new System.Drawing.Point(113, 99);
+            this.label_totalVehicles_info.Name = "label_totalVehicles_info";
+            this.label_totalVehicles_info.Size = new System.Drawing.Size(80, 35);
+            this.label_totalVehicles_info.TabIndex = 2;
+            this.label_totalVehicles_info.Text = "label1";
             // 
             // label_totalVehicles
             // 
@@ -122,6 +133,16 @@
             this.label_totalVehicles.TabIndex = 2;
             this.label_totalVehicles.Text = "Total Vehicles";
             // 
+            // panel_imageBackground
+            // 
+            this.panel_imageBackground.BorderRadius = 10;
+            this.panel_imageBackground.Controls.Add(this.pictureBox_icon);
+            this.panel_imageBackground.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel_imageBackground.Location = new System.Drawing.Point(125, 14);
+            this.panel_imageBackground.Name = "panel_imageBackground";
+            this.panel_imageBackground.Size = new System.Drawing.Size(50, 50);
+            this.panel_imageBackground.TabIndex = 1;
+            // 
             // pictureBox_icon
             // 
             this.pictureBox_icon.FillColor = System.Drawing.Color.Transparent;
@@ -132,17 +153,6 @@
             this.pictureBox_icon.Size = new System.Drawing.Size(24, 24);
             this.pictureBox_icon.TabIndex = 0;
             this.pictureBox_icon.TabStop = false;
-            // 
-            // label_totalVehicles_info
-            // 
-            this.label_totalVehicles_info.AutoSize = true;
-            this.label_totalVehicles_info.Font = new System.Drawing.Font("Segoe UI Semibold", 18.25F, System.Drawing.FontStyle.Bold);
-            this.label_totalVehicles_info.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_totalVehicles_info.Location = new System.Drawing.Point(113, 99);
-            this.label_totalVehicles_info.Name = "label_totalVehicles_info";
-            this.label_totalVehicles_info.Size = new System.Drawing.Size(80, 35);
-            this.label_totalVehicles_info.TabIndex = 2;
-            this.label_totalVehicles_info.Text = "label1";
             // 
             // guna2Panel2
             // 
@@ -263,7 +273,7 @@
             this.guna2Panel6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.guna2Panel6.BorderRadius = 20;
             this.guna2Panel6.BorderThickness = 1;
-            this.guna2Panel6.Controls.Add(this.label_revenue_info);
+            this.guna2Panel6.Controls.Add(this.label_totalRevenue_info);
             this.guna2Panel6.Controls.Add(this.label_revenue);
             this.guna2Panel6.Controls.Add(this.guna2Panel7);
             this.guna2Panel6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
@@ -272,16 +282,16 @@
             this.guna2Panel6.Size = new System.Drawing.Size(300, 150);
             this.guna2Panel6.TabIndex = 2;
             // 
-            // label_revenue_info
+            // label_totalRevenue_info
             // 
-            this.label_revenue_info.AutoSize = true;
-            this.label_revenue_info.Font = new System.Drawing.Font("Segoe UI Semibold", 18.25F, System.Drawing.FontStyle.Bold);
-            this.label_revenue_info.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_revenue_info.Location = new System.Drawing.Point(115, 99);
-            this.label_revenue_info.Name = "label_revenue_info";
-            this.label_revenue_info.Size = new System.Drawing.Size(80, 35);
-            this.label_revenue_info.TabIndex = 2;
-            this.label_revenue_info.Text = "label1";
+            this.label_totalRevenue_info.AutoSize = true;
+            this.label_totalRevenue_info.Font = new System.Drawing.Font("Segoe UI Semibold", 18.25F, System.Drawing.FontStyle.Bold);
+            this.label_totalRevenue_info.ForeColor = System.Drawing.SystemColors.Control;
+            this.label_totalRevenue_info.Location = new System.Drawing.Point(115, 99);
+            this.label_totalRevenue_info.Name = "label_totalRevenue_info";
+            this.label_totalRevenue_info.Size = new System.Drawing.Size(80, 35);
+            this.label_totalRevenue_info.TabIndex = 2;
+            this.label_totalRevenue_info.Text = "label1";
             // 
             // label_revenue
             // 
@@ -320,7 +330,9 @@
             this.guna2Panel8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.guna2Panel8.BorderRadius = 20;
             this.guna2Panel8.BorderThickness = 1;
-            this.guna2Panel8.Controls.Add(this.label2);
+            this.guna2Panel8.Controls.Add(this.guna2DateTimePicker2);
+            this.guna2Panel8.Controls.Add(this.guna2DateTimePicker1);
+            this.guna2Panel8.Controls.Add(this.label_income_info);
             this.guna2Panel8.Controls.Add(this.label3);
             this.guna2Panel8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
             this.guna2Panel8.Location = new System.Drawing.Point(318, 311);
@@ -328,27 +340,101 @@
             this.guna2Panel8.Size = new System.Drawing.Size(642, 296);
             this.guna2Panel8.TabIndex = 2;
             // 
-            // label2
+            // label_income_info
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(204, 87);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 25);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "label1";
+            this.label_income_info.AutoSize = true;
+            this.label_income_info.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold);
+            this.label_income_info.ForeColor = System.Drawing.SystemColors.Control;
+            this.label_income_info.Location = new System.Drawing.Point(282, 188);
+            this.label_income_info.Name = "label_income_info";
+            this.label_income_info.Size = new System.Drawing.Size(86, 37);
+            this.label_income_info.TabIndex = 2;
+            this.label_income_info.Text = "label1";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(25, 108);
+            this.label3.Location = new System.Drawing.Point(284, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 25);
+            this.label3.Size = new System.Drawing.Size(76, 25);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Total Vehicles :";
+            this.label3.Text = "Income";
+            // 
+            // guna2DateTimePicker1
+            // 
+            this.guna2DateTimePicker1.BorderRadius = 10;
+            this.guna2DateTimePicker1.Checked = true;
+            this.guna2DateTimePicker1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(34)))));
+            this.guna2DateTimePicker1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2DateTimePicker1.ForeColor = System.Drawing.SystemColors.Control;
+            this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.guna2DateTimePicker1.Location = new System.Drawing.Point(100, 47);
+            this.guna2DateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.guna2DateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
+            this.guna2DateTimePicker1.Size = new System.Drawing.Size(200, 36);
+            this.guna2DateTimePicker1.TabIndex = 3;
+            this.guna2DateTimePicker1.Value = new System.DateTime(2026, 2, 2, 17, 1, 37, 616);
+            // 
+            // guna2DateTimePicker2
+            // 
+            this.guna2DateTimePicker2.BorderRadius = 10;
+            this.guna2DateTimePicker2.Checked = true;
+            this.guna2DateTimePicker2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(34)))));
+            this.guna2DateTimePicker2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2DateTimePicker2.ForeColor = System.Drawing.SystemColors.Control;
+            this.guna2DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.guna2DateTimePicker2.Location = new System.Drawing.Point(346, 47);
+            this.guna2DateTimePicker2.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.guna2DateTimePicker2.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.guna2DateTimePicker2.Name = "guna2DateTimePicker2";
+            this.guna2DateTimePicker2.Size = new System.Drawing.Size(200, 36);
+            this.guna2DateTimePicker2.TabIndex = 3;
+            this.guna2DateTimePicker2.Value = new System.DateTime(2026, 2, 2, 17, 1, 37, 616);
+            // 
+            // guna2Panel9
+            // 
+            this.guna2Panel9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.guna2Panel9.BorderRadius = 20;
+            this.guna2Panel9.BorderThickness = 1;
+            this.guna2Panel9.Controls.Add(this.chart_rentsVehicleType);
+            this.guna2Panel9.Controls.Add(this.label2);
+            this.guna2Panel9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
+            this.guna2Panel9.Location = new System.Drawing.Point(1001, 311);
+            this.guna2Panel9.Name = "guna2Panel9";
+            this.guna2Panel9.Size = new System.Drawing.Size(642, 296);
+            this.guna2Panel9.TabIndex = 2;
+            // 
+            // chart_rentsVehicleType
+            // 
+            this.chart_rentsVehicleType.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.chart_rentsVehicleType.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart_rentsVehicleType.Legends.Add(legend1);
+            this.chart_rentsVehicleType.Location = new System.Drawing.Point(149, 47);
+            this.chart_rentsVehicleType.Name = "chart_rentsVehicleType";
+            this.chart_rentsVehicleType.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_rentsVehicleType.Series.Add(series1);
+            this.chart_rentsVehicleType.Size = new System.Drawing.Size(350, 232);
+            this.chart_rentsVehicleType.TabIndex = 0;
+            this.chart_rentsVehicleType.Text = "chart1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(225, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(194, 25);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Rents p/ Vehicle Type";
             // 
             // DashboardPage
             // 
@@ -358,6 +444,7 @@
             this.Controls.Add(this.guna2Panel6);
             this.Controls.Add(this.guna2Panel4);
             this.Controls.Add(this.guna2Panel2);
+            this.Controls.Add(this.guna2Panel9);
             this.Controls.Add(this.guna2Panel8);
             this.Controls.Add(this.panel_totalVehicles);
             this.Controls.Add(this.label1);
@@ -382,6 +469,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
             this.guna2Panel8.ResumeLayout(false);
             this.guna2Panel8.PerformLayout();
+            this.guna2Panel9.ResumeLayout(false);
+            this.guna2Panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_rentsVehicleType)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,12 +497,17 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
-        private System.Windows.Forms.Label label_revenue_info;
+        private System.Windows.Forms.Label label_totalRevenue_info;
         private System.Windows.Forms.Label label_revenue;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel7;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel8;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_income_info;
         private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker2;
+        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel9;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_rentsVehicleType;
+        private System.Windows.Forms.Label label2;
     }
 }
