@@ -45,8 +45,8 @@ namespace AutoRentalSystem
 
             Enterprise.Instance.LoadVehiclesFromCsv(_vehiclesFilePath);
 
-            _allVehicles = Enterprise.Instance.GetVehiclesInMaintenance()
-                .Where(v => v != null)
+            _allVehicles = Enterprise.Instance.Vehicles
+                .Where(IsMaintenanceTrackedVehicle)
                 .ToList();
 
             ApplyFilters();
@@ -73,6 +73,22 @@ namespace AutoRentalSystem
         {
             return (s ?? "").Replace(" ", "").Replace("-", "").Trim();
         }
+        private static bool IsMaintenanceTrackedVehicle(Vehicle vehicle)
+        {
+            if (vehicle == null)
+            {
+                return false;
+            }
+
+            var state = vehicle.RentState?.Trim();
+            if (string.Equals(state, "Maintenance", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            return vehicle.MaintenanceStartDate.HasValue || vehicle.MaintenanceEndDate.HasValue;
+        }
+
 
         private void RenderVehicles(List<Vehicle> vehicles)
         {
@@ -122,7 +138,7 @@ namespace AutoRentalSystem
                     e.Vehicle.AvailabilityDate = null;
                 }
 
-                Enterprise.Instance.UpdateMaintenanceStates(AppClock.Today);
+                
                 EnsureVehiclesDirectory();
                 Enterprise.Instance.SaveVehiclesToCsv(_vehiclesFilePath);
                 RefreshVehicles();

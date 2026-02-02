@@ -1,5 +1,5 @@
 ﻿VehicleType: Car
-RentState: Available
+RentState: Maintenance
 Maker: Volkswagen
 Model: Golf
 Year: 2020
@@ -8,9 +8,9 @@ IsAvailable: Yes
 ShiftType: Manual
 FuelType: Diesel
 DailyPrice: 42.5
-AvailabilityDate: 2024-02-15
-MaintenanceStartDate: 
-MaintenanceEndDate: 
+AvailabilityDate: 
+MaintenanceStartDate: 2026-02-02
+MaintenanceEndDate: 2026-02-03
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -48,9 +48,9 @@ IsAvailable: Yes
 ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 40
-AvailabilityDate: 2026-02-04
-MaintenanceStartDate: 2026-01-21
-MaintenanceEndDate: 2026-02-04
+AvailabilityDate: 
+MaintenanceStartDate: 2026-02-02
+MaintenanceEndDate: 2026-02-03
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -69,8 +69,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 38
 AvailabilityDate: 2024-05-12
-MaintenanceStartDate: 2024-04-28
-MaintenanceEndDate: 2024-05-12
+MaintenanceStartDate: 2026-01-28
+MaintenanceEndDate: 2026-05-12
 NumberDoors: 5
 AxelNumber: 0
 MaxPax: 0
@@ -209,8 +209,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 240
 AvailabilityDate: 2024-09-15
-MaintenanceStartDate: 2024-09-01
-MaintenanceEndDate: 2024-09-15
+MaintenanceStartDate: 2026-02-01
+MaintenanceEndDate: 2026-03-15
 NumberDoors: 0
 AxelNumber: 3
 MaxPax: 50
@@ -249,8 +249,8 @@ ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 250
 AvailabilityDate: 2024-10-05
-MaintenanceStartDate: 2024-09-21
-MaintenanceEndDate: 2024-10-05
+MaintenanceStartDate: 2026-01-21
+MaintenanceEndDate: 2026-03-05
 NumberDoors: 0
 AxelNumber: 3
 MaxPax: 52
@@ -319,7 +319,7 @@ MaxWeight: 22000
 Cc: 0
 
 VehicleType: Truck
-RentState: Maintenance
+RentState: Available
 Maker: MAN
 Model: TGX
 Year: 2019
@@ -329,8 +329,8 @@ ShiftType: Manual
 FuelType: Diesel
 DailyPrice: 290
 AvailabilityDate: 2024-09-30
-MaintenanceStartDate: 2024-09-16
-MaintenanceEndDate: 2024-09-30
+MaintenanceStartDate: 2026-01-16
+MaintenanceEndDate: 2026-01-30
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -419,7 +419,7 @@ MaxWeight: 27000
 Cc: 0
 
 VehicleType: Truck
-RentState: Maintenance
+RentState: Available
 Maker: Ford
 Model: F-Max
 Year: 2019
@@ -429,8 +429,8 @@ ShiftType: Manual
 FuelType: Diesel
 DailyPrice: 260
 AvailabilityDate: 2024-08-30
-MaintenanceStartDate: 2024-08-16
-MaintenanceEndDate: 2024-08-30
+MaintenanceStartDate: 2026-03-16
+MaintenanceEndDate: 2026-08-30
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -499,7 +499,7 @@ MaxWeight: 0
 Cc: 399
 
 VehicleType: Motorcycle
-RentState: Maintenance
+RentState: Available
 Maker: Ducati
 Model: Monster
 Year: 2022
@@ -509,8 +509,8 @@ ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 55
 AvailabilityDate: 2024-09-05
-MaintenanceStartDate: 2024-08-22
-MaintenanceEndDate: 2024-09-05
+MaintenanceStartDate: 2026-08-22
+MaintenanceEndDate: 2026-09-05
 NumberDoors: 0
 AxelNumber: 0
 MaxPax: 0
@@ -677,3 +677,4 @@ MaxPax: 0
 Height: 0
 MaxWeight: 0
 Cc: 0
+
