@@ -261,7 +261,7 @@
             this.textBox_search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBox_search.Location = new System.Drawing.Point(1704, 65);
             this.textBox_search.Name = "textBox_search";
-            this.textBox_search.PlaceholderText = "";
+            this.textBox_search.PlaceholderText = "Search License Plate...";
             this.textBox_search.SelectedText = "";
             this.textBox_search.Size = new System.Drawing.Size(200, 36);
             this.textBox_search.TabIndex = 4;

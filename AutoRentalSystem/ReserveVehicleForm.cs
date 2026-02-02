@@ -14,26 +14,47 @@ namespace AutoRentalSystem
     public partial class ReserveVehicleForm : Form
     {
         private readonly Vehicle _vehicle;
+        private readonly Reservation _reservation; // null = create, not null = edit
+
         public ReserveVehicleForm(Vehicle vehicle)
         {
             InitializeComponent();
+            _vehicle = vehicle ?? throw new ArgumentNullException(nameof(vehicle));
+            _reservation = null;
+            SetupForm(vehicle.LicensePlate, AppClock.Today, AppClock.Today.AddDays(1));
+        }
 
-            _vehicle = vehicle;
+        public ReserveVehicleForm(Reservation reservation)
+        {
+            InitializeComponent();
+            _reservation = reservation ?? throw new ArgumentNullException(nameof(reservation));
+            _vehicle = reservation.Vehicle;
+            if (_vehicle == null)
+                throw new ArgumentException("Reservation must have a vehicle.");
+            SetupForm(_vehicle.LicensePlate, reservation.StartDate.Date, reservation.EndDate.Date);
+        }
 
-            textbox_licensePlate.Text = vehicle.LicensePlate;
+        private void SetupForm(string licensePlate, DateTime startDate, DateTime endDate)
+        {
+            textbox_licensePlate.Text = licensePlate ?? string.Empty;
             textbox_licensePlate.ReadOnly = true;
             textbox_licensePlate.Enabled = false;
-
 
             textbox_totalPrice.ReadOnly = true;
             textbox_totalPrice.TabStop = false;
             textbox_totalPrice.Enabled = false;
 
-            dateTimePicker_startDate.Value = AppClock.Today;
-            dateTimePicker_endDate.Value = AppClock.Today.AddDays(1);
+            dateTimePicker_startDate.Value = startDate;
+            dateTimePicker_endDate.Value = endDate;
 
             dateTimePicker_startDate.ValueChanged += (_, __) => UpdatePricePreview();
             dateTimePicker_endDate.ValueChanged += (_, __) => UpdatePricePreview();
+
+            if (_reservation != null)
+            {
+                label_title.Text = "Edit Reservation";
+                btn_reserveVehicle.Text = "Save";
+            }
 
             UpdatePricePreview();
 
@@ -55,12 +76,10 @@ namespace AutoRentalSystem
             int totalDays = (int)Math.Ceiling((end - start).TotalDays);
             if (totalDays < 1) totalDays = 1;
 
-            decimal total = totalDays * _vehicle.DailyPrice;
+            decimal dailyPrice = _vehicle?.DailyPrice > 0 ? _vehicle.DailyPrice : ReservationManager.DefaultDailyPrice;
+            decimal total = totalDays * dailyPrice;
 
-            textbox_totalPrice.Text = total.ToString(
-                "C",
-                new CultureInfo("pt-PT")
-            );
+            textbox_totalPrice.Text = total.ToString("C", new CultureInfo("pt-PT"));
         }
 
         private void Actions_ReserveClicked(object sender, EventArgs e)
@@ -79,18 +98,28 @@ namespace AutoRentalSystem
         {
             try
             {
-                var reservation = ReservationManager.CreateReservation(
-                    _vehicle,
-                    dateTimePicker_startDate.Value.Date,
-                    dateTimePicker_endDate.Value.Date
-                );
+                var startDate = dateTimePicker_startDate.Value.Date;
+                var endDate = dateTimePicker_endDate.Value.Date;
 
-                MessageBox.Show(
-                    $"Reservation created with success!\nTotal: {reservation.TotalPrice:C}",
-                    "Reservation confirmed",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                if (_reservation != null)
+                {
+                    var status = ComputeStatus(startDate, endDate);
+                    ReservationManager.UpdateReservation(_reservation.Id, startDate, endDate, status);
+                    MessageBox.Show(
+                        "Reservation updated with success!",
+                        "Reservation updated",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    var reservation = ReservationManager.CreateReservation(_vehicle, startDate, endDate);
+                    MessageBox.Show(
+                        $"Reservation created with success!\nTotal: {reservation.TotalPrice:C}",
+                        "Reservation confirmed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
 
                 DialogResult = DialogResult.OK;
                 Close();
@@ -99,11 +128,18 @@ namespace AutoRentalSystem
             {
                 MessageBox.Show(
                     ex.Message,
-                    "Error creating reservation",
+                    _reservation != null ? "Error updating reservation" : "Error creating reservation",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
+                    MessageBoxIcon.Warning);
             }
+        }
+
+        private static ReservationStatus ComputeStatus(DateTime startDate, DateTime endDate)
+        {
+            var today = AppClock.Today.Date;
+            if (endDate.Date <= today) return ReservationStatus.Completed;
+            if (startDate.Date <= today) return ReservationStatus.Active;
+            return ReservationStatus.Reserved;
         }
 
         public void btn_close_Click(object sender, EventArgs e)

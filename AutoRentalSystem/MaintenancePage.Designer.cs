@@ -40,7 +40,11 @@
             this.flowLayoutPanel_maintenance = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2VScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
             this.textBox_search = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel_titleBar.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -183,16 +187,52 @@
             this.textBox_search.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBox_search.Location = new System.Drawing.Point(1704, 65);
             this.textBox_search.Name = "textBox_search";
-            this.textBox_search.PlaceholderText = "";
+            this.textBox_search.PlaceholderText = "Search License Plate...";
             this.textBox_search.SelectedText = "";
             this.textBox_search.Size = new System.Drawing.Size(200, 36);
             this.textBox_search.TabIndex = 3;
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.Controls.Add(this.label3);
+            this.guna2Panel2.Controls.Add(this.label2);
+            this.guna2Panel2.Location = new System.Drawing.Point(324, 1020);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Size = new System.Drawing.Size(633, 42);
+            this.guna2Panel2.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Image = global::AutoRentalSystem.Properties.Resources.state_reserved;
+            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Location = new System.Drawing.Point(4, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(160, 23);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Reserved";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Image = global::AutoRentalSystem.Properties.Resources.state_maintenance;
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(170, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(137, 23);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Active";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // MaintenancePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.textBox_search);
             this.Controls.Add(this.guna2VScrollBar1);
             this.Controls.Add(this.flowLayoutPanel_maintenance);
@@ -203,6 +243,7 @@
             this.Load += new System.EventHandler(this.MaintenancePage_Load);
             this.panel_titleBar.ResumeLayout(false);
             this.panel_titleBar.PerformLayout();
+            this.guna2Panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -221,5 +262,8 @@
         private System.Windows.Forms.Label label_endDate;
         private System.Windows.Forms.Label label_actions;
         private Guna.UI2.WinForms.Guna2TextBox textBox_search;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

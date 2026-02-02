@@ -64,6 +64,7 @@ namespace AutoRentalSystem
             }
 
             UpdateIncomeInterval();
+            UpdateRentChart();
         }
 
         private void HandleReservationsChanged()
@@ -74,7 +75,7 @@ namespace AutoRentalSystem
         }
         private void HandleVehiclesChanged()
         {
-           UpdateVehicleStats();
+            UpdateVehicleStats();
         }
         private void HandleDateChanged(DateTime newDate)
         {
@@ -108,7 +109,7 @@ namespace AutoRentalSystem
             {
                 var state = vehicle.RentState?.Trim();
                 return string.Equals(state, "Rented", StringComparison.OrdinalIgnoreCase);
-                    
+
             });
             label_rentedVehicles_info.Text = rentedCount.ToString();
 
@@ -135,6 +136,12 @@ namespace AutoRentalSystem
 
         private void UpdateRentChart()
         {
+            UpdateRentsByVehicleType();
+            UpdateRentsPerMonth();
+        }
+
+        private void UpdateRentsByVehicleType()
+        {
             if (chart_rentsVehicleType.Series.Count == 0)
             {
                 chart_rentsVehicleType.Series.Add(new Series("Series1"));
@@ -154,6 +161,36 @@ namespace AutoRentalSystem
             foreach (var item in grouped)
             {
                 series.Points.AddXY(item.VehicleType, item.Total);
+            }
+        }
+
+        private void UpdateRentsPerMonth()
+        {
+            if (chart_rentsMonth.Series.Count == 0)
+            {
+                chart_rentsMonth.Series.Add(new Series("Series1") { ChartType = SeriesChartType.SplineArea });
+            }
+
+            var series = chart_rentsMonth.Series[0];
+            series.Points.Clear();
+
+            var start = dateTimePicker_startDate.Value.Date;
+            var end = dateTimePicker_endDate.Value.Date;
+
+            var rentsByMonth = ReservationManager.Reservations
+                .Where(r => r.StartDate.Date <= end && r.EndDate.Date >= start)
+                .GroupBy(r => new DateTime(r.StartDate.Year, r.StartDate.Month, 1))
+                .ToDictionary(g => g.Key, g => g.Count());
+
+            var currentMonth = new DateTime(start.Year, start.Month, 1);
+            var lastMonth = new DateTime(end.Year, end.Month, 1);
+
+            while (currentMonth <= lastMonth)
+            {
+                int count = rentsByMonth.TryGetValue(currentMonth, out int c) ? c : 0;
+                string label = currentMonth.ToString("MMM yyyy", new System.Globalization.CultureInfo("pt-PT"));
+                series.Points.AddXY(label, count);
+                currentMonth = currentMonth.AddMonths(1);
             }
         }
 

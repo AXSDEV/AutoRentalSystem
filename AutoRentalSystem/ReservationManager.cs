@@ -5,11 +5,13 @@ using System.Linq;
 namespace AutoRentalSystem
 {
 
-	public static class ReservationManager
-	{
-		private static readonly List<Reservation> _reservations = new List<Reservation>();
-		private static int _nextReservationId = 1;
+    public static class ReservationManager
+    {
+        private static readonly List<Reservation> _reservations = new List<Reservation>();
+        private static int _nextReservationId = 1;
         private const decimal BaseDailyPrice = 50.0m;
+
+        public static decimal DefaultDailyPrice => BaseDailyPrice;
 
         public static string ReservationsFilePath { get; set; } = string.Empty;
         public static string VehiclesFilePath { get; set; } = string.Empty;
@@ -54,7 +56,7 @@ namespace AutoRentalSystem
             PersistIfConfigured();
             PersistVehiclesIfConfigured();
             NotifyChanged();
-            
+
             return newReservation;
         }
 
@@ -129,7 +131,13 @@ namespace AutoRentalSystem
             reservation.Status = status;
             reservation.CalculatePrice(BaseDailyPrice);
 
+            if (reservation.Vehicle != null)
+            {
+                UpdateVehicleStateFromReservations(reservation.Vehicle);
+            }
+
             PersistIfConfigured();
+            PersistVehiclesIfConfigured();
             NotifyChanged();
 
             return reservation;
@@ -162,27 +170,27 @@ namespace AutoRentalSystem
             NotifyChanged();
         }
         public static bool CheckAvailability(Vehicle vehicle, DateTime startDate, DateTime endDate)
-		{
+        {
             if (vehicle.RentState == "Maintenance")
             {
                 return false;
             }
             var timeConflict = _reservations.Any(r =>
-				r.Vehicle == vehicle &&
-				r.StartDate < endDate &&
-				r.EndDate > startDate
-				);
+                r.Vehicle == vehicle &&
+                r.StartDate < endDate &&
+                r.EndDate > startDate
+                );
             if (vehicle.IsMaintenanceOverlap(startDate, endDate))
             {
                 return false;
             }
             if (vehicle.AvailabilityDate.HasValue && vehicle.AvailabilityDate.Value > startDate)
-			{
-				return false;
-			}
+            {
+                return false;
+            }
 
-			return !timeConflict;
-		}
+            return !timeConflict;
+        }
         private static bool CheckAvailabilityForUpdate(Reservation reservation, DateTime startDate, DateTime endDate)
         {
             if (reservation?.Vehicle == null)
@@ -210,12 +218,64 @@ namespace AutoRentalSystem
             {
                 return false;
             }
-            
+
             return !timeConflict;
         }
 
+        public static void DeleteReservation(int reservationId)
+        {
+            var reservation = _reservations.FirstOrDefault(r => r.Id == reservationId);
+            if (reservation == null)
+            {
+                throw new InvalidOperationException($"Reservation {reservationId} not found.");
+            }
+
+            var vehicle = reservation.Vehicle;
+            _reservations.Remove(reservation);
+
+            if (vehicle != null)
+            {
+                UpdateVehicleStateFromReservations(vehicle);
+            }
+
+            PersistIfConfigured();
+            PersistVehiclesIfConfigured();
+            NotifyChanged();
+        }
+
+        private static void UpdateVehicleStateFromReservations(Vehicle vehicle)
+        {
+            var today = AppClock.Today.Date;
+            var futureReservations = _reservations
+                .Where(r => r.Vehicle == vehicle && r.EndDate.Date >= today)
+                .OrderBy(r => r.StartDate)
+                .ToList();
+
+            if (futureReservations.Count == 0)
+            {
+                vehicle.RentState = "Available";
+                vehicle.AvailabilityDate = null;
+                return;
+            }
+
+            var nextReservation = futureReservations.First();
+            var startDate = nextReservation.StartDate.Date;
+            var endDate = nextReservation.EndDate.Date;
+
+            vehicle.AvailabilityDate = endDate.AddDays(1);
+
+            if (startDate > today)
+            {
+                vehicle.RentState = "Reserved";
+            }
+            else
+            {
+                vehicle.RentState = "Rented";
+            }
+        }
+
         public static decimal CalculateTotalPriceInterval(DateTime startDate, DateTime endDate)
-		{
+        {
             if (endDate < startDate)
             {
                 throw new ArgumentException("End date must be on or after start date.");

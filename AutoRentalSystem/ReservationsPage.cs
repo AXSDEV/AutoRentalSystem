@@ -31,7 +31,7 @@ namespace AutoRentalSystem
 
             if (InvokeRequired)
             {
-                BeginInvoke(new Action(RefreshReservations)); 
+                BeginInvoke(new Action(RefreshReservations));
                 return;
             }
 
@@ -87,10 +87,56 @@ namespace AutoRentalSystem
             {
                 var card = new VehicleCards();
                 card.BindReservation(r);
+                card.ReservationEditRequested += OnReservationEditRequested;
+                card.ReservationDeleteRequested += OnReservationDeleteRequested;
                 flowLayoutPanel_reservations.Controls.Add(card);
             }
 
             flowLayoutPanel_reservations.ResumeLayout(true);
+        }
+
+        private void OnReservationEditRequested(object sender, VehicleCards.ReservationEventArgs e)
+        {
+            var reservation = e.Reservation;
+            if (reservation == null) return;
+
+            using (var form = new ReserveVehicleForm(reservation))
+            {
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.ShowDialog(FindForm());
+            }
+        }
+
+        private void OnReservationDeleteRequested(object sender, VehicleCards.ReservationEventArgs e)
+        {
+            var reservation = e.Reservation;
+            if (reservation == null) return;
+
+            var result = MessageBox.Show(
+                $"Are you sure you want to delete this reservation?\n\nVehicle: {reservation.Vehicle?.LicensePlate}\nPeriod: {reservation.StartDate:dd/MM/yyyy} - {reservation.EndDate:dd/MM/yyyy}",
+                "Confirm delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes) return;
+
+            try
+            {
+                ReservationManager.DeleteReservation(reservation.Id);
+                MessageBox.Show(
+                    "Reservation deleted with success!",
+                    "Reservation deleted",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Error deleting reservation",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
         }
 
         protected override void OnHandleDestroyed(EventArgs e)
