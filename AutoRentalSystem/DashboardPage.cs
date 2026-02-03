@@ -4,17 +4,15 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
+using System.Globalization;
 
 
 namespace AutoRentalSystem
 {
     public partial class DashboardPage : UserControl
     {
+        private readonly string _vehiclesFilePath = AppPaths.VehiclesFilePath;
 
-        private readonly string _vehiclesFilePath = Path.Combine(
-        AppDomain.CurrentDomain.BaseDirectory,
-        "data",
-        "vehicles.csv");
         private bool _eventsHooked;
 
         public DashboardPage()
@@ -60,7 +58,6 @@ namespace AutoRentalSystem
             if (end < start)
                 dateTimePicker_endDate.Value = start;
             UpdateIncomeInterval();
-            UpdateRentChart();
         }
 
         private void HandleReservationsChanged()
@@ -75,6 +72,7 @@ namespace AutoRentalSystem
         }
         private void HandleDateChanged(DateTime newDate)
         {
+            ReservationManager.UpdateReservationStatuses(newDate);
             RefreshDashboard();
         }
 
@@ -96,30 +94,43 @@ namespace AutoRentalSystem
             }
         }
 
-        private void UpdateVehicleStats()
-        {
-            var vehicles = Enterprise.Instance.Vehicles.Where(v => v != null).ToList();
-            label_totalVehicles_info.Text = vehicles.Count.ToString();
+private void UpdateVehicleStats()
+{
+    var vehicles = Enterprise.Instance.Vehicles
+        .Where(v => v != null)
+        .ToList();
 
-            var rentedCount = vehicles.Count(vehicle =>
-            {
-                var state = vehicle.RentState?.Trim();
-                return string.Equals(state, "Rented", StringComparison.OrdinalIgnoreCase);
+    label_totalVehicles_info.Text = vehicles.Count.ToString();
 
-            });
-            label_rentedVehicles_info.Text = rentedCount.ToString();
+    var today = AppClock.Today;
 
-            var maintenanceCount = vehicles.Count(vehicle =>
-                string.Equals(vehicle.RentState?.Trim(), "Maintenance", StringComparison.OrdinalIgnoreCase));
-            label_maintenance_info.Text = maintenanceCount.ToString();
-        }
+    var rentedCount = ReservationManager.Reservations
+        .Where(r =>
+            r != null &&
+            r.Vehicle != null &&
+            (r.Status == ReservationStatus.Completed || r.Status == ReservationStatus.Active) &&
+            r.StartDate.Date <= today &&
+            r.EndDate.Date >= today
+        )
+        .Select(r => r.Vehicle.LicensePlate)
+        .Distinct()
+        .Count();
+
+    label_rentedVehicles_info.Text = rentedCount.ToString();
+
+    var maintenanceCount = vehicles.Count(v =>
+        string.Equals(v.RentState?.Trim(), "Maintenance", StringComparison.OrdinalIgnoreCase));
+
+    label_maintenance_info.Text = maintenanceCount.ToString();
+}
+
 
         private void UpdateRevenueTotal()
         {
             var totalRevenue = ReservationManager.Reservations
-                .Where(r => r.Status == ReservationStatus.Completed)
+                .Where(r => r.Status == ReservationStatus.Completed || r.Status == ReservationStatus.Active)
                 .Sum(r => r.TotalPrice);
-            label_totalRevenue_info.Text = totalRevenue.ToString("C");
+            label_totalRevenue_info.Text = totalRevenue.ToString("C", new CultureInfo("pt-PT"));
         }
 
         private void UpdateIncomeInterval()
@@ -127,7 +138,7 @@ namespace AutoRentalSystem
             var start = dateTimePicker_startDate.Value.Date;
             var end = dateTimePicker_endDate.Value.Date;
             var income = ReservationManager.CalculateTotalPriceInterval(start, end);
-            label_income_info.Text = income.ToString("C");
+            label_income_info.Text = income.ToString("C", new CultureInfo("pt-PT"));
         }
 
         private void UpdateRentChart()
@@ -170,21 +181,29 @@ namespace AutoRentalSystem
             var series = chart_rentsMonth.Series[0];
             series.Points.Clear();
 
-            var start = dateTimePicker_startDate.Value.Date;
-            var end = dateTimePicker_endDate.Value.Date;
+            var reservations = ReservationManager.Reservations
+                .Where(r => r != null)
+                .ToList();
 
-            var rentsByMonth = ReservationManager.Reservations
-                .Where(r => r.StartDate.Date <= end && r.EndDate.Date >= start)
+            if (reservations.Count == 0)
+                return;
+
+            var minDate = reservations.Min(r => r.StartDate).Date;
+            var maxDate = reservations.Max(r => r.EndDate).Date;
+
+            var firstMonth = new DateTime(minDate.Year, minDate.Month, 1);
+            var lastMonth = new DateTime(maxDate.Year, maxDate.Month, 1);
+
+            var rentsByMonth = reservations
                 .GroupBy(r => new DateTime(r.StartDate.Year, r.StartDate.Month, 1))
                 .ToDictionary(g => g.Key, g => g.Count());
 
-            var currentMonth = new DateTime(start.Year, start.Month, 1);
-            var lastMonth = new DateTime(end.Year, end.Month, 1);
+            var currentMonth = firstMonth;
 
             while (currentMonth <= lastMonth)
             {
                 int count = rentsByMonth.TryGetValue(currentMonth, out int c) ? c : 0;
-                string label = currentMonth.ToString("MMM yyyy", new System.Globalization.CultureInfo("pt-PT"));
+                string label = currentMonth.ToString("MMM yyyy", new CultureInfo("pt-PT"));
                 series.Points.AddXY(label, count);
                 currentMonth = currentMonth.AddMonths(1);
             }

@@ -66,6 +66,7 @@
       <DependentUpon>AlterStateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppClock.cs" />
+    <Compile Include="AppPaths.cs" />
     <Compile Include="CsvService.cs" />
     <Compile Include="Bus.cs" />
     <Compile Include="Car.cs" />

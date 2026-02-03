@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardPage));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel_totalVehicles = new Guna.UI2.WinForms.Guna2Panel();
@@ -58,18 +58,18 @@
             this.guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
+            this.dateTimePicker_endDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dateTimePicker_startDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label_income_info = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker_startDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.dateTimePicker_endDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2Panel9 = new Guna.UI2.WinForms.Guna2Panel();
             this.chart_rentsVehicleType = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
+            this.guna2Panel11 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel10 = new Guna.UI2.WinForms.Guna2Panel();
-            this.chart_rentsMonth = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2Panel11 = new Guna.UI2.WinForms.Guna2Panel();
+            this.chart_rentsMonth = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel_totalVehicles.SuspendLayout();
             this.panel_imageBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_icon)).BeginInit();
@@ -86,8 +86,8 @@
             this.guna2Panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_rentsVehicleType)).BeginInit();
             this.guna2Panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart_rentsMonth)).BeginInit();
             this.guna2CustomGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_rentsMonth)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -351,6 +351,38 @@
             this.guna2Panel8.Size = new System.Drawing.Size(642, 296);
             this.guna2Panel8.TabIndex = 2;
             // 
+            // dateTimePicker_endDate
+            // 
+            this.dateTimePicker_endDate.BorderRadius = 10;
+            this.dateTimePicker_endDate.Checked = true;
+            this.dateTimePicker_endDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(34)))));
+            this.dateTimePicker_endDate.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker_endDate.ForeColor = System.Drawing.SystemColors.Control;
+            this.dateTimePicker_endDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_endDate.Location = new System.Drawing.Point(342, 117);
+            this.dateTimePicker_endDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker_endDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker_endDate.Name = "dateTimePicker_endDate";
+            this.dateTimePicker_endDate.Size = new System.Drawing.Size(200, 36);
+            this.dateTimePicker_endDate.TabIndex = 3;
+            this.dateTimePicker_endDate.Value = new System.DateTime(2026, 2, 2, 17, 1, 37, 616);
+            // 
+            // dateTimePicker_startDate
+            // 
+            this.dateTimePicker_startDate.BorderRadius = 10;
+            this.dateTimePicker_startDate.Checked = true;
+            this.dateTimePicker_startDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(34)))));
+            this.dateTimePicker_startDate.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker_startDate.ForeColor = System.Drawing.SystemColors.Control;
+            this.dateTimePicker_startDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker_startDate.Location = new System.Drawing.Point(100, 117);
+            this.dateTimePicker_startDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker_startDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker_startDate.Name = "dateTimePicker_startDate";
+            this.dateTimePicker_startDate.Size = new System.Drawing.Size(200, 36);
+            this.dateTimePicker_startDate.TabIndex = 3;
+            this.dateTimePicker_startDate.Value = new System.DateTime(2026, 2, 2, 17, 1, 37, 616);
+            // 
             // label_income_info
             // 
             this.label_income_info.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold);
@@ -373,38 +405,6 @@
             this.label3.Text = "Select an interval to see total income";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dateTimePicker_startDate
-            // 
-            this.dateTimePicker_startDate.BorderRadius = 10;
-            this.dateTimePicker_startDate.Checked = true;
-            this.dateTimePicker_startDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(34)))));
-            this.dateTimePicker_startDate.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker_startDate.ForeColor = System.Drawing.SystemColors.Control;
-            this.dateTimePicker_startDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_startDate.Location = new System.Drawing.Point(100, 117);
-            this.dateTimePicker_startDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker_startDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker_startDate.Name = "dateTimePicker_startDate";
-            this.dateTimePicker_startDate.Size = new System.Drawing.Size(200, 36);
-            this.dateTimePicker_startDate.TabIndex = 3;
-            this.dateTimePicker_startDate.Value = new System.DateTime(2026, 2, 2, 17, 1, 37, 616);
-            // 
-            // dateTimePicker_endDate
-            // 
-            this.dateTimePicker_endDate.BorderRadius = 10;
-            this.dateTimePicker_endDate.Checked = true;
-            this.dateTimePicker_endDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(34)))));
-            this.dateTimePicker_endDate.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker_endDate.ForeColor = System.Drawing.SystemColors.Control;
-            this.dateTimePicker_endDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker_endDate.Location = new System.Drawing.Point(342, 117);
-            this.dateTimePicker_endDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker_endDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker_endDate.Name = "dateTimePicker_endDate";
-            this.dateTimePicker_endDate.Size = new System.Drawing.Size(200, 36);
-            this.dateTimePicker_endDate.TabIndex = 3;
-            this.dateTimePicker_endDate.Value = new System.DateTime(2026, 2, 2, 17, 1, 37, 616);
-            // 
             // guna2Panel9
             // 
             this.guna2Panel9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -422,17 +422,17 @@
             // chart_rentsVehicleType
             // 
             this.chart_rentsVehicleType.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea5.Name = "ChartArea1";
-            this.chart_rentsVehicleType.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chart_rentsVehicleType.Legends.Add(legend5);
+            chartArea1.Name = "ChartArea1";
+            this.chart_rentsVehicleType.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart_rentsVehicleType.Legends.Add(legend1);
             this.chart_rentsVehicleType.Location = new System.Drawing.Point(157, 50);
             this.chart_rentsVehicleType.Name = "chart_rentsVehicleType";
             this.chart_rentsVehicleType.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chart_rentsVehicleType.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_rentsVehicleType.Series.Add(series1);
             this.chart_rentsVehicleType.Size = new System.Drawing.Size(347, 226);
             this.chart_rentsVehicleType.TabIndex = 0;
             this.chart_rentsVehicleType.Text = "chart1";
@@ -444,9 +444,18 @@
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(225, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(194, 25);
+            this.label2.Size = new System.Drawing.Size(203, 25);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Rents p/ Vehicle Type";
+            this.label2.Text = "Rents per Vehicle Type";
+            // 
+            // guna2Panel11
+            // 
+            this.guna2Panel11.BorderRadius = 20;
+            this.guna2Panel11.FillColor = System.Drawing.Color.White;
+            this.guna2Panel11.Location = new System.Drawing.Point(139, 47);
+            this.guna2Panel11.Name = "guna2Panel11";
+            this.guna2Panel11.Size = new System.Drawing.Size(378, 232);
+            this.guna2Panel11.TabIndex = 3;
             // 
             // guna2Panel10
             // 
@@ -461,27 +470,6 @@
             this.guna2Panel10.Size = new System.Drawing.Size(1325, 397);
             this.guna2Panel10.TabIndex = 2;
             // 
-            // chart_rentsMonth
-            // 
-            this.chart_rentsMonth.BackColor = System.Drawing.Color.Transparent;
-            this.chart_rentsMonth.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea6.Name = "ChartArea1";
-            this.chart_rentsMonth.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart_rentsMonth.Legends.Add(legend6);
-            this.chart_rentsMonth.Location = new System.Drawing.Point(-7, 7);
-            this.chart_rentsMonth.Name = "chart_rentsMonth";
-            this.chart_rentsMonth.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            series6.YValuesPerPoint = 4;
-            this.chart_rentsMonth.Series.Add(series6);
-            this.chart_rentsMonth.Size = new System.Drawing.Size(1081, 318);
-            this.chart_rentsMonth.TabIndex = 0;
-            this.chart_rentsMonth.Text = "chart1";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -489,9 +477,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
             this.label4.Location = new System.Drawing.Point(588, 11);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(146, 25);
+            this.label4.Size = new System.Drawing.Size(155, 25);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Rents p/ Month";
+            this.label4.Text = "Rents per Month";
             // 
             // guna2CustomGradientPanel1
             // 
@@ -502,14 +490,29 @@
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(1062, 320);
             this.guna2CustomGradientPanel1.TabIndex = 3;
             // 
-            // guna2Panel11
+            // chart_rentsMonth
             // 
-            this.guna2Panel11.BorderRadius = 20;
-            this.guna2Panel11.FillColor = System.Drawing.Color.White;
-            this.guna2Panel11.Location = new System.Drawing.Point(139, 47);
-            this.guna2Panel11.Name = "guna2Panel11";
-            this.guna2Panel11.Size = new System.Drawing.Size(378, 232);
-            this.guna2Panel11.TabIndex = 3;
+            this.chart_rentsMonth.BackColor = System.Drawing.Color.Transparent;
+            this.chart_rentsMonth.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisX.Interval = 1D;
+            chartArea2.AxisX.IsMarginVisible = false;
+            chartArea2.AxisX.IsStartedFromZero = false;
+            chartArea2.Name = "ChartArea1";
+            this.chart_rentsMonth.ChartAreas.Add(chartArea2);
+            legend2.Name = "Rents";
+            this.chart_rentsMonth.Legends.Add(legend2);
+            this.chart_rentsMonth.Location = new System.Drawing.Point(-7, 7);
+            this.chart_rentsMonth.Name = "chart_rentsMonth";
+            this.chart_rentsMonth.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series2.Legend = "Rents";
+            series2.Name = "Rents";
+            series2.YValuesPerPoint = 4;
+            this.chart_rentsMonth.Series.Add(series2);
+            this.chart_rentsMonth.Size = new System.Drawing.Size(1081, 318);
+            this.chart_rentsMonth.TabIndex = 0;
+            this.chart_rentsMonth.Text = "chart1";
             // 
             // DashboardPage
             // 
@@ -549,8 +552,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart_rentsVehicleType)).EndInit();
             this.guna2Panel10.ResumeLayout(false);
             this.guna2Panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart_rentsMonth)).EndInit();
             this.guna2CustomGradientPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart_rentsMonth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

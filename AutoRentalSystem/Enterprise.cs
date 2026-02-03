@@ -80,10 +80,12 @@ namespace AutoRentalSystem
 
         public void LoadVehiclesFromCsv(string filePath)
         {
-            vehicles = File.Exists(filePath)
-                ? CsvExportService.ImportVehicles(filePath)
-                : new List<Vehicle>();
-                NotifyVehiclesChanged();
+            if (string.IsNullOrWhiteSpace(filePath) || !File.Exists(filePath))
+            {
+                return;
+            }
+
+            vehicles = CsvExportService.ImportVehicles(filePath);
         }
 
         public void SaveVehiclesToCsv(string filePath)

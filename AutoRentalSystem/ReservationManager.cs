@@ -146,9 +146,7 @@ namespace AutoRentalSystem
         public static void UpdateReservationStatuses(DateTime referenceDate)
         {
             if (_reservations.Count == 0)
-            {
                 return;
-            }
 
             bool changed = false;
 
@@ -157,22 +155,20 @@ namespace AutoRentalSystem
                 var previous = reservation.Status;
                 reservation.UpdateStatus(referenceDate);
                 if (reservation.Status != previous)
-                {
                     changed = true;
-                }
             }
+
+            UpdateAllVehicleStatesFromReservations(Enterprise.Instance.Vehicles);
 
             if (changed)
             {
                 PersistIfConfigured();
+                PersistVehiclesIfConfigured();
             }
 
             NotifyChanged();
         }
 
-        /// <summary>
-        /// Updates RentState (Available/Reserved/Rented) for all given vehicles based on current reservations and AppClock.Today.
-        /// </summary>
         public static void UpdateAllVehicleStatesFromReservations(IEnumerable<Vehicle> vehicles)
         {
             if (vehicles == null) return;
@@ -208,13 +204,10 @@ namespace AutoRentalSystem
         private static bool CheckAvailabilityForUpdate(Reservation reservation, DateTime startDate, DateTime endDate)
         {
             if (reservation?.Vehicle == null)
-            {
                 return false;
-            }
-            if (reservation.Vehicle.RentState == "Maintenance")
-            {
+
+            if (string.Equals(reservation.Vehicle.RentState, "Maintenance", StringComparison.OrdinalIgnoreCase))
                 return false;
-            }
 
             var plate = reservation.Vehicle.LicensePlate?.Trim() ?? "";
             var timeConflict = _reservations.Any(r =>
@@ -223,19 +216,15 @@ namespace AutoRentalSystem
                 string.Equals(r.Vehicle.LicensePlate?.Trim(), plate, StringComparison.OrdinalIgnoreCase) &&
                 r.StartDate < endDate &&
                 r.EndDate > startDate
-                );
+            );
+
+            if (timeConflict)
+                return false;
+
             if (reservation.Vehicle.IsMaintenanceOverlap(startDate, endDate))
-            {
                 return false;
-            }
 
-            if (reservation.Vehicle.AvailabilityDate.HasValue
-                && reservation.Vehicle.AvailabilityDate.Value > startDate)
-            {
-                return false;
-            }
-
-            return !timeConflict;
+            return true;
         }
 
         public static void DeleteReservation(int reservationId)
@@ -262,6 +251,10 @@ namespace AutoRentalSystem
         private static void UpdateVehicleStateFromReservations(Vehicle vehicle)
         {
             if (vehicle?.LicensePlate == null) return;
+
+            if (string.Equals(vehicle.RentState?.Trim(), "Maintenance", StringComparison.OrdinalIgnoreCase))
+                return;
+
             var today = AppClock.Today.Date;
             var plate = vehicle.LicensePlate.Trim();
             var futureReservations = _reservations
@@ -305,10 +298,11 @@ namespace AutoRentalSystem
             var intervalEnd = endDate.Date;
 
             return _reservations
-                 .Where(r => r.Status == ReservationStatus.Completed
-                    && r.StartDate.Date <= intervalEnd
-                    && r.EndDate.Date >= intervalStart)
-                    .Sum(r => r.TotalPrice);
+                .Where(r =>
+                    (r.Status == ReservationStatus.Completed || r.Status == ReservationStatus.Active) &&
+                    r.StartDate.Date <= intervalEnd &&
+                    r.EndDate.Date >= intervalStart)
+                .Sum(r => r.TotalPrice);
         }
     }
 }

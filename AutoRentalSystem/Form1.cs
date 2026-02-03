@@ -23,21 +23,17 @@ namespace AutoRentalSystem
             DateTimePicker_changeDay.Value = AppClock.Today;
             DateTimePicker_changeDay.ValueChanged += DateTimePicker_changeDay_ValueChanged;
             AppClock.DateChanged += OnAppDateChanged;
-            ReservationManager.ReservationsFilePath = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory, "data", "reservations.csv");
-            ReservationManager.VehiclesFilePath = Path.Combine(
-              AppDomain.CurrentDomain.BaseDirectory, "data", "vehicles.csv");
+            ReservationManager.ReservationsFilePath = AppPaths.ReservationsFilePath;
+            ReservationManager.VehiclesFilePath = AppPaths.VehiclesFilePath;
 
-            var dir = Path.GetDirectoryName(ReservationManager.ReservationsFilePath);
-            if (!string.IsNullOrEmpty(dir))
-                Directory.CreateDirectory(dir);
+            Directory.CreateDirectory(AppPaths.DataFolder);
 
-            var vehiclesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "vehicles.csv");
-            if (File.Exists(vehiclesPath) && File.Exists(ReservationManager.ReservationsFilePath))
+            if (File.Exists(AppPaths.VehiclesFilePath) && File.Exists(AppPaths.ReservationsFilePath))
             {
-                var vehicles = CsvExportService.ImportVehicles(vehiclesPath);
-                ReservationManager.LoadReservationsFromFile(vehicles, ReservationManager.ReservationsFilePath);
+                var vehicles = CsvExportService.ImportVehicles(AppPaths.VehiclesFilePath);
+                ReservationManager.LoadReservationsFromFile(vehicles, AppPaths.ReservationsFilePath);
             }
+
             ReservationManager.UpdateReservationStatuses(AppClock.Today);
             ShowPage<DashboardPage>("Dashboard");
         }
@@ -159,10 +155,11 @@ namespace AutoRentalSystem
         }
         private void DateTimePicker_changeDay_ValueChanged(object sender, EventArgs e)
         {
-            AppClock.SetDate(DateTimePicker_changeDay.Value);
-            ReservationManager.UpdateReservationStatuses(AppClock.Today);
-            Enterprise.Instance.UpdateMaintenanceStates(AppClock.Today);
-            ReservationManager.UpdateAllVehicleStatesFromReservations(Enterprise.Instance.Vehicles);
+            var newDate = DateTimePicker_changeDay.Value.Date;
+
+            ReservationManager.UpdateReservationStatuses(newDate);
+
+            AppClock.SetDate(newDate);
         }
 
         private void OnAppDateChanged(DateTime newDate)

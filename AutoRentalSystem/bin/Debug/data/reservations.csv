@@ -1,8 +1,144 @@
-﻿Id: 5
+﻿Id: 1
+VehicleType: Car
+LicensePlate: AA-10-ZZ
+StartDate: 2025-10-05
+EndDate: 2025-10-10
+TotalPrice: 250
+Status: Completed
+
+Id: 2
+VehicleType: Motorcycle
+LicensePlate: 11-BC-22
+StartDate: 2025-10-14
+EndDate: 2025-10-16
+TotalPrice: 60
+Status: Completed
+
+Id: 3
+VehicleType: Bus
+LicensePlate: 44-DD-89
+StartDate: 2025-10-20
+EndDate: 2025-10-29
+TotalPrice: 4200
+Status: Completed
+
+Id: 4
+VehicleType: Car
+LicensePlate: CC-45-YY
+StartDate: 2025-11-03
+EndDate: 2025-11-08
+TotalPrice: 480
+Status: Completed
+
+Id: 5
+VehicleType: Truck
+LicensePlate: 78-GH-90
+StartDate: 2025-11-10
+EndDate: 2025-11-25
+TotalPrice: 3100
+Status: Completed
+
+Id: 6
+VehicleType: Motorcycle
+LicensePlate: MZ-09-33
+StartDate: 2025-11-22
+EndDate: 2025-11-25
+TotalPrice: 90
+Status: Completed
+
+Id: 7
+VehicleType: Car
+LicensePlate: TT-88-KK
+StartDate: 2025-12-05
+EndDate: 2025-12-10
+TotalPrice: 560
+Status: Completed
+
+Id: 8
+VehicleType: Motorcycle
+LicensePlate: XR-77-21
+StartDate: 2025-12-12
+EndDate: 2025-12-15
+TotalPrice: 75
+Status: Completed
+
+Id: 9
+VehicleType: Bus
+LicensePlate: 90-PL-12
+StartDate: 2025-12-18
+EndDate: 2025-12-30
+TotalPrice: 6900
+Status: Completed
+
+Id: 10
+VehicleType: Car
+LicensePlate: CC-45-YY
+StartDate: 2026-01-04
+EndDate: 2026-01-09
+TotalPrice: 480
+Status: Completed
+
+Id: 11
+VehicleType: Motorcycle
+LicensePlate: MZ-09-33
+StartDate: 2026-01-22
+EndDate: 2026-01-25
+TotalPrice: 90
+Status: Completed
+
+Id: 12
+VehicleType: Car
+LicensePlate: TT-88-KK
+StartDate: 2026-01-28
+EndDate: 2026-02-02
+TotalPrice: 560
+Status: Completed
+
+Id: 13
+VehicleType: Bus
+LicensePlate: 90-PL-12
+StartDate: 2026-02-02
+EndDate: 2026-02-17
+TotalPrice: 5700
+Status: Active
+
+Id: 14
+VehicleType: Motorcycle
+LicensePlate: XR-77-21
+StartDate: 2026-02-03
+EndDate: 2026-02-24
+TotalPrice: 525
+Status: Active
+
+Id: 15
 VehicleType: Car
 LicensePlate: XX-44-BB
 StartDate: 2026-02-18
 EndDate: 2026-02-21
 TotalPrice: 36
+Status: Reserved
+
+Id: 16
+VehicleType: Motorcycle
+LicensePlate: BB-23-SA
+StartDate: 2026-02-03
+EndDate: 2026-02-04
+TotalPrice: 12
 Status: Active
+
+Id: 17
+VehicleType: Bus
+LicensePlate: 12-FV-65
+StartDate: 2026-02-03
+EndDate: 2026-02-28
+TotalPrice: 5850
+Status: Active
+
+Id: 18
+VehicleType: Motorcycle
+LicensePlate: 34-XC-65
+StartDate: 2026-02-11
+EndDate: 2026-02-25
+TotalPrice: 3276
+Status: Reserved
 

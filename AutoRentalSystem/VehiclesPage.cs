@@ -10,10 +10,7 @@ namespace AutoRentalSystem
     {
         private List<Vehicle> _allVehicles = new List<Vehicle>();
 
-        private readonly string _vehiclesFilePath = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory,
-            "data",
-            "vehicles.csv");
+        private readonly string _vehiclesFilePath = AppPaths.VehiclesFilePath;
 
         public VehiclesPage()
         {
@@ -119,25 +116,20 @@ namespace AutoRentalSystem
         {
             if (!File.Exists(_vehiclesFilePath))
             {
-                _allVehicles = new List<Vehicle>();
-                MessageBox.Show(
-                    $"CSV not found:\n{_vehiclesFilePath}",
-                    "Vehicle data",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                ApplyFilters(); // limpa a UI
+                _allVehicles.Clear();
+                flowpanel_list.Controls.Clear();
                 return;
             }
 
             Enterprise.Instance.LoadVehiclesFromCsv(_vehiclesFilePath);
             Enterprise.Instance.UpdateMaintenanceStates(AppClock.Today);
             ReservationManager.UpdateAllVehicleStatesFromReservations(Enterprise.Instance.Vehicles);
-            // guarda a lista base em memória
+            // guarda a lista 
             _allVehicles = Enterprise.Instance.Vehicles
                 .Where(v => v != null)
                 .ToList();
 
-            // aplica filtros e desenha
+            // aplica filtros
             ApplyFilters();
         }
 
@@ -174,7 +166,7 @@ namespace AutoRentalSystem
                 return;
             }
 
-            EnsureVehiclesDirectory();
+            Directory.CreateDirectory(AppPaths.DataFolder);
             Enterprise.Instance.SaveVehiclesToCsv(_vehiclesFilePath);
             RefreshVehicles();
         }
@@ -231,15 +223,6 @@ namespace AutoRentalSystem
 
                 Enterprise.Instance.SaveVehiclesToCsv(_vehiclesFilePath);
                 RefreshVehicles();
-            }
-        }
-
-        private void EnsureVehiclesDirectory()
-        {
-            var directory = Path.GetDirectoryName(_vehiclesFilePath);
-            if (!string.IsNullOrWhiteSpace(directory))
-            {
-                Directory.CreateDirectory(directory);
             }
         }
 

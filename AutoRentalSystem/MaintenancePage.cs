@@ -16,10 +16,8 @@ namespace AutoRentalSystem
     {
         private List<Vehicle> _allVehicles = new List<Vehicle>();
 
-        private readonly string _vehiclesFilePath = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory,
-            "data",
-            "vehicles.csv");
+        private readonly string _vehiclesFilePath = AppPaths.VehiclesFilePath;
+
 
         public MaintenancePage()
         {
@@ -31,14 +29,29 @@ namespace AutoRentalSystem
         {
             textBox_search.TextChanged += (_, __) => ApplyFilters();
 
+            AppClock.DateChanged += OnAppDateChanged;
+
             RefreshVehicles();
+        }
+
+        private void OnAppDateChanged(DateTime newDate)
+        {
+            if (IsDisposed) return;
+
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(() => ApplyFilters()));
+                return;
+            }
+
+            ApplyFilters();
         }
 
         public void RefreshVehicles()
         {
             if (!File.Exists(_vehiclesFilePath))
             {
-                _allVehicles = new List<Vehicle>();
+                _allVehicles.Clear();
                 flowLayoutPanel_maintenance.Controls.Clear();
                 return;
             }
@@ -56,6 +69,13 @@ namespace AutoRentalSystem
         {
             IEnumerable<Vehicle> query = _allVehicles;
 
+            var today = AppClock.Today.Date;
+
+            query = query.Where(v =>
+                !v.MaintenanceEndDate.HasValue ||
+                v.MaintenanceEndDate.Value.Date >= today
+            );
+
             // SEARCH por matrícula
             string q = textBox_search.Text.Trim();
             if (!string.IsNullOrEmpty(q))
@@ -68,6 +88,7 @@ namespace AutoRentalSystem
 
             RenderVehicles(query.ToList());
         }
+
 
         private string NormalizePlate(string s)
         {
@@ -138,21 +159,11 @@ namespace AutoRentalSystem
                     e.Vehicle.AvailabilityDate = null;
                 }
 
-                
-                EnsureVehiclesDirectory();
+
+                Directory.CreateDirectory(AppPaths.DataFolder);
                 Enterprise.Instance.SaveVehiclesToCsv(_vehiclesFilePath);
                 RefreshVehicles();
             }
         }
-
-        private void EnsureVehiclesDirectory()
-        {
-            var directory = Path.GetDirectoryName(_vehiclesFilePath);
-            if (!string.IsNullOrWhiteSpace(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-        }
-
     }
 }

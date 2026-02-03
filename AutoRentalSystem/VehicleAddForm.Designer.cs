@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleAddForm));
             this.panel_AddVehicle_Background = new Guna.UI2.WinForms.Guna2Panel();
+            this.ComboBox_year = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.ComboBox_shiftType = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.ComboBox_fuel = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel_AddVehicleForm_Content = new Guna.UI2.WinForms.Guna2Panel();
             this.btn_AddVehicleForm_Truck = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -53,9 +56,6 @@
             this.label_AddVehicleForm_Type = new System.Windows.Forms.Label();
             this.label_AddVehicleForm_LicencePlate = new System.Windows.Forms.Label();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
-            this.ComboBox_fuel = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.ComboBox_shiftType = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.ComboBox_year = new Guna.UI2.WinForms.Guna2ComboBox();
             this.panel_AddVehicle_Background.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,6 +92,66 @@
             this.panel_AddVehicle_Background.Name = "panel_AddVehicle_Background";
             this.panel_AddVehicle_Background.Size = new System.Drawing.Size(800, 900);
             this.panel_AddVehicle_Background.TabIndex = 2;
+            // 
+            // ComboBox_year
+            // 
+            this.ComboBox_year.BackColor = System.Drawing.Color.Transparent;
+            this.ComboBox_year.BorderRadius = 10;
+            this.ComboBox_year.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ComboBox_year.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_year.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_year.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_year.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ComboBox_year.ForeColor = System.Drawing.Color.Black;
+            this.ComboBox_year.ItemHeight = 30;
+            this.ComboBox_year.Items.AddRange(new object[] {
+            "Manual",
+            "Automatic"});
+            this.ComboBox_year.Location = new System.Drawing.Point(79, 475);
+            this.ComboBox_year.Name = "ComboBox_year";
+            this.ComboBox_year.Size = new System.Drawing.Size(273, 36);
+            this.ComboBox_year.TabIndex = 10;
+            // 
+            // ComboBox_shiftType
+            // 
+            this.ComboBox_shiftType.BackColor = System.Drawing.Color.Transparent;
+            this.ComboBox_shiftType.BorderRadius = 10;
+            this.ComboBox_shiftType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ComboBox_shiftType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_shiftType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_shiftType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_shiftType.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ComboBox_shiftType.ForeColor = System.Drawing.Color.Black;
+            this.ComboBox_shiftType.ItemHeight = 30;
+            this.ComboBox_shiftType.Items.AddRange(new object[] {
+            "Manual",
+            "Automatic"});
+            this.ComboBox_shiftType.Location = new System.Drawing.Point(440, 475);
+            this.ComboBox_shiftType.Name = "ComboBox_shiftType";
+            this.ComboBox_shiftType.Size = new System.Drawing.Size(273, 36);
+            this.ComboBox_shiftType.TabIndex = 10;
+            // 
+            // ComboBox_fuel
+            // 
+            this.ComboBox_fuel.BackColor = System.Drawing.Color.Transparent;
+            this.ComboBox_fuel.BorderRadius = 10;
+            this.ComboBox_fuel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ComboBox_fuel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_fuel.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_fuel.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ComboBox_fuel.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.ComboBox_fuel.ForeColor = System.Drawing.Color.Black;
+            this.ComboBox_fuel.ItemHeight = 30;
+            this.ComboBox_fuel.Items.AddRange(new object[] {
+            "Gasoline",
+            "Diesel",
+            "Electric",
+            "Hybrid",
+            "Gas"});
+            this.ComboBox_fuel.Location = new System.Drawing.Point(440, 260);
+            this.ComboBox_fuel.Name = "ComboBox_fuel";
+            this.ComboBox_fuel.Size = new System.Drawing.Size(273, 36);
+            this.ComboBox_fuel.TabIndex = 10;
             // 
             // panel_AddVehicleForm_Content
             // 
@@ -412,66 +472,6 @@
             this.guna2BorderlessForm1.ContainerControl = this;
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
-            // ComboBox_fuel
-            // 
-            this.ComboBox_fuel.BackColor = System.Drawing.Color.Transparent;
-            this.ComboBox_fuel.BorderRadius = 10;
-            this.ComboBox_fuel.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ComboBox_fuel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_fuel.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.ComboBox_fuel.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.ComboBox_fuel.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ComboBox_fuel.ForeColor = System.Drawing.Color.Black;
-            this.ComboBox_fuel.ItemHeight = 30;
-            this.ComboBox_fuel.Items.AddRange(new object[] {
-            "Gasoline",
-            "Diesel",
-            "Eletric",
-            "Hybrid",
-            "Gas"});
-            this.ComboBox_fuel.Location = new System.Drawing.Point(440, 260);
-            this.ComboBox_fuel.Name = "ComboBox_fuel";
-            this.ComboBox_fuel.Size = new System.Drawing.Size(273, 36);
-            this.ComboBox_fuel.TabIndex = 10;
-            // 
-            // ComboBox_shiftType
-            // 
-            this.ComboBox_shiftType.BackColor = System.Drawing.Color.Transparent;
-            this.ComboBox_shiftType.BorderRadius = 10;
-            this.ComboBox_shiftType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ComboBox_shiftType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_shiftType.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.ComboBox_shiftType.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.ComboBox_shiftType.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ComboBox_shiftType.ForeColor = System.Drawing.Color.Black;
-            this.ComboBox_shiftType.ItemHeight = 30;
-            this.ComboBox_shiftType.Items.AddRange(new object[] {
-            "Manual",
-            "Automatic"});
-            this.ComboBox_shiftType.Location = new System.Drawing.Point(440, 475);
-            this.ComboBox_shiftType.Name = "ComboBox_shiftType";
-            this.ComboBox_shiftType.Size = new System.Drawing.Size(273, 36);
-            this.ComboBox_shiftType.TabIndex = 10;
-            // 
-            // ComboBox_year
-            // 
-            this.ComboBox_year.BackColor = System.Drawing.Color.Transparent;
-            this.ComboBox_year.BorderRadius = 10;
-            this.ComboBox_year.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ComboBox_year.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_year.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.ComboBox_year.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.ComboBox_year.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.ComboBox_year.ForeColor = System.Drawing.Color.Black;
-            this.ComboBox_year.ItemHeight = 30;
-            this.ComboBox_year.Items.AddRange(new object[] {
-            "Manual",
-            "Automatic"});
-            this.ComboBox_year.Location = new System.Drawing.Point(79, 475);
-            this.ComboBox_year.Name = "ComboBox_year";
-            this.ComboBox_year.Size = new System.Drawing.Size(273, 36);
-            this.ComboBox_year.TabIndex = 10;
             // 
             // VehicleAddForm
             // 
