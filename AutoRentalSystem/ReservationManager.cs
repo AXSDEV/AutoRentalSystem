@@ -80,6 +80,9 @@ namespace AutoRentalSystem
             if (string.IsNullOrWhiteSpace(VehiclesFilePath))
                 return;
 
+            if (!Enterprise.Instance.Vehicles.Any() && System.IO.File.Exists(VehiclesFilePath))
+                return;
+
             Enterprise.Instance.SaveVehiclesToCsv(VehiclesFilePath);
         }
 

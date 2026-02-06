@@ -124,7 +124,7 @@ LicensePlate: BB-23-SA
 StartDate: 2026-02-03
 EndDate: 2026-02-04
 TotalPrice: 12
-Status: Active
+Status: Completed
 
 Id: 17
 VehicleType: Bus
@@ -141,4 +141,12 @@ StartDate: 2026-02-11
 EndDate: 2026-02-25
 TotalPrice: 3276
 Status: Reserved
+
+Id: 19
+VehicleType: Car
+LicensePlate: CC-45-YY
+StartDate: 2026-02-04
+EndDate: 2026-02-10
+TotalPrice: 480
+Status: Active
 

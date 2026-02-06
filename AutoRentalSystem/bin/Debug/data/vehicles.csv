@@ -1,1 +1,299 @@
-﻿
+﻿VehicleType: Car
+RentState: Reserved
+Maker: Toyota
+Model: Supra
+Year: 2002
+LicensePlate: XX-44-BB
+IsAvailable: True
+ShiftType: Manual
+FuelType: Gasoline
+DailyPrice: 12
+AvailabilityDate: 2026-02-22
+MaintenanceStartDate: 2026-02-03
+MaintenanceEndDate: 2026-02-08
+NumberDoors: 4
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 0
+
+VehicleType: Motorcycle
+RentState: Rented
+Maker: Ducati
+Model: Scrambler
+Year: 2007
+LicensePlate: BB-23-SA
+IsAvailable: True
+ShiftType: Manual
+FuelType: Gasoline
+DailyPrice: 12
+AvailabilityDate: 2026-02-05
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 0
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 235
+
+VehicleType: Bus
+RentState: Rented
+Maker: Mercedes
+Model: Citaro
+Year: 2012
+LicensePlate: 12-FV-65
+IsAvailable: True
+ShiftType: Manual
+FuelType: Gasoline
+DailyPrice: 234
+AvailabilityDate: 2026-03-01
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 0
+AxelNumber: 8
+MaxPax: 128
+Height: 0
+MaxWeight: 0
+Cc: 0
+
+VehicleType: Car
+RentState: Available
+Maker: Nissan
+Model: Skyline R32
+Year: 1999
+LicensePlate: 99-BS-43
+IsAvailable: True
+ShiftType: Manual
+FuelType: Gasoline
+DailyPrice: 127
+AvailabilityDate: 
+MaintenanceStartDate: 2026-02-03
+MaintenanceEndDate: 2026-02-11
+NumberDoors: 5
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 0
+
+VehicleType: Car
+RentState: Maintenance
+Maker: Nissan
+Model: Skyline R34
+Year: 2015
+LicensePlate: 23-FC-67
+IsAvailable: True
+ShiftType: Manual
+FuelType: Gasoline
+DailyPrice: 234
+AvailabilityDate: 
+MaintenanceStartDate: 2026-02-03
+MaintenanceEndDate: 2026-02-18
+NumberDoors: 3
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 0
+
+VehicleType: Motorcycle
+RentState: Reserved
+Maker: Kawasaki
+Model: Ninja
+Year: 2005
+LicensePlate: 34-XC-65
+IsAvailable: True
+ShiftType: Automatic
+FuelType: Gasoline
+DailyPrice: 234
+AvailabilityDate: 2026-03-26
+MaintenanceStartDate: 2026-02-04
+MaintenanceEndDate: 2026-02-05
+NumberDoors: 0
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 450
+
+VehicleType: Car
+RentState: Available
+Maker: Honda
+Model: Civic Type R
+Year: 2006
+LicensePlate: AA-10-ZZ
+IsAvailable: True
+ShiftType: Manual
+FuelType: Gasoline
+DailyPrice: 50
+AvailabilityDate: 
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 5
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 0
+
+VehicleType: Car
+RentState: Available
+Maker: BMW
+Model: M3 E46
+Year: 2004
+LicensePlate: CC-45-YY
+IsAvailable: True
+ShiftType: Manual
+FuelType: Gasoline
+DailyPrice: 80
+AvailabilityDate: 
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 3
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 0
+
+VehicleType: Car
+RentState: Available
+Maker: Subaru
+Model: Impreza WRX STI
+Year: 2005
+LicensePlate: TT-88-KK
+IsAvailable: True
+ShiftType: Manual
+FuelType: Gasoline
+DailyPrice: 70
+AvailabilityDate: 
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 5
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 0
+
+VehicleType: Motorcycle
+RentState: Available
+Maker: Yamaha
+Model: MT-07
+Year: 2018
+LicensePlate: 11-BC-22
+IsAvailable: True
+ShiftType: Manual
+FuelType: Gasoline
+DailyPrice: 30
+AvailabilityDate: 
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 0
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 689
+
+VehicleType: Motorcycle
+RentState: Available
+Maker: Suzuki
+Model: SV650
+Year: 2016
+LicensePlate: MZ-09-33
+IsAvailable: True
+ShiftType: Manual
+FuelType: Gasoline
+DailyPrice: 28
+AvailabilityDate: 
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 0
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 645
+
+VehicleType: Motorcycle
+RentState: Available
+Maker: KTM
+Model: Duke 390
+Year: 2020
+LicensePlate: XR-77-21
+IsAvailable: True
+ShiftType: Manual
+FuelType: Gasoline
+DailyPrice: 25
+AvailabilityDate: 
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 0
+AxelNumber: 0
+MaxPax: 0
+Height: 0
+MaxWeight: 0
+Cc: 373
+
+VehicleType: Bus
+RentState: Available
+Maker: Volvo
+Model: 9700
+Year: 2014
+LicensePlate: 44-DD-89
+IsAvailable: True
+ShiftType: Automatic
+FuelType: Diesel
+DailyPrice: 350
+AvailabilityDate: 
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 0
+AxelNumber: 6
+MaxPax: 52
+Height: 0
+MaxWeight: 0
+Cc: 0
+
+VehicleType: Bus
+RentState: Available
+Maker: MAN
+Model: Lion's Coach
+Year: 2016
+LicensePlate: 90-PL-12
+IsAvailable: True
+ShiftType: Automatic
+FuelType: Diesel
+DailyPrice: 380
+AvailabilityDate: 
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 0
+AxelNumber: 6
+MaxPax: 54
+Height: 0
+MaxWeight: 0
+Cc: 0
+
+VehicleType: Truck
+RentState: Available
+Maker: Scania
+Model: R500
+Year: 2018
+LicensePlate: 78-GH-90
+IsAvailable: True
+ShiftType: Automatic
+FuelType: Diesel
+DailyPrice: 420
+AvailabilityDate: 
+MaintenanceStartDate: 
+MaintenanceEndDate: 
+NumberDoors: 0
+AxelNumber: 4
+MaxPax: 0
+Height: 0
+MaxWeight: 18000
+Cc: 0

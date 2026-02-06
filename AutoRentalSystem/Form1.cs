@@ -28,11 +28,17 @@ namespace AutoRentalSystem
 
             Directory.CreateDirectory(AppPaths.DataFolder);
 
-            if (File.Exists(AppPaths.VehiclesFilePath) && File.Exists(AppPaths.ReservationsFilePath))
+            if (File.Exists(AppPaths.VehiclesFilePath))
             {
-                var vehicles = CsvExportService.ImportVehicles(AppPaths.VehiclesFilePath);
-                ReservationManager.LoadReservationsFromFile(vehicles, AppPaths.ReservationsFilePath);
+                Enterprise.Instance.LoadVehiclesFromCsv(AppPaths.VehiclesFilePath);
+                Enterprise.Instance.UpdateMaintenanceStates(AppClock.Today);
             }
+
+            if (File.Exists(AppPaths.ReservationsFilePath))
+            {
+                ReservationManager.LoadReservationsFromFile(Enterprise.Instance.Vehicles, AppPaths.ReservationsFilePath);
+            }
+
 
             ReservationManager.UpdateReservationStatuses(AppClock.Today);
             ShowPage<DashboardPage>("Dashboard");
