@@ -1,5 +1,5 @@
 ﻿VehicleType: Car
-RentState: Reserved
+RentState: Maintenance
 Maker: Toyota
 Model: Supra
 Year: 2002
@@ -19,7 +19,7 @@ MaxWeight: 0
 Cc: 0
 
 VehicleType: Motorcycle
-RentState: Rented
+RentState: Reserved
 Maker: Ducati
 Model: Scrambler
 Year: 2007
@@ -28,7 +28,7 @@ IsAvailable: True
 ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 12
-AvailabilityDate: 2026-02-05
+AvailabilityDate: 2026-02-14
 MaintenanceStartDate: 
 MaintenanceEndDate: 
 NumberDoors: 0
@@ -59,7 +59,7 @@ MaxWeight: 0
 Cc: 0
 
 VehicleType: Car
-RentState: Available
+RentState: Maintenance
 Maker: Nissan
 Model: Skyline R32
 Year: 1999
@@ -108,7 +108,7 @@ IsAvailable: True
 ShiftType: Automatic
 FuelType: Gasoline
 DailyPrice: 234
-AvailabilityDate: 2026-03-26
+AvailabilityDate: 2026-02-26
 MaintenanceStartDate: 2026-02-04
 MaintenanceEndDate: 2026-02-05
 NumberDoors: 0
@@ -139,7 +139,7 @@ MaxWeight: 0
 Cc: 0
 
 VehicleType: Car
-RentState: Available
+RentState: Rented
 Maker: BMW
 Model: M3 E46
 Year: 2004
@@ -148,7 +148,7 @@ IsAvailable: True
 ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 80
-AvailabilityDate: 
+AvailabilityDate: 2026-02-11
 MaintenanceStartDate: 
 MaintenanceEndDate: 
 NumberDoors: 3
@@ -219,7 +219,7 @@ MaxWeight: 0
 Cc: 645
 
 VehicleType: Motorcycle
-RentState: Available
+RentState: Rented
 Maker: KTM
 Model: Duke 390
 Year: 2020
@@ -228,7 +228,7 @@ IsAvailable: True
 ShiftType: Manual
 FuelType: Gasoline
 DailyPrice: 25
-AvailabilityDate: 
+AvailabilityDate: 2026-02-25
 MaintenanceStartDate: 
 MaintenanceEndDate: 
 NumberDoors: 0
@@ -259,7 +259,7 @@ MaxWeight: 0
 Cc: 0
 
 VehicleType: Bus
-RentState: Available
+RentState: Rented
 Maker: MAN
 Model: Lion's Coach
 Year: 2016
@@ -268,7 +268,7 @@ IsAvailable: True
 ShiftType: Automatic
 FuelType: Diesel
 DailyPrice: 380
-AvailabilityDate: 
+AvailabilityDate: 2026-02-18
 MaintenanceStartDate: 
 MaintenanceEndDate: 
 NumberDoors: 0
@@ -292,8 +292,9 @@ AvailabilityDate:
 MaintenanceStartDate: 
 MaintenanceEndDate: 
 NumberDoors: 0
-AxelNumber: 4
+AxelNumber: 0
 MaxPax: 0
 Height: 0
 MaxWeight: 18000
 Cc: 0
+

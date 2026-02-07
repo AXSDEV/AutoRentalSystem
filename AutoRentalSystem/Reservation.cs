@@ -34,7 +34,7 @@ namespace AutoRentalSystem
 			int totalDays = (int)Math.Ceiling(rentalDuration.TotalDays);
 
 			if (totalDays < 1) totalDays = 1;
-
+            // usa o preço do veículo se existir, senão usa o preço base
             var dailyPrice = Vehicle?.DailyPrice > 0 ? Vehicle.DailyPrice : baseDailyPrice;
             TotalPrice = totalDays * dailyPrice;
         }

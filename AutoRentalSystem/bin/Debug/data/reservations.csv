@@ -150,3 +150,11 @@ EndDate: 2026-02-10
 TotalPrice: 480
 Status: Active
 
+Id: 20
+VehicleType: Motorcycle
+LicensePlate: BB-23-SA
+StartDate: 2026-02-08
+EndDate: 2026-02-13
+TotalPrice: 60
+Status: Reserved
+

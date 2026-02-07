@@ -7,15 +7,17 @@ namespace AutoRentalSystem
 
     public static class ReservationManager
     {
+        // Lista interna onde ficam guardadas todas as reservas
         private static readonly List<Reservation> _reservations = new List<Reservation>();
         private static int _nextReservationId = 1;
+        // Preço diário base (usado quando o veículo não tem preço definido)
         private const decimal BaseDailyPrice = 50.0m;
 
         public static decimal DefaultDailyPrice => BaseDailyPrice;
-
+        // Caminhos para ficheiros CSV (reservas e veículos)
         public static string ReservationsFilePath { get; set; } = string.Empty;
         public static string VehiclesFilePath { get; set; } = string.Empty;
-
+        // Evento disparado quando a lista de reservas é alterada
         public static event Action ReservationsChanged;
 
         public static IReadOnlyList<Reservation> Reservations => _reservations.AsReadOnly();
@@ -59,14 +61,14 @@ namespace AutoRentalSystem
 
             return newReservation;
         }
-
+        // Ao disparar o NotifyChanged, dispara o ReservationsChanged que é usado por exemplo no DashboardPage para atualizar as estatísticas e gráficos
         private static void NotifyChanged()
         {
             var handler = ReservationsChanged;
             if (handler != null)
                 handler();
         }
-
+        // Guarda as reservas no ficheiro, se o caminho estiver configurado
         private static void PersistIfConfigured()
         {
             if (string.IsNullOrWhiteSpace(ReservationsFilePath))
@@ -74,7 +76,7 @@ namespace AutoRentalSystem
 
             SaveReservationsToFile(ReservationsFilePath);
         }
-
+        // Guarda os veículos no ficheiro, se o caminho estiver configurado
         private static void PersistVehiclesIfConfigured()
         {
             if (string.IsNullOrWhiteSpace(VehiclesFilePath))
@@ -85,12 +87,12 @@ namespace AutoRentalSystem
 
             Enterprise.Instance.SaveVehiclesToCsv(VehiclesFilePath);
         }
-
+        // Carrega reservas do ficheiro CSV e associa-as aos veículos existentes
         public static void LoadReservationsFromFile(IEnumerable<Vehicle> vehicles, string filePath)
         {
             if (vehicles == null)
                 throw new ArgumentNullException(nameof(vehicles));
-
+            // Importa do CSV, substitui a lista atual e recalcula o próximo ID
             var importedReservations = CsvExportService.ImportReservations(vehicles, filePath);
             _reservations.Clear();
             _reservations.AddRange(importedReservations);
@@ -105,7 +107,7 @@ namespace AutoRentalSystem
         {
             CsvExportService.ExportReservations(_reservations, filePath);
         }
-
+        // Atualiza uma reserva existente (datas e estado)
         public static Reservation UpdateReservation(
             int reservationId,
             DateTime startDate,
@@ -138,14 +140,14 @@ namespace AutoRentalSystem
             {
                 UpdateVehicleStateFromReservations(reservation.Vehicle);
             }
-
+            
             PersistIfConfigured();
             PersistVehiclesIfConfigured();
             NotifyChanged();
 
             return reservation;
         }
-
+        // Atualiza automaticamente o estado das reservas consoante uma data de referência
         public static void UpdateReservationStatuses(DateTime referenceDate)
         {
             if (_reservations.Count == 0)
@@ -171,7 +173,7 @@ namespace AutoRentalSystem
 
             NotifyChanged();
         }
-
+        // Atualiza o estado de todos os veículos (Available/Reserved/Rented) a partir das reservas
         public static void UpdateAllVehicleStatesFromReservations(IEnumerable<Vehicle> vehicles)
         {
             if (vehicles == null) return;
@@ -181,13 +183,14 @@ namespace AutoRentalSystem
                     UpdateVehicleStateFromReservations(vehicle);
             }
         }
-
+        // Verifica se um veículo está disponível para um período de datas
         public static bool CheckAvailability(Vehicle vehicle, DateTime startDate, DateTime endDate)
         {
             if (vehicle.RentState == "Maintenance")
             {
                 return false;
             }
+            // Verifica conflito com outras reservas (sobreposição de datas)
             var timeConflict = _reservations.Any(r =>
                 r.Vehicle == vehicle &&
                 r.StartDate < endDate &&
@@ -197,6 +200,7 @@ namespace AutoRentalSystem
             {
                 return false;
             }
+            // Confirma se a data de disponibilidade do veículo é posterior à data de início da reserva
             if (vehicle.AvailabilityDate.HasValue && vehicle.AvailabilityDate.Value > startDate)
             {
                 return false;
@@ -229,7 +233,7 @@ namespace AutoRentalSystem
 
             return true;
         }
-
+        // Elimina uma reserva
         public static void DeleteReservation(int reservationId)
         {
             var reservation = _reservations.FirstOrDefault(r => r.Id == reservationId);
@@ -250,7 +254,7 @@ namespace AutoRentalSystem
             PersistVehiclesIfConfigured();
             NotifyChanged();
         }
-
+        // Atualiza o estado de um veículo com base nas reservas atuais
         private static void UpdateVehicleStateFromReservations(Vehicle vehicle)
         {
             if (vehicle?.LicensePlate == null) return;
@@ -289,7 +293,7 @@ namespace AutoRentalSystem
                 vehicle.RentState = "Rented";
             }
         }
-
+        // Calcula a faturação total num intervalo de datas (reservas Active/Completed)
         public static decimal CalculateTotalPriceInterval(DateTime startDate, DateTime endDate)
         {
             if (endDate < startDate)

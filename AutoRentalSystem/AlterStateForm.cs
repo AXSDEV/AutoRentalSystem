@@ -36,7 +36,7 @@ namespace AutoRentalSystem
 
 
             comboBox_status.SelectedIndexChanged += comboBox_status_SelectedIndexChanged;
-            comboBox_status.SelectedIndex = 0; // garante item selecionado
+            comboBox_status.SelectedIndex = 0; // garante o item selecionado
 
             LoadStatePanel(comboBox_status.SelectedItem?.ToString());
 

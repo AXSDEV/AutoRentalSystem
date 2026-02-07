@@ -8,8 +8,10 @@ namespace AutoRentalSystem
     public class Enterprise
     {
         private List<Vehicle> vehicles;
+        // Instância única da classe (Singleton)
         public static Enterprise Instance { get; } = new Enterprise();
         public IReadOnlyList<Vehicle> Vehicles => vehicles.AsReadOnly();
+        // Evento disparado quando a lista de veículos é alterada
         public event Action VehiclesChanged;
         public Enterprise()
         {
@@ -54,7 +56,7 @@ namespace AutoRentalSystem
             {
                 return false;
             }
-
+            // Substitui o veículo na lista
             var index = vehicles.IndexOf(existing);
             vehicles[index] = updatedVehicle;
             NotifyVehiclesChanged();
@@ -77,7 +79,7 @@ namespace AutoRentalSystem
             NotifyVehiclesChanged();
             return true;
         }
-
+        // Carrega os veículos a partir de um ficheiro CSV
         public void LoadVehiclesFromCsv(string filePath)
         {
             if (string.IsNullOrWhiteSpace(filePath) || !File.Exists(filePath))
@@ -87,11 +89,12 @@ namespace AutoRentalSystem
 
             vehicles = CsvExportService.ImportVehicles(filePath);
         }
-
+        // Guarda os veículos num ficheiro CSV
         public void SaveVehiclesToCsv(string filePath)
         {
             CsvExportService.ExportVehicles(vehicles, filePath);
-        }
+        }        
+        // Atualiza o estado de manutenção dos veículos com base na data atual
         public void UpdateMaintenanceStates(DateTime referenceDate)
         {
             foreach (var vehicle in vehicles)
@@ -130,7 +133,7 @@ namespace AutoRentalSystem
                 if (vehicle.LicensePlate == licensePlate)
                 {
                     vehicle.RentState = newState;
-
+                    // Atualiza a data de disponibilidade
                     if (newState == "Available")
                     {
                         vehicle.AvailabilityDate = AppClock.Today;
@@ -147,6 +150,7 @@ namespace AutoRentalSystem
             }
             return false;
         }
+        // Devolve a lista de veículos disponíveis, podendo filtrar por tipo
         public List<Vehicle> GetAvailableVehicles(string type = null)
         {
             List<Vehicle> result = new List<Vehicle>();
@@ -163,6 +167,7 @@ namespace AutoRentalSystem
             }
             return result;
         }
+        // Devolve a lista de veículos em manutenção
         public List<Vehicle> GetVehiclesInMaintenance()
         {
             List<Vehicle> result = new List<Vehicle>();
@@ -176,6 +181,7 @@ namespace AutoRentalSystem
             }
             return result;
         }
+        // Dispara o evento de alteração da lista de veículos
         private void NotifyVehiclesChanged()
         {
             var handler = VehiclesChanged;

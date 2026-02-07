@@ -20,7 +20,7 @@ namespace AutoRentalSystem
             InitializeComponent();
             AttachEventHandlers();
         }
-
+        // Associa os eventos necessários ao funcionamento do dashboard
         private void AttachEventHandlers()
         {
             if (_eventsHooked)
@@ -43,14 +43,14 @@ namespace AutoRentalSystem
             InitializeDatePickers();
             RefreshDashboard();
         }
-
+        // Inicializa os DateTimePickers com um intervalo de 30 dias
         private void InitializeDatePickers()
         {
             var today = AppClock.Today;
             dateTimePicker_endDate.Value = today;
             dateTimePicker_startDate.Value = today.AddDays(-30);
         }
-
+        // Atualiza os dados quando o intervalo de datas é alterado
         private void HandleDateRangeChanged(object sender, EventArgs e)
         {
             var start = dateTimePicker_startDate.Value.Date;
@@ -59,17 +59,19 @@ namespace AutoRentalSystem
                 dateTimePicker_endDate.Value = start;
             UpdateIncomeInterval();
         }
-
+        // Atualiza o dashboard quando existem alterações nas reservas
         private void HandleReservationsChanged()
         {
             UpdateRevenueTotal();
             UpdateIncomeInterval();
             UpdateRentChart();
         }
+        // Atualiza estatísticas quando existem alterações nos veículos
         private void HandleVehiclesChanged()
         {
             UpdateVehicleStats();
         }
+        // Atualiza o dashboard quando a data simulada é alterada
         private void HandleDateChanged(DateTime newDate)
         {
             ReservationManager.UpdateReservationStatuses(newDate);
@@ -94,7 +96,8 @@ namespace AutoRentalSystem
             }
         }
 
-private void UpdateVehicleStats()
+        // Atualiza as estatísticas relacionadas com os veículos
+        private void UpdateVehicleStats()
 {
     var vehicles = Enterprise.Instance.Vehicles
         .Where(v => v != null)
@@ -124,7 +127,7 @@ private void UpdateVehicleStats()
     label_maintenance_info.Text = maintenanceCount.ToString();
 }
 
-
+        // Calcula e apresenta a faturação total
         private void UpdateRevenueTotal()
         {
             var totalRevenue = ReservationManager.Reservations
@@ -132,7 +135,7 @@ private void UpdateVehicleStats()
                 .Sum(r => r.TotalPrice);
             label_totalRevenue_info.Text = totalRevenue.ToString("C", new CultureInfo("pt-PT"));
         }
-
+        // Calcula e apresenta a faturação dentro do intervalo de datas
         private void UpdateIncomeInterval()
         {
             var start = dateTimePicker_startDate.Value.Date;
@@ -140,13 +143,13 @@ private void UpdateVehicleStats()
             var income = ReservationManager.CalculateTotalPriceInterval(start, end);
             label_income_info.Text = income.ToString("C", new CultureInfo("pt-PT"));
         }
-
+        // Atualiza todos os gráficos do dashboard
         private void UpdateRentChart()
         {
             UpdateRentsByVehicleType();
             UpdateRentsPerMonth();
         }
-
+        // Atualiza o gráfico de reservas por tipo de veículo
         private void UpdateRentsByVehicleType()
         {
             if (chart_rentsVehicleType.Series.Count == 0)
@@ -170,7 +173,7 @@ private void UpdateVehicleStats()
                 series.Points.AddXY(item.VehicleType, item.Total);
             }
         }
-
+        // Atualiza o gráfico de reservas por mês
         private void UpdateRentsPerMonth()
         {
             if (chart_rentsMonth.Series.Count == 0)
@@ -208,7 +211,7 @@ private void UpdateVehicleStats()
                 currentMonth = currentMonth.AddMonths(1);
             }
         }
-
+        // Remove os eventos ao destruir o controlo
         protected override void OnHandleDestroyed(EventArgs e)
         {
             if (_eventsHooked)
